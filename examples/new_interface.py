@@ -25,7 +25,7 @@ def main():
   jobs = p.getjobs()
   for name, job in jobs.items():
      for key in job.keys():
-        print '%s = %s', %(key, job[key])
+        print '%s = %s' %(key, job[key])
  
   l = ['state', 'np' ]
   nodes = p.getnodes(l)

@@ -1,0 +1,60 @@
+The previous version was a simple interface above the PBS C API LIB.  This 
+interface has gone a major changes. The most noticeable change is  that
+the functions accept/return Python lists instead of C-lists.  So you can now 
+use standard Python syntax for manipulating Python lists. If you are familar 
+with the Python syntax then you will appreciate this new interface.
+
+NOTE:
+  This interface is NOT compatible with the old one
+
+Here are some guidelines to convert your code to the new one:
+
+The constructors for the struct has gone a major change:
+  old code:
+    temp = pbs.new_attrl();
+    attrl_p = pbs.attrlPtr(temp)
+    attrl_p.name = 'state'
+
+  new_code:
+     attr_l = pbs.new_attrl(1)   // Creates a list of attrl structs length 1
+     attr_l[0].name = 'state'
+
+
+The pbs_stat functions returns Python lists instead of C-lists. There is
+NO next field anymore:
+  old_code:
+    temp = pbs.new_attrl();
+    attrl_p = pbs.attrlPtr(temp)
+    attrl_p.this = 'NULL'
+
+    nodes = pbs.pbs_statnode(con, "", attrl_p, "NULL")
+
+    while nodes.this != 'NULL':
+      print nodes.name
+
+      node_attrl = nodes.attribs
+      while node_attrl.this != 'NULL':
+        print '\t', node_attrl.name, '=', node_attrl.value
+	node_attrl = node_attrl.next
+
+    nodes = nodes.next 
+
+
+  new_code:
+    nodes = pbs.pbs_statnode(con, "", "NULL", "NULL")
+    for node in nodes:
+      print node.name
+      for attrib in node.attribs:
+        print '\t', attrib.name, '=', attrib.value
+
+Another advantage is you can use the print statement to show the
+connect of attrl and attropl classes:
+   attr_l = pbs.new_attrl(2)
+   attr_l[0].name = 'bas'
+   attr_l[0].value = 'van der Vlies'
+
+   print  attr_l[0]
+   >> (bas,,van der Vlies)
+    
+I hope these examples illustrate the changes. If you specify a wrong type
+for a function then function wil raise a Python exception.

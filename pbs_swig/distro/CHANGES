@@ -1,3 +1,6 @@
+ pbsmon.py now support 2 and 3 digits in the hostname, Thanks to
+ Daniel Olson
+
 =========== Version 2.6.1
  Setup.py now checks if all openpbs libraries are installed to compile the 
  package.

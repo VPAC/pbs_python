@@ -1,3 +1,7 @@
+=========== Version 2.6.1
+ Setup.py now checks if all openpbs libraries are installed to compile the 
+ package.
+
 =========== Version 2.6
 
  Fixed a bug in the pbs python module. Forgot to map the pbs_statjob()

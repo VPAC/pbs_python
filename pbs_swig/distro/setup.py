@@ -14,7 +14,6 @@ if not PBS_LIB_DIR:
   for dir in ['/usr/local/lib', '/opt/pbs/usr/lib' ]:
     dummy = os.path.join(dir, 'libpbs.a')
     if os.path.exists(dummy):
-      print dummy
       PBS_LIB_DIR=dir
       break
 

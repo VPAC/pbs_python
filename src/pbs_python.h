@@ -1,5 +1,5 @@
 /*
- * @(#) $Id: pbs_python.h,v 1.1 2002/02/27 14:34:51 sscpbas Exp $
+ * @(#) $Id: pbs_python.h,v 1.2 2003/03/03 09:37:37 sscpbas Exp $
  */
 
 /*
@@ -326,7 +326,7 @@ extern void pbs_statfree(struct batch_status *stat);
 // extern struct batch_status *pbs_statdest(int connect, char *id, char *extend);
 
 extern struct batch_status *pbs_statjob(int connect, char *id, 
-    struct attrl *attrib, char *extend);
+    struct attrl *IN, char *extend);
 
 extern struct batch_status *pbs_selstat(int connect, 
     struct attropl *IN, char *extend);

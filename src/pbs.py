@@ -124,9 +124,9 @@ pbsc.batch_status_swigregister(batch_statusPtr)
 #          mom values.
 #
 # CVS info
-# $Id: pbs.py,v 1.6 2002/10/21 14:16:08 sscpbas Exp $
-# $Date: 2002/10/21 14:16:08 $
-# $Revision: 1.6 $
+# $Id: pbs.py,v 1.7 2003/03/03 09:37:37 sscpbas Exp $
+# $Date: 2003/03/03 09:37:37 $
+# $Revision: 1.7 $
 #
 import string
 import types
@@ -233,7 +233,7 @@ def version():
   """
   Returns the pbs python interface version as a string. 
   """
-  return '2.5'
+  return '2.6'
 
 
 new_attrl = pbsc.new_attrl

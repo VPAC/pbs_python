@@ -1,7 +1,7 @@
 # 
 # $Id$
 #
-LIBS    =  -L/opt/pbs/usr/lib -llog -lnet -lpbs
+LIBS    =  -L/usr/lib/torque -llog -lnet -lpbs
 INCLUDE =  -I/usr/include/python2.1
 
 pbs::
@@ -9,4 +9,4 @@ pbs::
 	gcc -shared pbs_wrap.o ${LIBS} -o _pbs.so
 
 clean::
-	rm *.o pbs.pyc *.so
+	rm -f *.o pbs.pyc *.so

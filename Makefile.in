@@ -1,0 +1,23 @@
+TAR=tar
+GZIP_ENV=--best
+
+PREFIX=@prefix@
+exec_prefix=$(PREFIX)
+BINDIR=$(PREFIX)/bin
+
+.PHONY: install pythonlib
+pythonlib:
+	(cd src; make)
+	python setup.py build
+
+install: pythonlib
+	mkdir -p $(DESTDIR)/@pyexecdir@ $(DESTDIR)/$(BINDIR)
+	(cd examples; for i in *py; do install $$i  $(DESTDIR)/$(BINDIR)/$${i//.py/}; done)
+	install build/lib*/* $(DESTDIR)/@pyexecdir@
+	
+clean:
+	cd src; make clean	
+	rm -rf config.log config.cache config.status build
+
+distclean: clean
+#	rm -rf Makefile

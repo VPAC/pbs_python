@@ -1,4 +1,4 @@
-=========== Version ???
+=========== Version 2.3
  Bugfix in the pbsnodes-a.py. Forgot to import the sys module.
 
  Removed some obsolete code. 
@@ -7,7 +7,7 @@
  is automatically compiled and installed in proper directories, usage:
     python setup.py install
  This requires that the package 'distutils' must be installed. As for
- version 1.6 and higher it is in the ditribution.
+ version 1.6 and higher it is in the distribution.
 
 =========== Version 2.2
 

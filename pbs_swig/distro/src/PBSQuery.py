@@ -195,6 +195,12 @@ class _PBSobject:
         else:
 	   return None
 
+    def has_key(self, key):
+        if self.attribs.has_key(key):
+	   return self.TRUE
+        else:
+	   return None
+
     def keys(self):
         return self.attribs.keys()
 

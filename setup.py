@@ -11,6 +11,7 @@ from distutils.core import setup, Extension
 # then we try to find out where the libraries are
 #
 PBS_LIB_DIR=''
+LIBS = ['log', 'net', 'pbs'] 
 
 if not PBS_LIB_DIR:
   for dir in ['/usr/local/lib', '/opt/pbs/usr/lib' ]:
@@ -23,6 +24,15 @@ if not PBS_LIB_DIR:
   print 'Please specify where the PBS libraries are!!'
   print 'edit setup.py and fill in the PBS_LIB_DIR variable'
   sys.exit(1)
+
+# Test if we have all the libs:
+#
+for lib in LIBS:
+  library = 'lib%s.a' %(lib) 
+  dummy = os.path.join(PBS_LIB_DIR, library)
+  if not os.path.exists(dummy):
+    print 'You need to install %s in %s' %(library, PBS_LIB_DIR)
+    sys.exit(1)
 
 setup ( name = 'pbs_python',
         version = '2.3',
@@ -38,7 +48,7 @@ setup ( name = 'pbs_python',
 	ext_modules = [ 
 	  Extension( 'pbscmodule', ['src/pbs_wrap.c'],
 	  library_dirs = [ PBS_LIB_DIR ],
-	  libraries = ['log', 'net', 'pbs']
+	  libraries = LIBS
 	  ) 
 	]
 )

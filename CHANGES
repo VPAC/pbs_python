@@ -1,6 +1,7 @@
 =========== Version 2.7.5
  Added PBSQuery module.  This module requires pbs.py and it a simple module 
- for querying the pbs server.
+ for querying the pbs server. The documentation is in the module. Use for 
+ example ipython to read it.
 
  Written By: Roy Dragseth 
              Bas van der Vlies

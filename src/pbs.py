@@ -124,9 +124,9 @@ pbsc.batch_status_swigregister(batch_statusPtr)
 #          mom values.
 #
 # CVS info
-# $Id: pbs.py,v 1.2 2002/09/13 12:56:58 sscpbas Exp $
-# $Date: 2002/09/13 12:56:58 $
-# $Revision: 1.2 $
+# $Id: pbs.py,v 1.3 2002/09/17 11:51:19 sscpbas Exp $
+# $Date: 2002/09/17 11:51:19 $
+# $Revision: 1.3 $
 #
 import string
 import types
@@ -214,6 +214,13 @@ def get_mom_values(id, list = None):
     use_user_keywords(id, d , list)
      
   return d
+
+
+def version():
+  """
+  Returns the pbs python interface version as a string. 
+  """
+  return '2.3'
 
 
 new_attrl = pbsc.new_attrl

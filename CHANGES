@@ -9,6 +9,12 @@
  This requires that the package 'distutils' must be installed. As for
  version 1.6 and higher it is in the distribution.
 
+ Added a function that prints the pbs python interface version. So we
+ can check if we have the right interface version:
+ import pbs
+ print pbs.version()
+ 
+
 =========== Version 2.2
 
 In this release we can query the pbs_mom daemon with the aid of

@@ -3,6 +3,7 @@
  are also supported ( server attribute names: node_ping_rate and
  node_check_rate). This does not interfere with the openpbs software.
 
+ pbsmon.py could not handle an one node cluster. Fixed it.
 
 =========== Version 2.7
  Forgot to wrap the pbs_statfree() function. So we could not free

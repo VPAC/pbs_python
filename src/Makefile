@@ -1,5 +1,5 @@
 # 
-# $Id: Makefile,v 1.1 2002/02/27 14:34:51 sscpbas Exp $
+# $Id: Makefile,v 1.2 2002/02/27 16:19:56 sscpbas Exp $
 #
 LIBS    =  -L/usr/local/lib -lnet -lpbs
 #INCLUDE =  -I/usr/include/python1.5
@@ -10,4 +10,4 @@ pbs::
 	ld -G pbs_wrap.o ${LIBS} -o pbscmodule.so
 
 clean::
-	rm *.o pbs.pyc *.so
+	rm *.o pbs.pyc *.so pbs_wrap.doc

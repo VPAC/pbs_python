@@ -12,7 +12,9 @@ The Python wrapper class is tested on:
 	- It should run on different OSes.
 
 Compile the package:
+  cd src
   Adjust the Makefile to where you installed Python and PBS.
+  make
 
 Testing the package:
     pbsmon.py       - ascii xpbsmon

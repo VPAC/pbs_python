@@ -19,16 +19,16 @@ There is also a python function:
      list - Is a optional paramter. A list of resource keywords
 
    If 'list' is not supplied then this function will get the values
-   for the standard resource keywords, eg uname, loadave, .. +
-   'arch' depended keywords. The arch feature is only implemented
-   for linux, but it can be ported to other platforms as well.
+   for the standard resource keywords, eg uname, loadave, .. + 'arch' 
+   depended keywords. The arch feature is only implemented for linux, 
+   but it can easily be ported to other oses.
 
    if 'list' is supplied then we only fetch values for the keywords
    that are in the list.
 
    The function returns a dictonary. The keys are the resource keywords.
 
-   See 'resmon_info.py' for a example of this new feature.
+   See 'resmom_info.py' for a example of this new feature.
 
 =========== Version 2.0
 

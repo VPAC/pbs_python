@@ -128,7 +128,7 @@
 #define ATTR_syscost	"system_cost"
 
 /* HvB
- * Used by SPBS
+ * Used by TORQUE
 */
 #define ATTR_pingrate	"node_ping_rate"
 #define ATTR_ndchkrate	"node_check_rate"
@@ -223,7 +223,7 @@
 #define PBS_MAXCLTJOBID		(PBS_MAXSVRJOBID + PBS_MAXSERVERNAME + PBS_MAXPORTNUM + 2) /* client job id size */
 
 /* HvB
- * SPBS change used to be 256
+ * TORQUE change used to be 256
 */
 #define PBS_MAXDEST		1024	/* destination size -- increased from 256*/
 

@@ -14,7 +14,7 @@ PBS_LIB_DIR=''
 LIBS = ['log', 'net', 'pbs'] 
 
 if not PBS_LIB_DIR:
-  for dir in ['/usr/local/lib', '/opt/pbs/usr/lib' ]:
+  for dir in ['/usr/local/lib', '/opt/pbs/usr/lib', '/usr/lib/torque' ]:
     dummy = os.path.join(dir, 'libpbs.a')
     if os.path.exists(dummy):
       PBS_LIB_DIR=dir

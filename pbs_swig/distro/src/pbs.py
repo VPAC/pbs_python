@@ -533,7 +533,7 @@ def version():
   """
   Returns the pbs python interface version as a string. 
   """
-  return '2.7.2'
+  return '2.7.3'
 
 
 cvar = _pbs.cvar

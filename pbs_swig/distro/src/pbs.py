@@ -1,7 +1,9 @@
 # This file was created automatically by SWIG.
 # Don't modify this file, modify the SWIG interface instead.
 # This file is compatible with both classic and new-style classes.
+
 import _pbs
+
 def _swig_setattr(self,class_type,name,value):
     if (name == "this"):
         if isinstance(value, class_type):
@@ -25,6 +27,8 @@ try:
 except AttributeError:
     class _object : pass
     _newclass = 0
+del types
+
 
 
 new_attrl = _pbs.new_attrl
@@ -32,7 +36,6 @@ new_attrl = _pbs.new_attrl
 new_attropl = _pbs.new_attropl
 
 new_batch_status = _pbs.new_batch_status
-
 ATTR_a = _pbs.ATTR_a
 ATTR_c = _pbs.ATTR_c
 ATTR_e = _pbs.ATTR_e
@@ -220,25 +223,25 @@ class attrl(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, attrl, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, attrl, name)
-    __swig_setmethods__["name"] = _pbs.attrl_name_set
-    __swig_getmethods__["name"] = _pbs.attrl_name_get
-    if _newclass:name = property(_pbs.attrl_name_get,_pbs.attrl_name_set)
-    __swig_setmethods__["resource"] = _pbs.attrl_resource_set
-    __swig_getmethods__["resource"] = _pbs.attrl_resource_get
-    if _newclass:resource = property(_pbs.attrl_resource_get,_pbs.attrl_resource_set)
-    __swig_setmethods__["value"] = _pbs.attrl_value_set
-    __swig_getmethods__["value"] = _pbs.attrl_value_get
-    if _newclass:value = property(_pbs.attrl_value_get,_pbs.attrl_value_set)
-    __swig_setmethods__["op"] = _pbs.attrl_op_set
-    __swig_getmethods__["op"] = _pbs.attrl_op_get
-    if _newclass:op = property(_pbs.attrl_op_get,_pbs.attrl_op_set)
-    def __str__(*args): return apply(_pbs.attrl___str__,args)
     def __init__(self): raise RuntimeError, "No constructor defined"
     def __repr__(self):
         return "<C attrl instance at %s>" % (self.this,)
+    __swig_setmethods__["name"] = _pbs.attrl_name_set
+    __swig_getmethods__["name"] = _pbs.attrl_name_get
+    if _newclass:name = property(_pbs.attrl_name_get, _pbs.attrl_name_set)
+    __swig_setmethods__["resource"] = _pbs.attrl_resource_set
+    __swig_getmethods__["resource"] = _pbs.attrl_resource_get
+    if _newclass:resource = property(_pbs.attrl_resource_get, _pbs.attrl_resource_set)
+    __swig_setmethods__["value"] = _pbs.attrl_value_set
+    __swig_getmethods__["value"] = _pbs.attrl_value_get
+    if _newclass:value = property(_pbs.attrl_value_get, _pbs.attrl_value_set)
+    __swig_setmethods__["op"] = _pbs.attrl_op_set
+    __swig_getmethods__["op"] = _pbs.attrl_op_get
+    if _newclass:op = property(_pbs.attrl_op_get, _pbs.attrl_op_set)
+    def __str__(*args): return _pbs.attrl___str__(*args)
 
 class attrlPtr(attrl):
-    def __init__(self,this):
+    def __init__(self, this):
         _swig_setattr(self, attrl, 'this', this)
         if not hasattr(self,"thisown"): _swig_setattr(self, attrl, 'thisown', 0)
         _swig_setattr(self, attrl,self.__class__,attrl)
@@ -249,25 +252,25 @@ class attropl(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, attropl, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, attropl, name)
-    __swig_setmethods__["name"] = _pbs.attropl_name_set
-    __swig_getmethods__["name"] = _pbs.attropl_name_get
-    if _newclass:name = property(_pbs.attropl_name_get,_pbs.attropl_name_set)
-    __swig_setmethods__["resource"] = _pbs.attropl_resource_set
-    __swig_getmethods__["resource"] = _pbs.attropl_resource_get
-    if _newclass:resource = property(_pbs.attropl_resource_get,_pbs.attropl_resource_set)
-    __swig_setmethods__["value"] = _pbs.attropl_value_set
-    __swig_getmethods__["value"] = _pbs.attropl_value_get
-    if _newclass:value = property(_pbs.attropl_value_get,_pbs.attropl_value_set)
-    __swig_setmethods__["op"] = _pbs.attropl_op_set
-    __swig_getmethods__["op"] = _pbs.attropl_op_get
-    if _newclass:op = property(_pbs.attropl_op_get,_pbs.attropl_op_set)
-    def __str__(*args): return apply(_pbs.attropl___str__,args)
     def __init__(self): raise RuntimeError, "No constructor defined"
     def __repr__(self):
         return "<C attropl instance at %s>" % (self.this,)
+    __swig_setmethods__["name"] = _pbs.attropl_name_set
+    __swig_getmethods__["name"] = _pbs.attropl_name_get
+    if _newclass:name = property(_pbs.attropl_name_get, _pbs.attropl_name_set)
+    __swig_setmethods__["resource"] = _pbs.attropl_resource_set
+    __swig_getmethods__["resource"] = _pbs.attropl_resource_get
+    if _newclass:resource = property(_pbs.attropl_resource_get, _pbs.attropl_resource_set)
+    __swig_setmethods__["value"] = _pbs.attropl_value_set
+    __swig_getmethods__["value"] = _pbs.attropl_value_get
+    if _newclass:value = property(_pbs.attropl_value_get, _pbs.attropl_value_set)
+    __swig_setmethods__["op"] = _pbs.attropl_op_set
+    __swig_getmethods__["op"] = _pbs.attropl_op_get
+    if _newclass:op = property(_pbs.attropl_op_get, _pbs.attropl_op_set)
+    def __str__(*args): return _pbs.attropl___str__(*args)
 
 class attroplPtr(attropl):
-    def __init__(self,this):
+    def __init__(self, this):
         _swig_setattr(self, attropl, 'this', this)
         if not hasattr(self,"thisown"): _swig_setattr(self, attropl, 'thisown', 0)
         _swig_setattr(self, attropl,self.__class__,attropl)
@@ -278,25 +281,26 @@ class batch_status(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, batch_status, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, batch_status, name)
-    __swig_setmethods__["name"] = _pbs.batch_status_name_set
-    __swig_getmethods__["name"] = _pbs.batch_status_name_get
-    if _newclass:name = property(_pbs.batch_status_name_get,_pbs.batch_status_name_set)
-    __swig_setmethods__["attribs"] = _pbs.batch_status_attribs_set
-    __swig_getmethods__["attribs"] = _pbs.batch_status_attribs_get
-    if _newclass:attribs = property(_pbs.batch_status_attribs_get,_pbs.batch_status_attribs_set)
-    __swig_setmethods__["text"] = _pbs.batch_status_text_set
-    __swig_getmethods__["text"] = _pbs.batch_status_text_get
-    if _newclass:text = property(_pbs.batch_status_text_get,_pbs.batch_status_text_set)
     def __init__(self): raise RuntimeError, "No constructor defined"
     def __repr__(self):
         return "<C batch_status instance at %s>" % (self.this,)
+    __swig_setmethods__["name"] = _pbs.batch_status_name_set
+    __swig_getmethods__["name"] = _pbs.batch_status_name_get
+    if _newclass:name = property(_pbs.batch_status_name_get, _pbs.batch_status_name_set)
+    __swig_setmethods__["attribs"] = _pbs.batch_status_attribs_set
+    __swig_getmethods__["attribs"] = _pbs.batch_status_attribs_get
+    if _newclass:attribs = property(_pbs.batch_status_attribs_get, _pbs.batch_status_attribs_set)
+    __swig_setmethods__["text"] = _pbs.batch_status_text_set
+    __swig_getmethods__["text"] = _pbs.batch_status_text_get
+    if _newclass:text = property(_pbs.batch_status_text_get, _pbs.batch_status_text_set)
 
 class batch_statusPtr(batch_status):
-    def __init__(self,this):
+    def __init__(self, this):
         _swig_setattr(self, batch_status, 'this', this)
         if not hasattr(self,"thisown"): _swig_setattr(self, batch_status, 'thisown', 0)
         _swig_setattr(self, batch_status,self.__class__,batch_status)
 _pbs.batch_status_swigregister(batch_statusPtr)
+
 
 avail = _pbs.avail
 
@@ -383,8 +387,8 @@ activereq = _pbs.activereq
 fullresp = _pbs.fullresp
 
 getreq = _pbs.getreq
-
 LOG_BUF_SIZE = _pbs.LOG_BUF_SIZE
+
 log_close = _pbs.log_close
 
 log_err = _pbs.log_err
@@ -398,7 +402,6 @@ log_record = _pbs.log_record
 setup_env = _pbs.setup_env
 
 chk_file_sec = _pbs.chk_file_sec
-
 PBSEVENT_ERROR = _pbs.PBSEVENT_ERROR
 PBSEVENT_SYSTEM = _pbs.PBSEVENT_SYSTEM
 PBSEVENT_ADMIN = _pbs.PBSEVENT_ADMIN
@@ -430,6 +433,7 @@ PBSEVENT_MASK = _pbs.PBSEVENT_MASK
 #
 import string
 import types
+
 # Default linux resources to get from the mom
 #
 default_linux_res = [   
@@ -443,6 +447,7 @@ default_linux_res = [
 	"totmem",	# total memory size in KB
 	"walltime",	# wall clock time for a pid
 ]
+
 # Default irix6 resources to get from the mom
 #
 default_irix6_res = [   
@@ -454,6 +459,7 @@ default_irix6_res = [
 	"walltime",	# wall clock time for a pid
 	"quota",	# quota information (sizes in KB)
 ]
+
 default_mom_res = [   
 	"arch",		# the architecture of the machine
 	"uname",	# the architecture of the machine
@@ -466,6 +472,7 @@ default_mom_res = [
 	"nusers",	# number of users in the system
 	"size",		# size of a file or filesystem
 ]
+
 def check_resp(dict, str):
   """
   Check the daemon response. If we have no permission to
@@ -479,10 +486,12 @@ def check_resp(dict, str):
   key, val = string.split(str, '=')
   key = string.strip(key)
   val = string.strip(val)
+
   # Did we got a valid response
   #
   if not val[0] == '?':
     dict[key] = val
+
 def use_default_keywords(id, d):
   """
   Get the default values from the mom daemon
@@ -491,15 +500,18 @@ def use_default_keywords(id, d):
     addreq(id, res)
     resp = getreq(id)
     check_resp(d, resp)
+
   # Do not proceed if we have an empty dictionary
   #
   if not d:
     return
+
   if d['arch' ] == 'linux':
     for res in default_linux_res:
       addreq(id, res)
       resp = getreq(id)
       check_resp(d, resp)
+
 def use_user_keywords(id, d, l):
   for res in l:
     if type(res) is types.StringType:
@@ -508,6 +520,7 @@ def use_user_keywords(id, d, l):
       check_resp(d, resp)
     else:
       raise TypeError, 'Expected a string got %s :%s' %(type(res), res) 
+
 def get_mom_values(id, list = None):
   """
   This function will query the mom with a default resmon keywords
@@ -520,6 +533,7 @@ def get_mom_values(id, list = None):
     list : optional parameter. If supplied then use this. A list
            of mom keywords.
   """
+
   d = {}
   if not list:
     use_default_keywords(id, d)
@@ -528,13 +542,11 @@ def get_mom_values(id, list = None):
      
   return d
 
-
 def version():
   """
   Returns the pbs python interface version as a string. 
   """
-  return '2.7.3'
-
+  return '2.7.4'
 
 cvar = _pbs.cvar
 

@@ -11,13 +11,16 @@ pythonlib:
 	python setup.py build
 
 install: pythonlib
-	mkdir -p $(DESTDIR)/@pyexecdir@ $(DESTDIR)/$(BINDIR)
-	(cd examples; for i in *py; do install $$i  $(DESTDIR)/$(BINDIR)/$${i//.py/}; done)
-	install build/lib*/* $(DESTDIR)/@pyexecdir@
-	
+	#mkdir -p $(DESTDIR)/@pyexecdir@ $(DESTDIR)/$(BINDIR)
+	#(cd examples; for i in *py; do install $$i  $(DESTDIR)/$(BINDIR)/$${i//.py/}; done)
+	#install build/lib*/* $(DESTDIR)/@pyexecdir@
+	#python ./setup.py install --prefix $(DESTDIR)/@pyexecdir@ ;
+
+	python ./setup.py install --prefix $(DESTDIR)/$(exec_prefix) ;
+
 clean:
 	cd src; make clean	
 	rm -rf config.log config.cache config.status build
 
 distclean: clean
-#	rm -rf Makefile
+	rm -rf Makefile

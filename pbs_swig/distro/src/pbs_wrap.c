@@ -620,8 +620,9 @@ SWIG_InstallConstants(PyObject *d, swig_const_info constants[]) {
 #define  SWIGTYPE_p_resource_t swig_types[1] 
 #define  SWIGTYPE_p_attropl swig_types[2] 
 #define  SWIGTYPE_p_attrl swig_types[3] 
-#define  SWIGTYPE_p_int swig_types[4] 
-static swig_type_info *swig_types[6];
+#define  SWIGTYPE_p_long swig_types[4] 
+#define  SWIGTYPE_p_int swig_types[5] 
+static swig_type_info *swig_types[7];
 
 /* -------- TYPES TABLE (END) -------- */
 
@@ -637,6 +638,7 @@ static swig_type_info *swig_types[6];
 #include "pbs_ifl.h"
 #include "pbs_error.h"
 #include "rm.h"
+#include "log.h"
 
 
 
@@ -791,6 +793,15 @@ extern char *pbs_submit(int ,struct attropl *,char *,char *,char *);
 extern int pbs_terminate(int ,int ,char *);
 extern int totpool(int ,int );
 extern int usepool(int ,int );
+extern long *log_event_mask;
+extern void log_close(int );
+extern void log_err(int ,char *,char *);
+extern void log_event(int ,int ,char *,char *);
+extern int log_open(char *,char *);
+extern void log_record(int ,int ,char *,char *);
+extern char log_buffer[1024];
+extern int setup_env(char *);
+extern int chk_file_sec(char *,int ,int ,int ,int );
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -2540,6 +2551,171 @@ static PyObject *_wrap_getreq(PyObject *self, PyObject *args) {
 }
 
 
+static int _wrap_log_event_mask_set(PyObject *_val) {
+    {
+        void *temp;
+        if ((SWIG_ConvertPtr(_val,(void **) &temp, SWIGTYPE_p_long, 1)) == -1) {
+            PyErr_SetString(PyExc_TypeError, "C variable 'log_event_mask (long *)'");
+            return 1;
+        }
+        log_event_mask = (long *) temp;
+    }
+    return 0;
+}
+
+
+static PyObject *_wrap_log_event_mask_get() {
+    PyObject *pyobj;
+    
+    pyobj = SWIG_NewPointerObj((void *) log_event_mask, SWIGTYPE_p_long, 0);
+    return pyobj;
+}
+
+
+static PyObject *_wrap_log_close(PyObject *self, PyObject *args) {
+    PyObject *resultobj;
+    int arg1 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"i:log_close",&arg1)) return NULL;
+    log_close(arg1);
+    
+    Py_INCREF(Py_None); resultobj = Py_None;
+    return resultobj;
+}
+
+
+static PyObject *_wrap_log_err(PyObject *self, PyObject *args) {
+    PyObject *resultobj;
+    int arg1 ;
+    char *arg2 ;
+    char *arg3 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"iss:log_err",&arg1,&arg2,&arg3)) return NULL;
+    log_err(arg1,arg2,arg3);
+    
+    Py_INCREF(Py_None); resultobj = Py_None;
+    return resultobj;
+}
+
+
+static PyObject *_wrap_log_event(PyObject *self, PyObject *args) {
+    PyObject *resultobj;
+    int arg1 ;
+    int arg2 ;
+    char *arg3 ;
+    char *arg4 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"iiss:log_event",&arg1,&arg2,&arg3,&arg4)) return NULL;
+    log_event(arg1,arg2,arg3,arg4);
+    
+    Py_INCREF(Py_None); resultobj = Py_None;
+    return resultobj;
+}
+
+
+static PyObject *_wrap_log_open(PyObject *self, PyObject *args) {
+    PyObject *resultobj;
+    char *arg1 ;
+    char *arg2 ;
+    int result;
+    
+    if(!PyArg_ParseTuple(args,(char *)"ss:log_open",&arg1,&arg2)) return NULL;
+    result = (int )log_open(arg1,arg2);
+    
+    resultobj = PyInt_FromLong((long)result);
+    return resultobj;
+}
+
+
+static PyObject *_wrap_log_record(PyObject *self, PyObject *args) {
+    PyObject *resultobj;
+    int arg1 ;
+    int arg2 ;
+    char *arg3 ;
+    char *arg4 ;
+    
+    if(!PyArg_ParseTuple(args,(char *)"iiss:log_record",&arg1,&arg2,&arg3,&arg4)) return NULL;
+    log_record(arg1,arg2,arg3,arg4);
+    
+    Py_INCREF(Py_None); resultobj = Py_None;
+    return resultobj;
+}
+
+
+static int _wrap_log_buffer_set(PyObject *_val) {
+    {
+        char *temp = (char *) PyString_AsString(_val);
+        if (PyErr_Occurred()) {
+            PyErr_SetString(PyExc_TypeError, "C variable 'log_buffer (char *)'");
+            return 1;
+        }
+        strncpy(log_buffer,temp,1024);
+    }
+    return 0;
+}
+
+
+static PyObject *_wrap_log_buffer_get() {
+    PyObject *pyobj;
+    
+    pyobj = PyString_FromString(log_buffer);
+    return pyobj;
+}
+
+
+static PyObject *_wrap_setup_env(PyObject *self, PyObject *args) {
+    PyObject *resultobj;
+    char *arg1 ;
+    int result;
+    
+    if(!PyArg_ParseTuple(args,(char *)"s:setup_env",&arg1)) return NULL;
+    result = (int )setup_env(arg1);
+    
+    resultobj = PyInt_FromLong((long)result);
+    return resultobj;
+}
+
+
+static PyObject *_wrap_chk_file_sec(PyObject *self, PyObject *args) {
+    PyObject *resultobj;
+    char *arg1 ;
+    int arg2 ;
+    int arg3 ;
+    int arg4 ;
+    int arg5 ;
+    int result;
+    
+    if(!PyArg_ParseTuple(args,(char *)"siiii:chk_file_sec",&arg1,&arg2,&arg3,&arg4,&arg5)) return NULL;
+    result = (int )chk_file_sec(arg1,arg2,arg3,arg4,arg5);
+    
+    resultobj = PyInt_FromLong((long)result);
+    return resultobj;
+}
+
+
+static int _wrap_msg_daemonname_set(PyObject *_val) {
+    {
+        char *temp = (char *) PyString_AsString(_val);
+        if (PyErr_Occurred()) {
+            PyErr_SetString(PyExc_TypeError, "C variable 'msg_daemonname (char *)'");
+            return 1;
+        }
+        if (msg_daemonname) free((char*) msg_daemonname);
+        msg_daemonname = (char *) malloc(strlen(temp)+1);
+        strcpy((char*)msg_daemonname,temp);
+    }
+    return 0;
+}
+
+
+static PyObject *_wrap_msg_daemonname_get() {
+    PyObject *pyobj;
+    
+    pyobj = msg_daemonname ? PyString_FromString(msg_daemonname) : Py_BuildValue((char*)"");
+    return pyobj;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_attrl", _wrap_new_attrl, METH_VARARGS },
 	 { (char *)"new_attropl", _wrap_new_attropl, METH_VARARGS },
@@ -2614,6 +2790,13 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"activereq", _wrap_activereq, METH_VARARGS },
 	 { (char *)"fullresp", _wrap_fullresp, METH_VARARGS },
 	 { (char *)"getreq", _wrap_getreq, METH_VARARGS },
+	 { (char *)"log_close", _wrap_log_close, METH_VARARGS },
+	 { (char *)"log_err", _wrap_log_err, METH_VARARGS },
+	 { (char *)"log_event", _wrap_log_event, METH_VARARGS },
+	 { (char *)"log_open", _wrap_log_open, METH_VARARGS },
+	 { (char *)"log_record", _wrap_log_record, METH_VARARGS },
+	 { (char *)"setup_env", _wrap_setup_env, METH_VARARGS },
+	 { (char *)"chk_file_sec", _wrap_chk_file_sec, METH_VARARGS },
 	 { NULL, NULL }
 };
 
@@ -2624,6 +2807,7 @@ static swig_type_info _swigt__p_batch_status[] = {{"_p_batch_status", 0, "struct
 static swig_type_info _swigt__p_resource_t[] = {{"_p_resource_t", 0, "resource_t *"},{"_p_resource_t"},{"_p_int"},{0}};
 static swig_type_info _swigt__p_attropl[] = {{"_p_attropl", 0, "attropl *"},{"_p_attropl"},{0}};
 static swig_type_info _swigt__p_attrl[] = {{"_p_attrl", 0, "struct attrl *"},{"_p_attrl"},{0}};
+static swig_type_info _swigt__p_long[] = {{"_p_long", 0, "long *"},{"_p_long"},{0}};
 static swig_type_info _swigt__p_int[] = {{"_p_int", 0, "int *"},{"_p_resource_t"},{"_p_int"},{0}};
 
 static swig_type_info *swig_types_initial[] = {
@@ -2631,6 +2815,7 @@ _swigt__p_batch_status,
 _swigt__p_resource_t, 
 _swigt__p_attropl, 
 _swigt__p_attrl, 
+_swigt__p_long, 
 _swigt__p_int, 
 0
 };
@@ -2817,6 +3002,25 @@ static swig_const_info swig_const_table[] = {
 { SWIG_PY_INT,     (char *)"LE", (long) LE, 0, 0, 0},
 { SWIG_PY_INT,     (char *)"LT", (long) LT, 0, 0, 0},
 { SWIG_PY_INT,     (char *)"DFLT", (long) DFLT, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"LOG_BUF_SIZE", (long) 1024, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBSEVENT_ERROR", (long) 0x0001, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBSEVENT_SYSTEM", (long) 0x0002, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBSEVENT_ADMIN", (long) 0x0004, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBSEVENT_JOB", (long) 0x0008, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBSEVENT_JOB_USAGE", (long) 0x0010, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBSEVENT_SECURITY", (long) 0x0020, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBSEVENT_SCHED", (long) 0x0040, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBSEVENT_DEBUG", (long) 0x0080, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBSEVENT_DEBUG2", (long) 0x0100, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBSEVENT_FORCE", (long) 0x8000, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBS_EVENTCLASS_SERVER", (long) 1, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBS_EVENTCLASS_QUEUE", (long) 2, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBS_EVENTCLASS_JOB", (long) 3, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBS_EVENTCLASS_REQUEST", (long) 4, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBS_EVENTCLASS_FILE", (long) 5, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBS_EVENTCLASS_ACCT", (long) 6, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBS_EVENTCLASS_NODE", (long) 7, 0, 0, 0},
+{ SWIG_PY_INT,     (char *)"PBSEVENT_MASK", (long) 0x01ff, 0, 0, 0},
 {0}};
 
 #ifdef __cplusplus
@@ -2846,5 +3050,8 @@ SWIGEXPORT(void) SWIG_init(void) {
     PyDict_SetItemString(d,(char*)"cvar", SWIG_globals);
     SWIG_addvarlink(SWIG_globals,(char*)"pbs_errno",_wrap_pbs_errno_get, _wrap_pbs_errno_set);
     SWIG_addvarlink(SWIG_globals,(char*)"pbs_server",_wrap_pbs_server_get, _wrap_pbs_server_set);
+    SWIG_addvarlink(SWIG_globals,(char*)"log_event_mask",_wrap_log_event_mask_get, _wrap_log_event_mask_set);
+    SWIG_addvarlink(SWIG_globals,(char*)"log_buffer",_wrap_log_buffer_get, _wrap_log_buffer_set);
+    SWIG_addvarlink(SWIG_globals,(char*)"msg_daemonname",_wrap_msg_daemonname_get, _wrap_msg_daemonname_set);
 }
 

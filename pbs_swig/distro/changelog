@@ -1,6 +1,12 @@
-Keep log of distro changes::
+Keep log of distro changes:
 
 $Log: changelog,v $
+Revision 1.9  2002/10/21 12:31:41  sscpbas
+Added OpenPbs logging facilities: log.h liblog.a. So  we had to change all
+kind of interface files.
+
+Also include an example on how to use the new functions: logpbs.py
+
 Revision 1.8  2002/09/17 11:51:19  sscpbas
 Added a new pbs.py version. So we can now check for pbs python interface
 version.

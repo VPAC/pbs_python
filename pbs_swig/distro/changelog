@@ -1,6 +1,10 @@
-Keep log of distro changes::
+Keep log of distro changes:::
 
 $Log: changelog,v $
+Revision 1.3  2002/02/27 14:20:45  sscpbas
+Change directory structure. put sources in src and examples scripts
+in examples.
+
 Revision 1.2  2002/02/27 13:58:56  sscpbas
 Changed header info
 

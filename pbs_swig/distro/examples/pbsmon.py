@@ -15,6 +15,8 @@ import re
 
 import pbs
 
+pbs_ND_free_and_job = 'not_all_procs_used'
+
 translate_state = {
     pbs.ND_free             : '_',
     pbs.ND_down             : 'X',
@@ -25,7 +27,8 @@ translate_state = {
     pbs.ND_busy             : '*',
     pbs.ND_state_unknown    : '?',   
     pbs.ND_timeshared       : 'T',
-    pbs.ND_cluster          : 'C'
+    pbs.ND_cluster          : 'C',
+    pbs_ND_free_and_job     : 'j'
 }
 
 
@@ -36,8 +39,10 @@ def display_cluster_status(nl, sl):
   # 2 and 3 digit hostname numbers
   #
   if len(nl) == 1: 
+    print nl[0]
     width = len( nl[0] )
   else:
+    print nl[0]
     width = len( nl[1] )
 
   # Determine what format we have to use
@@ -80,7 +85,7 @@ def display_cluster_status(nl, sl):
   n = 0
   for key in translate_state.keys():
     value = translate_state[key]
-    print "%2s %-15s : %d\t |" %( value, key, sl.count(value) ),
+    print "%3s %-21s : %d\t |" %( value, key, sl.count(value) ),
     if n%2:
       print ''
     n = n + 1
@@ -103,10 +108,11 @@ def main():
    print  pbs.pbs_geterrmsg(con)
    sys.exit(1)
 
-  # We are only interested in the state of a node
+  # We are only interested in the state and jobs of a node
   #
-  attrl = pbs.new_attrl(1);
+  attrl = pbs.new_attrl(2);
   attrl[0].name='state'
+  attrl[1].name = 'jobs'
 
 
   nodes = pbs.pbs_statnode(con, "", attrl, "NULL")
@@ -122,8 +128,20 @@ def main():
     # interested in first entry.
     #
     temp = string.splitfields(node_attr[0].value, ',')
-    state_list.append(translate_state[ temp[0] ])
+    state = temp[0]
+    state_list.append(translate_state[state])
 
+    # look if on a free node a job is scheduled
+    #
+    if state == pbs.ND_free:
+       if len(node_attr) > 1:
+          state_list.append(translate_state[pbs_ND_free_and_job])
+       else:
+          state_list.append(translate_state[state])
+    else:
+          state_list.append(translate_state[state])
+		
+		
     re_host = re.compile(r"""
 
       (?P<name>\d+)
@@ -131,7 +149,9 @@ def main():
       """, re.VERBOSE)
 
     result = re_host.search(node.name)
+    result = None
     if result:
+      print 'bas'
       node_list.append( result.group('name') )
     else:
       node_nr = node_nr + 1

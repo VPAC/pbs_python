@@ -6,7 +6,7 @@
 <H1>OpenPbs programming with PYTHON</H1>
 <H2>Introduction</H2>
 <P>
-This a openpbs python module. So you can now use python instead of the OPENPBS 
+This a openpbs/torque python module. So you can now use python instead of the OPENPBS 
 C API to make OpenPbs programs to set/query queue, node and server attributes.
 
 <P>
@@ -14,7 +14,9 @@ C API to make OpenPbs programs to set/query queue, node and server attributes.
 <P>
 To install the python modules for python version 1.6 and higher it is easy:
 <BLOCKQUOTE>
-  python setup.py install
+  ./configure
+  make
+  make install
 </BLOCKQUOTE>
 
 As for python versions lower the 1.6 the following procedure is required.

@@ -1,6 +1,10 @@
-Keep log of distro changes:
+Keep log of distro changes::
 
 $Log: changelog,v $
+Revision 1.8  2002/09/17 11:51:19  sscpbas
+Added a new pbs.py version. So we can now check for pbs python interface
+version.
+
 Revision 1.7  2002/09/17 11:22:26  sscpbas
 Fixed some typo's in description.html
 

@@ -33,7 +33,7 @@ to the LIBS line
     make
 
     The python PBS module consists of the following files:
-      pbscmodule.so
+      _pbs.so
       pbs.py
       pbs.pyc ( will be generated from pbs.py. The first time you load
               the module).

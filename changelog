@@ -1,6 +1,9 @@
-Keep log of distro changes::
+Keep log of distro changes:
 
 $Log: changelog,v $
+Revision 1.11  2002/10/21 14:05:33  sscpbas
+Fixed a couple of bugs see CHANGES
+
 Revision 1.10  2002/10/21 12:55:35  sscpbas
 Fixed: (description.html)
   PBS to OpenPbs

@@ -2,6 +2,13 @@
  Added the OpenPbs logging functions (log.h and liblog.a). There
  is an example in the examples directory: logpbs.py
 
+ Fixed a bug in examples/resmom_info.py used the wrong service name
+ pbs_resmom instead of pbs_resmon.
+
+ Fixed a bug in resmom code. If the user has no permissions to query
+ the pbs_mom daemon a empty string is returned. Now we check for
+ the empty string. So we do not get a python exception.
+
 =========== Version 2.3
  Bugfix in the pbsnodes-a.py. Forgot to import the sys module.
 

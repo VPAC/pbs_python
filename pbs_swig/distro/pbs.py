@@ -124,9 +124,7 @@ pbsc.batch_status_swigregister(batch_statusPtr)
 #          mom values.
 #
 # CVS info
-# $Id: pbs.py,v 1.2 2002/02/27 13:55:44 sscpbas Exp $
-# $Date: 2002/02/27 13:55:44 $
-# $Revision: 1.2 $
+# $Id: pbs.py,v 1.3 2002/02/27 14:02:05 sscpbas Exp $
 #
 import string
 import types

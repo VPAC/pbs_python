@@ -1,4 +1,6 @@
 /*
+ * $Id$
+ *
 *         Portable Batch System (PBS) Software License
 * 
 * Copyright (c) 1999, MRJ Technology Solutions.
@@ -49,7 +51,7 @@
 */
 
 /*
- * @(#) $Id: pbs_ifl.h,v 1.1 2002/02/27 14:34:51 sscpbas Exp $
+ * @(#) $Id$
  */
 
 /*    
@@ -154,6 +156,11 @@
 #define ATTR_count	"state_count"
 #define ATTR_number	"number_jobs"
 
+/* HvB
+ * Used by fifo_improv.patch
+*/
+#define ATTR_reqprop    "required_property"
+
 /* additional server attributes names */
 
 #define ATTR_aclroot	"acl_roots"
@@ -173,6 +180,18 @@
 #define ATTR_scheduling	"scheduling"
 #define ATTR_status	"server_state"
 #define ATTR_syscost	"system_cost"
+
+/* HvB
+ * Used by SPBS 
+*/
+#define ATTR_pingrate	"node_ping_rate"
+#define ATTR_ndchkrate	"node_check_rate"
+
+/* HvB
+ * Used by fifo_improv.patch
+*/
+#define ATTR_procpack	"proc_pack"
+
 
 /* additional node "attributes" names */
 
@@ -255,7 +274,12 @@
 #define PBS_MAXPORTNUM		5	/* udp/tcp port numbers max=16 bits */
 #define PBS_MAXSVRJOBID		(PBS_MAXSEQNUM + PBS_MAXSERVERNAME + PBS_MAXPORTNUM + 2) /* server job id size */
 #define PBS_MAXCLTJOBID		(PBS_MAXSVRJOBID + PBS_MAXSERVERNAME + PBS_MAXPORTNUM + 2) /* client job id size */
-#define PBS_MAXDEST		256	/* destination size */
+
+/* HvB
+ * SPBS change used to be 256
+*/
+#define PBS_MAXDEST           1024	/* destination size -- increased from 256*/
+
 #define PBS_MAXROUTEDEST	(PBS_MAXQUEUENAME + PBS_MAXSERVERNAME + PBS_MAXPORTNUM + 2) /* destination size */
 #define PBS_USE_IFF		1	/* pbs_connect() to call pbs_iff */
 #define PBS_INTERACTIVE		1	/* Support of Interactive jobs */

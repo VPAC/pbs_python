@@ -1,6 +1,10 @@
-Keep log of distro changes:
+Keep log of distro changes::
 
 $Log: changelog,v $
+Revision 1.10  2002/10/21 12:55:35  sscpbas
+Fixed: (description.html)
+  PBS to OpenPbs
+
 Revision 1.9  2002/10/21 12:31:41  sscpbas
 Added OpenPbs logging facilities: log.h liblog.a. So  we had to change all
 kind of interface files.

@@ -1,6 +1,11 @@
-Keep log of distro changes:
+Keep log of distro changes::
 
 $Log: changelog,v $
+Revision 1.5  2002/09/13 14:09:28  sscpbas
+Add Authors file
+leave non-commericial out of license file
+Adjusted installation insctructions to new situation.
+
 Revision 1.4  2002/09/13 12:56:57  sscpbas
 Added support for automatic module installation.
 

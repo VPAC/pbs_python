@@ -3,9 +3,11 @@ utilities/extensions in Python instead of C.
 
 The Python wrapper class is tested on:
   - Intel cluster debian GNU/LINUX potato/woody PBS 2.2p7, PBS 2.3.16
-  - Compaq Alpha Cluster red hat 6.2 PBS 2.3. For this platform
-    we had to add '-lots' to the LIBS line.
+  - Compaq Alpha cluster debian GNU/LINUX potato/woody PBS 2.2p7, PBS 2.3.16
   - It should run on different OSes.
+
+In the past our Alpha cluster was redhat (6.2)  and we had to add '-lots'
+to the LIBS line
 
 --- Compile and install the package:
   As for python version 1.6 and higher the procedure is:

@@ -5,7 +5,7 @@
 # Desc. : Simple pbsnodes -a
 #
 # CVS info:
-# $Id: pbsnodes-a.py,v 1.2 2002/09/13 12:56:57 sscpbas Exp $
+# $Id$
 #
 #
 #
@@ -23,6 +23,7 @@ def main():
 
   con = pbs.pbs_connect(pbs_server)
   nodes = pbs.pbs_statnode(con, "", "NULL", "NULL")
+
 
   for node in nodes:
     print node.name

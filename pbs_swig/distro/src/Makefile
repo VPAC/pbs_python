@@ -1,9 +1,8 @@
 # 
-# $Id: Makefile,v 1.3 2002/02/27 16:33:56 sscpbas Exp $
+# $Id: Makefile,v 1.4 2003/03/03 09:37:36 sscpbas Exp $
 #
-LIBS    =  -L/usr/local/lib -lnet -lpbs
+LIBS    =  -L/usr/local/lib -llog -lnet -lpbs
 INCLUDE =  -I/usr/include/python1.5
-#INCLUDE =  -I/usr/local/include/python2.1
 
 pbs::
 	gcc -c pbs_wrap.c ${INCLUDE}

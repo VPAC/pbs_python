@@ -1,6 +1,9 @@
-Keep log of distro changes::
+Keep log of distro changes:::
 
 $Log: changelog,v $
+Revision 1.15  2003/03/03 09:37:36  sscpbas
+Fixed a bug in the pbs python module, pbs_wrap.c, pbs_statjob() function.
+
 Revision 1.14  2002/10/22 08:58:47  sscpbas
 Fixed resmom_info.py:
   There is some misunderstanding of the port name pbs_resmon or pbs_resmom.

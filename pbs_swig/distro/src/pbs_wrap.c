@@ -1956,7 +1956,47 @@ static PyObject *_wrap_pbs_statjob(PyObject *self, PyObject *args) {
     PyObject * obj2  = 0 ;
     
     if(!PyArg_ParseTuple(args,(char *)"isOs:pbs_statjob",&arg1,&arg2,&obj2,&arg4)) return NULL;
-    if ((SWIG_ConvertPtr(obj2,(void **) &arg3, SWIGTYPE_p_attrl,1)) == -1) return NULL;
+    {
+        PyObject	*py_obj;
+        struct attrl	*ptr, *prev;
+        char 		s[255];
+        int		i=0, size=0;
+        
+        // printf("Python --> C\n");
+        
+        size = Get_List_Size(obj2);
+        if ( size == -1 ) {
+            PyErr_SetString(PyExc_TypeError, "not a list");
+            return NULL; 
+        }
+        
+        arg3 = prev = NULL;
+        for ( i=0; i < size; i++ ) {
+            py_obj = PyList_GetItem(obj2, i);
+            if (SWIG_ConvertPtr(py_obj, (void **) &ptr, SWIGTYPE_p_attrl, 1)) {
+                sprintf(s,"list item %d has wrong type", i);
+                PyErr_SetString(PyExc_TypeError, s);
+                return NULL;
+                
+                // This will skipp the wrong entry
+                // continue;
+            }
+            
+            /* 
+                 * Make first entry head of C linked list
+                */
+            if ( i == 0) {
+                arg3 = ptr;
+                ptr->next = prev;
+            }
+            else {
+                prev->next = ptr;
+                ptr->next = NULL;
+            }
+            prev = ptr;
+            
+        }// end for
+    }
     result = (struct batch_status *)pbs_statjob(arg1,arg2,arg3,arg4);
     
     {

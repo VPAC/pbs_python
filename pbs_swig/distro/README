@@ -27,6 +27,11 @@ to the LIBS line
     make
     make install
 
+  Note: for X86_64 systems you have to compile torque/openpbs with 
+        the -fPIC option. Else we can not build shared libraries.
+    
+--- For python versions lower the 1.6
+
   Python versions lower then 1.6 do not have the distutils
   package default in their installation. You can test it:
     python

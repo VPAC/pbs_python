@@ -7,7 +7,7 @@
 #         based on the awk-script of Willem Vermin
 #
 # CVS info:
-# $Id: pbsmon.py,v 1.1 2002/02/27 14:35:51 sscpbas Exp $
+# $Id$
 #
 import sys
 import string
@@ -32,7 +32,20 @@ translate_state = {
 
 def display_cluster_status(nl, sl):
 
-  step  = end = 25
+  # Thanks to Daniel Olson, we have now code that can handle
+  # 2 and 3 digit hostname numbers
+  #
+  width = len( nl[1] )
+
+  # Determine what format we have to use
+  #
+  if width == 3:
+    step = end = 19
+    format = '%3s'
+  else:
+    step  = end = 25
+    format = '%2s'
+
   start = 0 
 
   items = len(nl)
@@ -45,11 +58,11 @@ def display_cluster_status(nl, sl):
 
     print ' ',
     for j in range(start,end):
-      print '%2s' %(nl[j]) ,
+      print format %(nl[j]) ,
 
     print '\n ',
     for j in range(start,end):
-      print '%2s' %(sl[j]) ,
+      print format %(sl[j]) ,
    
     print '\n'
 

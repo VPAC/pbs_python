@@ -1,5 +1,5 @@
 /*
- * $Id: log.h,v 1.1 2002/10/21 12:31:41 sscpbas Exp $
+ * $Id$
  *
 *         OpenPBS (Portable Batch System) v2.3 Software License
 * 
@@ -86,7 +86,11 @@
 /*
  * include file for error/event logging
  */
-#define LOG_BUF_SIZE		1024
+
+/*
+ * HvB: openpbs uses 1024
+*/
+#define LOG_BUF_SIZE		4096
 
 /* The following macro assist in sharing code between the Server and Mom */
 #define LOG_EVENT log_event

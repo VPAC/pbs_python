@@ -46,7 +46,7 @@ setup ( name = 'pbs_python',
 	py_modules = [ 'pbs' ],
 
 	ext_modules = [ 
-	  Extension( 'pbscmodule', ['src/pbs_wrap.c'],
+	  Extension( '_pbs', ['src/pbs_wrap.c'],
 	  library_dirs = [ PBS_LIB_DIR ],
 	  libraries = LIBS
 	  ) 

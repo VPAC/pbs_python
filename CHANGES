@@ -1,3 +1,9 @@
+=========== Version 2.7.2
+ Some minor changes to include files. Now the Scalable PBS keywords
+ are also supported ( server attribute names: node_ping_rate and
+ node_check_rate). This does not interfere with the openpbs software.
+
+
 =========== Version 2.7
  Forgot to wrap the pbs_statfree() function. So we could not free
  allocated memory from functions that return 'struct batch_status *' 

@@ -9,27 +9,30 @@
 Usage: from PBSQuery import PBSQuery
 
 This class gets the info from the pbs_server via the pbs.py module
-for the several pbs objects. All get..() functions returns an dictionary
-of openpbs/torque objects. There are four objects:
+for the several batch objects. All get..() functions return an dictionary
+with id as key and batch object as value
+
+There are four batch objects:
  - server 
  - queue
  - job
  - node
 
 Each object can be handled as an dictionary and has several member
-functions.
+functions. The second parameter is an python list and can be used if you 
+are only interested in certain resources, see example
 
 There are the following functions for PBSQuery:
   job - 
-	getjob(name, attributes=<default is all>)
+	getjob(job_id, attributes=<default is all>)
 	getjobs(attributes=<default is all>)
  
   node -
-	getnode(name, attributes=<default is all>)
+	getnode(node_id, attributes=<default is all>)
 	getnodes(attributes=<default is all>)
 
   queue -
-	getqueue(name, attributes=<default is all>)
+	getqueue(queue_id, attributes=<default is all>)
 	getqueues(attributes=<default is all>)
 
   server -
@@ -42,7 +45,12 @@ Here is an example how to use the module:
 	for name,node in nodes.items():
 	    print name
 	    if node.is_free():
-	       print node
+	       print node, node['state']
+
+	l = [ 'state', 'np' ]
+	nodes = p.getnodes(l)
+	for name,node in nodes.items():
+	       print node, node['state']
 
 """
 import pbs

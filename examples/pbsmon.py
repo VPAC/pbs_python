@@ -35,7 +35,10 @@ def display_cluster_status(nl, sl):
   # Thanks to Daniel Olson, we have now code that can handle
   # 2 and 3 digit hostname numbers
   #
-  width = len( nl[1] )
+  if len(nl) == 1: 
+    width = len( nl[0] )
+  else:
+    width = len( nl[1] )
 
   # Determine what format we have to use
   #

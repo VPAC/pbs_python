@@ -124,9 +124,9 @@ pbsc.batch_status_swigregister(batch_statusPtr)
 #          mom values.
 #
 # CVS info
-# $Id: pbs.py,v 1.5 2002/10/21 14:05:34 sscpbas Exp $
-# $Date: 2002/10/21 14:05:34 $
-# $Revision: 1.5 $
+# $Id: pbs.py,v 1.6 2002/10/21 14:16:08 sscpbas Exp $
+# $Date: 2002/10/21 14:16:08 $
+# $Revision: 1.6 $
 #
 import string
 import types
@@ -191,6 +191,10 @@ def use_default_keywords(id, d):
     addreq(id, res)
     resp = getreq(id)
     check_resp(d, resp)
+  # Do not proceed if we have an empty dictionary
+  #
+  if not d:
+    return
   if d['arch' ] == 'linux':
     for res in default_linux_res:
       addreq(id, res)

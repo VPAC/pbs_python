@@ -1,6 +1,9 @@
-
 This is the new  Python wrapper class for the PBS C LIB API. Now you can write 
 utilities/extensions in Python instead of C.  
+
+In this release the resoure management functions are added to the
+pbs python interface. So we can now query pbs_mom daemon on a node.
+See the CHANGES file for more info.
 
 The Python wrapper class is tested on:
 	- Intel cluster debian GNU/LINUX potato/woody PBS 2.2p7
@@ -16,6 +19,7 @@ Testing the package:
     pbsnodes-a.py   - pbsnodes -a
     pbs_version.py  - print server version
     set_property.py - set some node properties
+    resmom_info.py  - queries the pbs_mom daemon on the nodes (NEW)
 
     The test programs are include as a reference how to use the PBS
     python module. You have to edit some test programs to reflect

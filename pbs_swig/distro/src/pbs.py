@@ -233,7 +233,7 @@ def version():
   """
   Returns the pbs python interface version as a string. 
   """
-  return '2.6.1'
+  return '2.7'
 
 
 new_attrl = pbsc.new_attrl

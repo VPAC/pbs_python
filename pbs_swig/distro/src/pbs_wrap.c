@@ -1938,7 +1938,48 @@ static PyObject *_wrap_pbs_statfree(PyObject *self, PyObject *args) {
     PyObject * obj0  = 0 ;
     
     if(!PyArg_ParseTuple(args,(char *)"O:pbs_statfree",&obj0)) return NULL;
-    if ((SWIG_ConvertPtr(obj0,(void **) &arg1, SWIGTYPE_p_batch_status,1)) == -1) return NULL;
+    {
+        PyObject		*py_obj;
+        struct batch_status	*ptr, *prev;
+        char 			s[255];
+        int			i=0, size=0;
+        
+        // printf("Python --> C\n");
+        
+        size = Get_List_Size(obj0);
+        if ( size == -1 ) {
+            PyErr_SetString(PyExc_TypeError, "not a list");
+            return NULL; 
+        }
+        // printf("Size = %d\n", size);
+        
+        arg1 = prev = NULL;
+        for ( i=0; i < size; i++ ) {
+            py_obj = PyList_GetItem(obj0, i);
+            if (SWIG_ConvertPtr(py_obj, (void **) &ptr, SWIGTYPE_p_batch_status, 1)) {
+                sprintf(s,"list item %d has wrong type", i);
+                PyErr_SetString(PyExc_TypeError, s);
+                return NULL;
+                
+                // This will skipp the wrong entry
+                // continue;
+            }
+            
+            /* 
+                 * Make first entry head of C linked list
+                */
+            if ( i == 0) {
+                arg1 = ptr;
+                ptr->next = prev;
+            }
+            else {
+                prev->next = ptr;
+                ptr->next = NULL;
+            }
+            prev = ptr;
+            
+        }// end for
+    }
     pbs_statfree(arg1);
     
     Py_INCREF(Py_None); resultobj = Py_None;
@@ -2843,7 +2884,7 @@ static PyMethodDef SwigMethods[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_batch_status[] = {{"_p_batch_status", 0, "struct batch_status *"},{"_p_batch_status"},{0}};
+static swig_type_info _swigt__p_batch_status[] = {{"_p_batch_status", 0, "batch_status *"},{"_p_batch_status"},{0}};
 static swig_type_info _swigt__p_resource_t[] = {{"_p_resource_t", 0, "resource_t *"},{"_p_resource_t"},{"_p_int"},{0}};
 static swig_type_info _swigt__p_attropl[] = {{"_p_attropl", 0, "attropl *"},{"_p_attropl"},{0}};
 static swig_type_info _swigt__p_attrl[] = {{"_p_attrl", 0, "struct attrl *"},{"_p_attrl"},{0}};

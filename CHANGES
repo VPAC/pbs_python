@@ -1,3 +1,9 @@
+=========== Version 2.7.3
+ The name SPBS is changed to the new name TORQUE (Tera-scale Open-source
+ Resource and QUEing manager). 
+
+ The interface support OPENPBS and TORQUE.
+
 =========== Version 2.7.2
  Some minor changes to include files. Now the Scalable PBS keywords
  are also supported ( server attribute names: node_ping_rate and

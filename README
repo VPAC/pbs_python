@@ -2,7 +2,8 @@ This is a Python wrapper class for the PBS C LIB API. Now you can write
 utilities/extensions in Python instead of C.  
 
 The Python wrapper class is tested on:
-  - Intel cluster debian GNU/LINUX potato/woody PBS 2.2p7, PBS 2.3.16
+  - Intel cluster debian GNU/LINUX potato/woody PBS 2.2p7, PBS 2.3.16, 
+    TORQUE 1.0.1p4
 
   - Compaq Alpha cluster debian GNU/LINUX potato/woody PBS 2.2p7, PBS 2.3.16
 
@@ -59,7 +60,7 @@ logpbs.py	- Shows the usage of the PBS logging routines (NEW)
 --- The Installation
 
 
-Comments,suggestions or bugfxes mail them to: Bas van der Vlies <basv@sara.nl>
+Comments,suggestions or bugfixes mail them to: Bas van der Vlies <basv@sara.nl>
 For more info about SARA see:
 	http://www.sara.nl/index_eng.html
 	

@@ -1,3 +1,12 @@
+=========== Version ???
+ Bugfix in the pbsnodes-a.py. Forgot to import the sys module.
+
+ Removed some obsolete code
+
+ As for now we make use of the distutils module. So the package
+ is automatically compiled and installed in proper directories, usage:
+    python setup.py install
+
 =========== Version 2.2
 
 In this release we can query the pbs_mom daemon with the aid of

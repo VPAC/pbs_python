@@ -124,7 +124,9 @@ pbsc.batch_status_swigregister(batch_statusPtr)
 #          mom values.
 #
 # CVS info
-# $Id: pbs.py,v 1.1 2002/02/27 14:34:51 sscpbas Exp $
+# $Id: pbs.py,v 1.2 2002/09/13 12:56:58 sscpbas Exp $
+# $Date: 2002/09/13 12:56:58 $
+# $Revision: 1.2 $
 #
 import string
 import types
@@ -213,16 +215,6 @@ def get_mom_values(id, list = None):
      
   return d
 
-
-ptrvalue = pbsc.ptrvalue
-
-ptrset = pbsc.ptrset
-
-ptrcreate = pbsc.ptrcreate
-
-ptrfree = pbsc.ptrfree
-
-ptradd = pbsc.ptradd
 
 new_attrl = pbsc.new_attrl
 

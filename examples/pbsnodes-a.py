@@ -5,13 +5,14 @@
 # Desc. : Simple pbsnodes -a
 #
 # CVS info:
-# $Id: pbsnodes-a.py,v 1.1 2002/02/27 14:35:51 sscpbas Exp $
+# $Id: pbsnodes-a.py,v 1.2 2002/09/13 12:56:57 sscpbas Exp $
 #
 #
 #
 
 
 import pbs
+import sys
 
 def main():
 

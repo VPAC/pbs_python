@@ -1,5 +1,5 @@
 /*
- * @(#) $Id: pbs_python.h,v 1.2 2003/03/03 09:37:37 sscpbas Exp $
+ * @(#) $Id$
  */
 
 /*
@@ -319,7 +319,7 @@ extern char **pbs_selectjob(int connect, struct attropl *IN, char *extend);
 
 extern int pbs_sigjob(int connect, char *job_id, char *signal, char *extend);
 
-extern void pbs_statfree(struct batch_status *stat);
+extern void pbs_statfree(struct batch_status *IN);
 
 // Function does not exitst Bas van der Vlies
 // 

@@ -2,7 +2,7 @@
 
  Fixed a bug in the pbs python module. Forgot to map the pbs_statjob()
  function. This bug prevented to pass 'struct attrl' variables to this
- fucntion. Thanks to Evelyn Shiu for reporting this bug.
+ function. Thanks to Evelyn Shiu for reporting this bug.
 
 
 =========== Version 2.5

@@ -35,7 +35,7 @@ for lib in LIBS:
     sys.exit(1)
 
 setup ( name = 'pbs_python',
-        version = '2.6.1',
+        version = '2.7.2',
 	description = 'pbs python interface',
 	author = 'Bas van der Vlies',
 	author_email = 'basv@sara.nl',

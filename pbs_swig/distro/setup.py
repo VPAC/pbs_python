@@ -43,7 +43,7 @@ setup ( name = 'pbs_python',
 
 	extra_path = 'pbs',
         package_dir = { '' : 'src' }, 
-	py_modules = [ 'pbs' ],
+	py_modules = [ 'pbs', 'PBSQuery' ],
 
 	ext_modules = [ 
 	  Extension( '_pbs', ['src/pbs_wrap.c'],

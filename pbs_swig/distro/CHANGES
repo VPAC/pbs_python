@@ -1,3 +1,19 @@
+=========== Version 2.7.5
+ Added PBSQuery module.  This module requires pbs.py and it a simple module 
+ for querying the pbs server.
+
+ Written By: Roy Dragseth 
+             Bas van der Vlies
+
+ eg: ( see also examples/new_interface.py)
+
+ from PBSQuery import PBSQuery
+ p = PBSQuery()
+
+ jobs = p.getjobs()
+ for name, job in jobs.items()
+ 	print job
+
 =========== Version 2.7.4
  New versions fixes an bug in function pbs.pbs_statnode(). 
  Reported by: Keith Poirier 

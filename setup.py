@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+#
+# $Id: setup.py,v 1.5 2002/10/21 14:26:16 sscpbas Exp $
 
 import sys
 import os

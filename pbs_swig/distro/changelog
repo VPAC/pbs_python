@@ -1,6 +1,9 @@
-Keep log of distro changes:
+Keep log of distro changes::
 
 $Log: changelog,v $
+Revision 1.2  2002/02/27 13:58:56  sscpbas
+Changed header info
+
 Revision 1.1  2002/02/27 13:55:44  sscpbas
 Preparing for new distro, included resmom functions
 

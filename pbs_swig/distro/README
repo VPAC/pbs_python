@@ -1,33 +1,31 @@
 This is the new  Python wrapper class for the PBS C LIB API. Now you can write 
 utilities/extensions in Python instead of C.  
 
-In this release the resoure management functions are added to the
-pbs python interface. So we can now query pbs_mom daemon on a node.
-See the CHANGES file for more info.
-
 The Python wrapper class is tested on:
-	- Intel cluster debian GNU/LINUX potato/woody PBS 2.2p7
-	- Compaq Alpha Cluster red hat 6.2 PBS 2.3. For this platform
-          we had to add '-lots' to the LIBS line.
-	- It should run on different OSes.
+  - Intel cluster debian GNU/LINUX potato/woody PBS 2.2p7
+  - Compaq Alpha Cluster red hat 6.2 PBS 2.3. For this platform
+    we had to add '-lots' to the LIBS line.
+  - It should run on different OSes.
 
-Compile the package:
+--- Compile the package:
   cd src
-  Adjust the Makefile to where you installed Python and PBS.
+  Adjust the Makefile to where you installed Python and PBS libraries.
   make
 
-Testing the package:
-    pbsmon.py       - ascii xpbsmon
-    pbsnodes-a.py   - pbsnodes -a
-    pbs_version.py  - print server version
-    set_property.py - set some node properties
-    resmom_info.py  - queries the pbs_mom daemon on the nodes (NEW)
+--- Testing the package:
 
-    The test programs are include as a reference how to use the PBS
-    python module. You have to edit some test programs to reflect
-    your PBS installation.
+The test programs are include as a reference how to use the PBS
+python module. You have to edit some test programs to reflect
+your PBS installation.
 
-The Installation ---
+pbsmon.py       - ascii xpbsmon
+pbsnodes-a.py   - pbsnodes -a
+pbs_version.py  - print server version
+set_property.py - set some node properties
+resmom_info.py  - queries the pbs_mom daemon on the nodes (NEW)
+
+
+--- The Installation
 
 The python PBS module consists of the following files:
   pbscmodule.so
@@ -49,4 +47,3 @@ Comments or suggestions mail them to: Bas van der Vlies <basv@sara.nl>
 *  1098 SJ Amsterdam                     WWW:    www.sara.nl       *
 *                                                                  *
 ********************************************************************
-

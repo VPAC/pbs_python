@@ -124,9 +124,9 @@ pbsc.batch_status_swigregister(batch_statusPtr)
 #          mom values.
 #
 # CVS info
-# $Id: pbs.py,v 1.4 2002/10/21 12:31:42 sscpbas Exp $
-# $Date: 2002/10/21 12:31:42 $
-# $Revision: 1.4 $
+# $Id: pbs.py,v 1.5 2002/10/21 14:05:34 sscpbas Exp $
+# $Date: 2002/10/21 14:05:34 $
+# $Revision: 1.5 $
 #
 import string
 import types
@@ -167,13 +167,22 @@ default_mom_res = [
 	"size",		# size of a file or filesystem
 ]
 def check_resp(dict, str):
-    key, val = string.split(str, '=')
-    key = string.strip(key)
-    val = string.strip(val)
-    # Did we got a valid response
-    #
-    if not val[0] == '?':
-      dict[key] = val
+  """
+  Check the daemon response. If we have no permission to
+  query the values then we got a 'None' response. Else
+  if we supplied a keyword that does not exits we get a
+  '?' response
+  """
+  if not str:
+    return
+      
+  key, val = string.split(str, '=')
+  key = string.strip(key)
+  val = string.strip(val)
+  # Did we got a valid response
+  #
+  if not val[0] == '?':
+    dict[key] = val
 def use_default_keywords(id, d):
   """
   Get the default values from the mom daemon

@@ -1,6 +1,11 @@
-Keep log of distro changes:
+Keep log of distro changes::
 
 $Log: changelog,v $
+Revision 1.14  2002/10/22 08:58:47  sscpbas
+Fixed resmom_info.py:
+  There is some misunderstanding of the port name pbs_resmon or pbs_resmom.
+  The first is in the src and the latter is in the docs.
+
 Revision 1.13  2002/10/21 14:26:16  sscpbas
 Added version support to setup.py
 

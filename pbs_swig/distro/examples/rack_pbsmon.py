@@ -4,8 +4,6 @@
 #
 #	Hint: set ts=4
 #
-# SVN INFO:
-#	$Id$
 
 import os
 import sys
@@ -17,6 +15,9 @@ import pbs
 NODES_PER_RACK = 19
 N_RACKS = 15
 
+pbs_ND_single = 'job (single)'
+
+
 PBS_STATES = {
 	pbs.ND_free				: '_',
 	pbs.ND_down				: 'X',
@@ -27,22 +28,23 @@ PBS_STATES = {
 	pbs.ND_busy				: '*',
 	pbs.ND_state_unknown	: '?',
 	pbs.ND_timeshared		: 'T',
-	pbs.ND_cluster			: 'C'
+	pbs.ND_cluster			: 'C',
+	pbs_ND_single			: 'j'
 }
 
-PBS_STATE_JOB_BUT_FREE = 'j'
 
 
 def pbsmon():
-	global NODES_PER_RACK, N_RACKS, PBS_STATES, PBS_STATE_JOB_BUT_FREE
+	global NODES_PER_RACK, N_RACKS, PBS_STATES
 
 	if len(sys.argv) > 1:
 		pbs_server = sys.argv[1]
 	else:
 		pbs_server = pbs.pbs_default()
-		if not pbs_server:
-			print 'No default pbs server, usage: %s [server]' % os.path.basename(sys.argv[0])
-			sys.exit(1)
+
+	if not pbs_server:
+		print 'No default pbs server, usage: %s [server]' % os.path.basename(sys.argv[0])
+		sys.exit(1)
 
 	con = pbs.pbs_connect(pbs_server)
 	if con < 0:
@@ -71,9 +73,9 @@ def pbsmon():
 		if state == pbs.ND_free:
 			if len(node_attr) > 1:
 #				print 'TD: %s' % node.name, node_attr[1]
-				state_char = PBS_STATE_JOB_BUT_FREE
+				state_char = PBS_STATES[pbs_ND_single]
 				count_states[pbs.ND_free] = count_states[pbs.ND_free] - 1
-				count_states[pbs.ND_job_exclusive] = count_states[pbs.ND_job_exclusive] + 1
+				count_states[pbs_ND_single] = count_states[pbs_ND_single] + 1
 
 #		print 'TD: %s %s' % (node.name, state_char)
 		node_dict[node.name] = state_char

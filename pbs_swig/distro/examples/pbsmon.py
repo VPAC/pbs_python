@@ -39,11 +39,9 @@ def display_cluster_status(nl, sl):
   # 2 and 3 digit hostname numbers
   #
   if len(nl) == 1: 
-    print nl[0]
     width = len( nl[0] )
   else:
-    print nl[0]
-    width = len( nl[1] )
+    width = len( nl[-1] )
 
   # Determine what format we have to use
   #
@@ -129,9 +127,9 @@ def main():
     #
     temp = string.splitfields(node_attr[0].value, ',')
     state = temp[0]
-    state_list.append(translate_state[state])
 
-    # look if on a free node a job is scheduled
+    # look if on a free node a job is scheduled, then mark it
+    # as other state
     #
     if state == pbs.ND_free:
        if len(node_attr) > 1:
@@ -149,13 +147,11 @@ def main():
       """, re.VERBOSE)
 
     result = re_host.search(node.name)
-    result = None
     if result:
-      print 'bas'
       node_list.append( result.group('name') )
     else:
       node_nr = node_nr + 1
-      node_list.append( node_nr )
+      node_list.append( str(node_nr) )
 
   display_cluster_status(node_list, state_list)
 

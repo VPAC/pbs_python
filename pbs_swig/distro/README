@@ -1,20 +1,19 @@
-This is a Python wrapper class for the PBS C LIB API. Now you can write 
+This is a Python wrapper class for the OPENPBS C LIB API. Now you can write 
 utilities/extensions in Python instead of C.  
 
 The Python wrapper class is tested on:
-  - Intel cluster debian GNU/LINUX potato/woody PBS 2.2p7, PBS 2.3.16, 
+  - Intel cluster debian GNU/LINUX potato/woody OPENPBS 2.2p7, OPENPBS 2.3.16, 
     TORQUE 1.0.1p4
 
-  - Compaq Alpha cluster debian GNU/LINUX potato/woody PBS 2.2p7, PBS 2.3.16
+  - Compaq Alpha cluster debian GNU/LINUX potato/woody OPENPBS 2.2p7, 
+    OPENPBS 2.3.16
 
-  - SGI Origin 3000: Irix 6.5, PBS 2.3.16
+  - SGI Origin 3000: Irix 6.5, OPENPBS 2.3.16
 
   - TRU64 system, NOTE: must rename libnet.a to libpbs_net.a and edit
     setup.py to reflect the change. There is also a system wide libnet.so.
 
   - It should run on different OSes.
-
-
 
 In the past our Alpha cluster was redhat (6.2)  and we had to add '-lots'
 to the LIBS line
@@ -54,7 +53,7 @@ pbsnodes-a.py   - pbsnodes -a
 pbs_version.py  - print server version
 set_property.py - set some node properties
 resmom_info.py  - queries the pbs_mom daemon on the nodes
-logpbs.py	- Shows the usage of the PBS logging routines (NEW)
+logpbs.py	- Shows the usage of the PBS logging routines
 
 
 --- The Installation
@@ -64,7 +63,6 @@ Comments,suggestions or bugfixes mail them to: Bas van der Vlies <basv@sara.nl>
 For more info about SARA see:
 	http://www.sara.nl/index_eng.html
 	
-
 
 ********************************************************************
 *                                                                  *

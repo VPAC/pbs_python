@@ -5,11 +5,10 @@ Pbs_python interface is a wrapper class for the OPENPBS/TORQUE C LIB API.
 Now you can write utilities/extensions in Python instead of C.  
 
 The Python wrapper class is tested on:
-  - Intel cluster debian GNU/LINUX potato/woody OPENPBS 2.2p7, OPENPBS 2.3.16, 
+  - Intel cluster debian GNU/LINUX woody OPENPBS 2.3.16, 
     TORQUE 1.0.1p4
 
-  - Compaq Alpha cluster debian GNU/LINUX potato/woody OPENPBS 2.2p7, 
-    OPENPBS 2.3.16
+  - Compaq Alpha cluster debian GNU/LINUX woody OPENPBS 2.3.16
 
   - SGI Origin 3000: Irix 6.5, OPENPBS 2.3.16
 
@@ -22,15 +21,16 @@ In the past our Alpha cluster was redhat (6.2)  and we had to add '-lots'
 to the LIBS line
 
 --- Compile and install the package:
+
   As for python version 1.6 and higher the procedure is:
     python setup.py install
 
   Python versions lower then 1.6 do not have the distutils
   package default in their installation. You can test it:
-  python
-  import distutils
+    python
+    import distutils
 
-  If this succed then use the above procedure else use the procedure below:
+  If this succeed then use the above procedure else use the procedure below:
     cd src
     Adjust the Makefile to where you installed Python and OPENPBS libraries.
     make

@@ -1,3 +1,37 @@
+=========== Version 2.2
+
+In this release we can query the pbs_mom daemon with the aid of
+resource management functions:
+   pbs.openrm()
+   pbs.closerm()
+   pbs.downrm()
+   pbs.configrm()
+   pbs.addreq()
+   pbs.allreq()
+   pbs.flushreq()
+   pbs.activereq()
+   pbs.fullresp()
+   pbs.getreq()
+
+There is also a python function:
+   pbs.get_mom_values(id, [list]):
+     id   - connection id of pbs.openrm(node-name, port-number)
+     list - Is a optional paramter. A list of resource keywords
+
+   If 'list' is not supplied then this function will get the values
+   for the standard resource keywords, eg uname, loadave, .. +
+   'arch' depended keywords. The arch feature is only implemented
+   for linux, but it can be ported to other platforms as well.
+
+   if 'list' is supplied then we only fetch values for the keywords
+   that are in the list.
+
+   The function returns a dictonary. The keys are the resource keywords.
+
+   See 'resmon_info.py' for a examples of this new features.
+
+=========== Version 2.0
+
 The previous version was a simple interface above the PBS C API LIB.  This 
 interface has gone a major changes. The most noticeable change is  that
 the functions accept/return Python lists instead of C-lists.  So you can now 

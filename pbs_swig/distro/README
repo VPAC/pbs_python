@@ -5,8 +5,12 @@ Pbs_python interface is a wrapper class for the OPENPBS/TORQUE C LIB API.
 Now you can write utilities/extensions in Python instead of C.  
 
 The Python wrapper class is tested on:
-  - Intel cluster debian GNU/LINUX woody OPENPBS 2.3.16, 
-    TORQUE 1.0.1p4, 1.1.0p4
+
+  - Intel cluster debian GNU/LINUX woody/sarge OPENPBS 2.3.16, 
+    TORQUE 1.0.1p4, 1.1.0p4 and up
+
+  - For X86_64 systems you have to compile torque/openpbs with 
+    the -fPIC option. Else you can not build the python module
 
   - Compaq Alpha cluster debian GNU/LINUX woody OPENPBS 2.3.16
 
@@ -27,9 +31,6 @@ to the LIBS line
     make
     make install
 
-  Note: for X86_64 systems you have to compile torque/openpbs with 
-        the -fPIC option. Else we can not build shared libraries.
-    
 --- For python versions lower the 1.6
 
   Python versions lower then 1.6 do not have the distutils
@@ -45,8 +46,10 @@ to the LIBS line
     The python PBS module consists of the following files:
       _pbs.so
       pbs.py
-      pbs.pyc ( will be generated from pbs.py. The first time you load
-              the module).
+      pbs.pyc     ( will be generated from pbs.py. The first time you load
+                    the module).
+      PBSQuery.py ( This is an simple query module. To see how it works...
+                    python <install_path>/PBSQuery.py )
 
     You can install these file in your own directory and use the PYTHONPATH
     environment variable or install it in a system wide directory, eg:
@@ -66,7 +69,7 @@ set_property.py  - set some node properties
 resmom_info.py   - queries the pbs_mom daemon on the nodes
 logpbs.py	 - Shows the usage of the PBS logging routines
 new_interface.py - Example how to use PBSQuery module
-
+PBSQuery.py      - python <install_path>/PBSQuery.py (has builtin demo)
 
 Comments,suggestions or bugfixes mail them to: Bas van der Vlies <basv@sara.nl>
 For more info about SARA see:

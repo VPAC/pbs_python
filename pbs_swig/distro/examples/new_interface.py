@@ -12,9 +12,6 @@
 
 from PBSQuery import PBSQuery
 
-
-import sys
-
 def main():
 
   p = PBSQuery()

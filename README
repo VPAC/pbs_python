@@ -1,5 +1,8 @@
-This is a Python wrapper class for the OPENPBS C LIB API. Now you can write 
-utilities/extensions in Python instead of C.  
+the latest stable pbs_python interface is available from:
+	ftp://ftp.sara.nl/pub/outgoing/pbs_python.tar.gz
+
+Pbs_python interface is a wrapper class for the OPENPBS/TORQUE C LIB API. 
+Now you can write utilities/extensions in Python instead of C.  
 
 The Python wrapper class is tested on:
   - Intel cluster debian GNU/LINUX potato/woody OPENPBS 2.2p7, OPENPBS 2.3.16, 
@@ -29,7 +32,7 @@ to the LIBS line
 
   If this succed then use the above procedure else use the procedure below:
     cd src
-    Adjust the Makefile to where you installed Python and PBS libraries.
+    Adjust the Makefile to where you installed Python and OPENPBS libraries.
     make
 
     The python PBS module consists of the following files:
@@ -54,9 +57,6 @@ pbs_version.py  - print server version
 set_property.py - set some node properties
 resmom_info.py  - queries the pbs_mom daemon on the nodes
 logpbs.py	- Shows the usage of the PBS logging routines
-
-
---- The Installation
 
 
 Comments,suggestions or bugfixes mail them to: Bas van der Vlies <basv@sara.nl>

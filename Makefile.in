@@ -7,7 +7,7 @@ BINDIR=$(PREFIX)/bin
 
 .PHONY: install pythonlib
 pythonlib:
-	(cd src; make)
+	#(cd src; make)
 	python setup.py build
 
 install: pythonlib

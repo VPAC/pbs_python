@@ -20,6 +20,7 @@ if not PBS_LIB_DIR:
 if not PBS_LIB_DIR:
   print 'Please specify where the PBS libraries are!!'
   print 'edit setup.py and fill in the PBS_LIB_DIR variable'
+  sys.exit(1)
 
 setup ( name = 'pbs_python',
         version = '2.3',

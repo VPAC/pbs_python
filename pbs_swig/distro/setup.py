@@ -35,11 +35,11 @@ for lib in LIBS:
     sys.exit(1)
 
 setup ( name = 'pbs_python',
-        version = '2.7.2',
-	description = 'pbs python interface',
+        version = '2.7.3',
+	description = 'openpbs/torque python interface',
 	author = 'Bas van der Vlies',
 	author_email = 'basv@sara.nl',
-	url = 'http://www.sara.nl/beowulf',
+	url = 'http://www.sara.nl/index_eng.html',
 
 	extra_path = 'pbs',
         package_dir = { '' : 'src' }, 

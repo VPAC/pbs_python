@@ -3,6 +3,10 @@ Bas van der Vlies <basv@sara.nl>
 Configure and Debian package support: 
 	Yaroslav Halchenko
 
+PBSQuery module:
+	Roy Dragseth
+	Bas van der Vlies
+
 Contributors:
 	Walter de Jong
 	Ramon Bastiaans

@@ -58,13 +58,14 @@ The test programs are include as a reference how to use the PBS
 python module. You have to edit some test programs to reflect
 your PBS installation.
 
-pbsmon.py       - ascii xpbsmon
-rack_pbsmon.py  - ascii xpbsmon by rack layout
-pbsnodes-a.py   - pbsnodes -a
-pbs_version.py  - print server version
-set_property.py - set some node properties
-resmom_info.py  - queries the pbs_mom daemon on the nodes
-logpbs.py	- Shows the usage of the PBS logging routines
+pbsmon.py        - ascii xpbsmon
+rack_pbsmon.py   - ascii xpbsmon by rack layout
+pbsnodes-a.py    - pbsnodes -a
+pbs_version.py   - print server version
+set_property.py  - set some node properties
+resmom_info.py   - queries the pbs_mom daemon on the nodes
+logpbs.py	 - Shows the usage of the PBS logging routines
+new_interface.py - Example how to use PBSQuery module
 
 
 Comments,suggestions or bugfixes mail them to: Bas van der Vlies <basv@sara.nl>

@@ -1,3 +1,7 @@
+=========== Version 2.5
+ Added the OpenPbs logging functions (log.h and liblog.a). There
+ is an example in the examples directory: logpbs.py
+
 =========== Version 2.3
  Bugfix in the pbsnodes-a.py. Forgot to import the sys module.
 

@@ -43,13 +43,15 @@ pbsmon.py       - ascii xpbsmon
 pbsnodes-a.py   - pbsnodes -a
 pbs_version.py  - print server version
 set_property.py - set some node properties
-resmom_info.py  - queries the pbs_mom daemon on the nodes (NEW)
+resmom_info.py  - queries the pbs_mom daemon on the nodes
+logpbs.py	- Shows the usage of the PBS logging routines (NEW)
 
 
 --- The Installation
 
 
-Comments or suggestions mail them to: Bas van der Vlies <basv@sara.nl>
+Comments,suggestions or bugfxes mail them to: Bas van der Vlies <basv@sara.nl>
+
 ********************************************************************
 *                                                                  *
 *  Bas van der Vlies                     e-mail: basv@sara.nl      *

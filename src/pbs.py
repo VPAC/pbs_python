@@ -124,9 +124,9 @@ pbsc.batch_status_swigregister(batch_statusPtr)
 #          mom values.
 #
 # CVS info
-# $Id: pbs.py,v 1.3 2002/09/17 11:51:19 sscpbas Exp $
-# $Date: 2002/09/17 11:51:19 $
-# $Revision: 1.3 $
+# $Id: pbs.py,v 1.4 2002/10/21 12:31:42 sscpbas Exp $
+# $Date: 2002/10/21 12:31:42 $
+# $Revision: 1.4 $
 #
 import string
 import types
@@ -220,7 +220,7 @@ def version():
   """
   Returns the pbs python interface version as a string. 
   """
-  return '2.3'
+  return '2.5'
 
 
 new_attrl = pbsc.new_attrl
@@ -494,4 +494,37 @@ fullresp = pbsc.fullresp
 
 getreq = pbsc.getreq
 
+LOG_BUF_SIZE = pbsc.LOG_BUF_SIZE
+log_close = pbsc.log_close
+
+log_err = pbsc.log_err
+
+log_event = pbsc.log_event
+
+log_open = pbsc.log_open
+
+log_record = pbsc.log_record
+
+setup_env = pbsc.setup_env
+
+chk_file_sec = pbsc.chk_file_sec
+
+PBSEVENT_ERROR = pbsc.PBSEVENT_ERROR
+PBSEVENT_SYSTEM = pbsc.PBSEVENT_SYSTEM
+PBSEVENT_ADMIN = pbsc.PBSEVENT_ADMIN
+PBSEVENT_JOB = pbsc.PBSEVENT_JOB
+PBSEVENT_JOB_USAGE = pbsc.PBSEVENT_JOB_USAGE
+PBSEVENT_SECURITY = pbsc.PBSEVENT_SECURITY
+PBSEVENT_SCHED = pbsc.PBSEVENT_SCHED
+PBSEVENT_DEBUG = pbsc.PBSEVENT_DEBUG
+PBSEVENT_DEBUG2 = pbsc.PBSEVENT_DEBUG2
+PBSEVENT_FORCE = pbsc.PBSEVENT_FORCE
+PBS_EVENTCLASS_SERVER = pbsc.PBS_EVENTCLASS_SERVER
+PBS_EVENTCLASS_QUEUE = pbsc.PBS_EVENTCLASS_QUEUE
+PBS_EVENTCLASS_JOB = pbsc.PBS_EVENTCLASS_JOB
+PBS_EVENTCLASS_REQUEST = pbsc.PBS_EVENTCLASS_REQUEST
+PBS_EVENTCLASS_FILE = pbsc.PBS_EVENTCLASS_FILE
+PBS_EVENTCLASS_ACCT = pbsc.PBS_EVENTCLASS_ACCT
+PBS_EVENTCLASS_NODE = pbsc.PBS_EVENTCLASS_NODE
+PBSEVENT_MASK = pbsc.PBSEVENT_MASK
 

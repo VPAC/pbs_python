@@ -1,16 +1,35 @@
-This is the new  Python wrapper class for the PBS C LIB API. Now you can write 
+This is a Python wrapper class for the PBS C LIB API. Now you can write 
 utilities/extensions in Python instead of C.  
 
 The Python wrapper class is tested on:
-  - Intel cluster debian GNU/LINUX potato/woody PBS 2.2p7
+  - Intel cluster debian GNU/LINUX potato/woody PBS 2.2p7, PBS 2.3.16
   - Compaq Alpha Cluster red hat 6.2 PBS 2.3. For this platform
     we had to add '-lots' to the LIBS line.
   - It should run on different OSes.
 
---- Compile the package:
-  cd src
-  Adjust the Makefile to where you installed Python and PBS libraries.
-  make
+--- Compile and install the package:
+  As for python version 1.6 and higher the procedure is:
+    python setup.py install
+
+  Python versions lower then 1.6 do not have the distutils
+  package default in their installation. You can test it:
+  python
+  import distutils
+
+  If this succed then use the above procedure else use the procedure below:
+    cd src
+    Adjust the Makefile to where you installed Python and PBS libraries.
+    make
+
+    The python PBS module consists of the following files:
+      pbscmodule.so
+      pbs.py
+      pbs.pyc ( will be generated from pbs.py. The first time you load
+              the module).
+
+    You can install these file in your own directory and use the PYTHONPATH
+    environment variable or install it in a system wide directory, eg:
+      /usr/lib/python1.5/site-packages
 
 --- Testing the package:
 
@@ -26,16 +45,6 @@ resmom_info.py  - queries the pbs_mom daemon on the nodes (NEW)
 
 
 --- The Installation
-
-The python PBS module consists of the following files:
-  pbscmodule.so
-  pbs.py
-  pbs.pyc ( will be generated from pbs.py. The first time you load
-            the module).
-
-You can install these file in your own directory and use the PYTHONPATH
-environment variable or install it in a system wide directory, eg:
-	/usr/lib/python1.5/site-packages
 
 
 Comments or suggestions mail them to: Bas van der Vlies <basv@sara.nl>

@@ -1,11 +1,13 @@
 =========== Version ???
  Bugfix in the pbsnodes-a.py. Forgot to import the sys module.
 
- Removed some obsolete code
+ Removed some obsolete code. 
 
  As for now we make use of the distutils module. So the package
  is automatically compiled and installed in proper directories, usage:
     python setup.py install
+ This requires that the package 'distutils' must be installed. As for
+ version 1.6 and higher it is in the ditribution.
 
 =========== Version 2.2
 

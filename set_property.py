@@ -5,12 +5,8 @@
 # Desc. : Set a node property
 #
 # CVS info:
-# $Author: sscpbas $
-# $Date: 2001/12/07 19:01:18 $
-# $Revision: 1.1 $
-# $Log: set_property.py,v $
-# Revision 1.1  2001/12/07 19:01:18  sscpbas
-# Initial revision
+# $Id: set_property.py,v 1.2 2002/02/27 13:58:57 sscpbas Exp $
+#
 #
 #
 import sys

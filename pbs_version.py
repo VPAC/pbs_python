@@ -4,12 +4,7 @@
 # Desc. : print version of pbs_server
 #    
 # CVS info:
-# $Author: sscpbas $
-# $Date: 2001/12/07 19:01:18 $
-# $Revision: 1.1 $
-# $Log: pbs_version.py,v $
-# Revision 1.1  2001/12/07 19:01:18  sscpbas
-# Initial revision
+# $Id: pbs_version.py,v 1.2 2002/02/27 13:58:56 sscpbas Exp $
 #
 #
 import sys

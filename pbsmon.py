@@ -7,16 +7,7 @@
 #         based on the awk-script of Willem Vermin
 #
 # CVS info:
-# $Author: sscpbas $
-# $Date: 2001/12/07 19:01:18 $
-# $Revision: 1.1 $
-# $Log: pbsmon.py,v $
-# Revision 1.1  2001/12/07 19:01:18  sscpbas
-# Initial revision
-#
-# Revision 1.2  2001/12/07 14:04:44  sscpbas
-# Changed to new pbs_swig interface
-#
+# $Id: pbsmon.py,v 1.2 2002/02/27 13:58:57 sscpbas Exp $
 #
 import sys
 import string

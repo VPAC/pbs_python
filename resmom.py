@@ -5,9 +5,7 @@
 #          mom values.
 #
 # CVS info
-# $Id: resmom.py,v 1.1 2002/02/27 13:55:45 sscpbas Exp $
-# $Date: 2002/02/27 13:55:45 $
-# $Revision: 1.1 $
+# $Id: resmom.py,v 1.2 2002/02/27 13:58:57 sscpbas Exp $
 #
 import string
 import types

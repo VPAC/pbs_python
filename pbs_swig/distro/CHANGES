@@ -9,6 +9,9 @@
  the pbs_mom daemon a empty string is returned. Now we check for
  the empty string. So we do not get a python exception.
 
+ Fixed a bug in setup.py forgot the exit statement when we did not
+ find the pbs libraries.
+
 =========== Version 2.3
  Bugfix in the pbsnodes-a.py. Forgot to import the sys module.
 

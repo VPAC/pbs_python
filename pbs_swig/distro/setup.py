@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# $Id: setup.py,v 1.5 2002/10/21 14:26:16 sscpbas Exp $
+# $Id$
 
 import sys
 import os
@@ -31,7 +31,7 @@ for lib in LIBS:
   library = 'lib%s.a' %(lib) 
   dummy = os.path.join(PBS_LIB_DIR, library)
   if not os.path.exists(dummy):
-    print 'You need to install %s in %s' %(library, PBS_LIB_DIR)
+    print 'You need to install "%s" in %s' %(library, PBS_LIB_DIR)
     sys.exit(1)
 
 setup ( name = 'pbs_python',

@@ -28,7 +28,7 @@ There is also a python function:
 
    The function returns a dictonary. The keys are the resource keywords.
 
-   See 'resmon_info.py' for a examples of this new features.
+   See 'resmon_info.py' for a example of this new feature.
 
 =========== Version 2.0
 

@@ -6,7 +6,7 @@ Now you can write utilities/extensions in Python instead of C.
 
 The Python wrapper class is tested on:
   - Intel cluster debian GNU/LINUX woody OPENPBS 2.3.16, 
-    TORQUE 1.0.1p4
+    TORQUE 1.0.1p4, 1.1.0p4
 
   - Compaq Alpha cluster debian GNU/LINUX woody OPENPBS 2.3.16
 
@@ -23,7 +23,9 @@ to the LIBS line
 --- Compile and install the package:
 
   As for python version 1.6 and higher the procedure is:
-    python setup.py install
+    ./configure
+    make
+    make install
 
   Python versions lower then 1.6 do not have the distutils
   package default in their installation. You can test it:
@@ -52,6 +54,7 @@ python module. You have to edit some test programs to reflect
 your PBS installation.
 
 pbsmon.py       - ascii xpbsmon
+rack_pbsmon.py  - ascii xpbsmon by rack layout
 pbsnodes-a.py   - pbsnodes -a
 pbs_version.py  - print server version
 set_property.py - set some node properties

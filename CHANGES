@@ -1,3 +1,32 @@
+=========== Version 2.7.4
+ New versions fixes an bug in function pbs.pbs_statnode(). 
+ Reported by: Keith Poirier 
+
+ Configure support:
+ Contributed By: Yaroslav Halchenko
+
+ Debian package support:
+ Contributed By: Yaroslav Halchenko
+
+ Added Support for Debuging the interface, You must edit pbs_wrap.c 
+ and search for SARA_DEBUG:
+	#define SARA_DEBUG 1
+ Implemented by: Ramon Bastiaans
+
+ examples/pbsmon.py:
+ 	- Fixed an error when regex fails to determine node number, 
+	  no status was displayed
+        - It will now display and 'j' if the node is free for the batch
+	  system and a job runs on the node (SMP-systems).
+ Changed by: Bas van der Vlies
+
+ examples/rack_pbsmon.py:
+ 	- An pbsmon that display node info per rack
+	- Edit the rack_pbsmon.py to adjust the values. It requires
+	  that hostname contains rack and node id's, 
+	  eg: gb-r<number>n<number>
+ Contributed by: Walter de Jong
+
 =========== Version 2.7.3
  The name SPBS is changed to the new name TORQUE (Tera-scale Open-source
  Resource and QUEing manager). 

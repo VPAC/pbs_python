@@ -4,7 +4,7 @@
 # Date  : 27 Feb 2002
 # Desc. : This will query the pbs_mom daemon about its resources
 #
-# $Id: resmom_info.py,v 1.3 2002/10/21 14:25:31 sscpbas Exp $
+# $Id: resmom_info.py,v 1.4 2002/10/22 08:58:48 sscpbas Exp $
 #
 import pbs
 import sys
@@ -23,11 +23,12 @@ def main():
     for attr in attrs:
       print '\t%s = %s' %(attr.name, attr.value)
 
-    mom_port = socket.getservbyname('pbs_resmon', 'tcp')
-    if mom_port:
-      mom_id = pbs.openrm(node.name, mom_port)
-    else:
-      mom_id = pbs.openrm(node.name, pbs.PBS_MANAGER_SERVICE_PORT)
+    try:
+      mom_port = socket.getservbyname('pbs_resmon', 'tcp')
+    except socket.error:
+      mom_port = pbs.PBS_MANAGER_SERVICE_PORT
+
+    mom_id = pbs.openrm(node.name, mom_port)
 
     mom_keys = pbs.get_mom_values(mom_id)
     for key in mom_keys.keys():

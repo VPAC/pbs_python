@@ -1,3 +1,18 @@
+=========== Version 2.7.6
+
+Now setup.py can also handle old Oscar Installations. 
+Thanks To: Robin Humble
+
+Fixed an print statement fix in new_interface.py:
+Thanks To: Robin Humble
+
+Made some improvements for PBSQuery module:
+	- Updated the documentation
+	- Added the has_key() function to all
+ 	  PBSObjects. So that the behaviour is similar to 
+          an dictionary
+	  Suggested By: Ramon Bastiaans
+	
 =========== Version 2.7.5
  Added PBSQuery module.  This module requires pbs.py and it a simple module 
  for querying the pbs server. The documentation is in the module. Use for 

@@ -63,9 +63,15 @@ class PBSQuery:
 	else:
 	    self.server = server
 
-        self.con = pbs.pbs_connect(self.server)
-	self.attribs = 'NULL'
 
+    def _connect(self):
+       """Connect to the PBS/Torque server"""
+       self.con = pbs.pbs_connect(self.server)
+       self.attribs = 'NULL'
+
+    def _disconnect(self):
+       """Close the PBS/Torque connection"""
+       pbs.pbs_disconnect(self.con)
 
     def _list_2_attrib(self, list):
         """Convert an python list to an attrib list suitable for pbs"""
@@ -99,7 +105,10 @@ class PBSQuery:
         else:
 	   self.attribs = 'NULL'
 
+        self._connect()
         serverinfo = pbs.pbs_statserver(self.con, self.attribs, 'NULL')
+        self._disconnect()
+
 	self.serverinfo = dict()
 	self._list_2_dict(serverinfo, server)
 
@@ -114,7 +123,10 @@ class PBSQuery:
         else:
 	   self.attribs = 'NULL'
 
+        self._connect()
         queues = pbs.pbs_statque(self.con, queue_name, self.attribs, 'NULL')
+        self._disconnect()
+
 	self.queues = dict()
 	self._list_2_dict(queues, queue)
 
@@ -133,7 +145,10 @@ class PBSQuery:
         else:
 	   self.attribs = 'NULL'
 
+        self._connect()
         nodes = pbs.pbs_statnode(self.con, node_name, self.attribs, 'NULL')
+        self._disconnect()
+
         self.nodes = dict()
 	self._list_2_dict(nodes, node)
 
@@ -152,7 +167,10 @@ class PBSQuery:
         else:
 	   self.attribs = 'NULL'
 	   
+        self._connect()
         jobs = pbs.pbs_statjob(self.con, job_name, self.attribs, 'NULL')
+        self._disconnect()
+
         self.jobs = dict()
 	self._list_2_dict(jobs, job)
 

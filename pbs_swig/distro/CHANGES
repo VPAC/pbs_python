@@ -1,5 +1,12 @@
 =========== Version 2.7.6
 
+PBSQuery module: 
+  It can now be used in daemon programs. The pbs_server closes
+  the connection after an certain amount of time. Then there is
+  no data anymore.
+
+=========== Version 2.7.6
+
 Now setup.py can also handle old Oscar Installations. 
 Thanks To: Robin Humble
 

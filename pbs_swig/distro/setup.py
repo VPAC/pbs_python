@@ -14,7 +14,7 @@ PBS_LIB_DIR=''
 LIBS = ['log', 'net', 'pbs'] 
 
 if not PBS_LIB_DIR:
-  for dir in ['/usr/local/lib', '/opt/pbs/usr/lib', '/usr/lib/torque', '/opt/pbs/lib' ]:
+  for dir in ['/usr/local/lib', '/opt/pbs/usr/lib', '/usr/lib/torque', '/opt/pbs/lib', '/opt/torque/lib' ]:
     dummy = os.path.join(dir, 'libpbs.a')
     if os.path.exists(dummy):
       PBS_LIB_DIR=dir
@@ -35,7 +35,7 @@ for lib in LIBS:
     sys.exit(1)
 
 setup ( name = 'pbs_python',
-        version = '2.7.3',
+        version = '2.7.8',
 	description = 'openpbs/torque python interface',
 	author = 'Bas van der Vlies',
 	author_email = 'basv@sara.nl',

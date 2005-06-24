@@ -1348,7 +1348,7 @@ static swig_type_info *swig_types[10];
 #include "rm.h"
 #include "log.h"
 
-#define SARA_DEBUG 1
+#define SARA_DEBUG 0
 
 
 

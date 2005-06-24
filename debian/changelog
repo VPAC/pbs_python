@@ -1,3 +1,10 @@
+pbs-python (2.7.9-2) unstable; urgency=low
+
+  * Bumped up version
+  * Fixed  DEBUG mode
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Fri, 24 Jun 2005 11:23:30 +0200
+
 pbs-python (2.7.5-1) unstable; urgency=low
 
   * Initial version

@@ -1,3 +1,11 @@
+=========== Version 2.7.9
+
+Fixed an error the previous version was in DEBUG mode. So
+you get an lot undesired output on the screen.
+
+debian package now also generated a package with the write 
+version info.
+
 =========== Version 2.7.8
 
 Setup.py:

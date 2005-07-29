@@ -1,3 +1,12 @@
+=========== Version 2.7.10
+
+PBSQuery.py:
+	Fixed an error. You always got all resources from eg nodes
+	even when you supplied an attribute list where you only
+	requested the 'state' of the node.
+
+	Updated the inline python documentation
+
 =========== Version 2.7.9
 
 Fixed an error the previous version was in DEBUG mode. So

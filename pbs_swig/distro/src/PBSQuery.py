@@ -52,6 +52,11 @@ Here is an example how to use the module:
 	for name,node in nodes.items():
 	       print node, node['state']
 
+The parameter 'attributes' is an python list of resources that 
+you are interested in, eg: only show state of nodes
+        l = list()
+	l.append('state')
+	nodes = p.getnodes(l)
 """
 import pbs
 

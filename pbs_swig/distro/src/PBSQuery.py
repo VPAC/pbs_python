@@ -67,11 +67,11 @@ class PBSQuery:
     def _connect(self):
        """Connect to the PBS/Torque server"""
        self.con = pbs.pbs_connect(self.server)
-       self.attribs = 'NULL'
 
     def _disconnect(self):
        """Close the PBS/Torque connection"""
        pbs.pbs_disconnect(self.con)
+       self.attribs = 'NULL'
 
     def _list_2_attrib(self, list):
         """Convert an python list to an attrib list suitable for pbs"""

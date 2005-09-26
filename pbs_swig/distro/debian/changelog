@@ -1,3 +1,10 @@
+pbs-python (2.7.10-1) unstable; urgency=low
+
+  * Added examples/LICENSE.sara to /usr/share/doc directory
+  * Made an sara_install section for pbsmon --> examples/rack_pbsmon.py
+
+ -- Bas van der Vlies <basv@sara.nl>  Mon, 26 Sep 2005 16:32:06 +0200
+
 pbs-python (2.7.9-2) unstable; urgency=low
 
   * Bumped up version

@@ -4,19 +4,26 @@ GZIP_ENV=--best
 PREFIX=@prefix@
 exec_prefix=$(PREFIX)
 BINDIR=$(PREFIX)/bin
+DOCDIR=/usr/share/doc/pbs-python
+EXAMPLES=$(DOCDIR)/examples
 
 .PHONY: install pythonlib
 pythonlib:
 	#(cd src; make)
 	python setup.py build
 
-install: pythonlib
+install: pythonlib sara_install
 	#mkdir -p $(DESTDIR)/@pyexecdir@ $(DESTDIR)/$(BINDIR)
-	#(cd examples; for i in *py; do install $$i  $(DESTDIR)/$(BINDIR)/$${i//.py/}; done)
 	#install build/lib*/* $(DESTDIR)/@pyexecdir@
+	#(cd examples; for i in *py; do install $$i  $(DESTDIR)/$(EXAMPLES)/$${i//.py/}; done)
 	#python ./setup.py install --prefix $(DESTDIR)/@pyexecdir@ ;
 
 	python ./setup.py install --prefix $(DESTDIR)/$(exec_prefix) ;
+	install -D LICENSE.SARA $(DESTDIR)/$(DOCDIR)/LICENSE.SARA
+	(cd examples; for i in *py; do install -D $$i  $(DESTDIR)/$(EXAMPLES)/$${i}; done)
+
+sara_install:
+	install -D examples/rack_pbsmon.py $(DESTDIR)/$(BINDIR)/pbsmon
 
 clean:
 	cd src; make clean	

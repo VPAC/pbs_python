@@ -35,7 +35,7 @@ for lib in LIBS:
     sys.exit(1)
 
 setup ( name = 'pbs_python',
-        version = '2.7.10',
+        version = '2.8.0',
 	description = 'openpbs/torque python interface',
 	author = 'Bas van der Vlies',
 	author_email = 'basv@sara.nl',

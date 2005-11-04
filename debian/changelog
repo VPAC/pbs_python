@@ -1,3 +1,9 @@
+pbs-python (2.8.0-1) unstable; urgency=low
+
+  * New pbs_python release, See CHANGES
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Fri,  4 Nov 2005 15:58:44 +0100
+
 pbs-python (2.7.10-1) unstable; urgency=low
 
   * Added examples/LICENSE.sara to /usr/share/doc directory

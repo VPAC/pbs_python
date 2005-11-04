@@ -24,36 +24,15 @@ The Python wrapper class is tested on:
 In the past our Alpha cluster was redhat (6.2)  and we had to add '-lots'
 to the LIBS line
 
---- Compile and install the package:
+--- Compile and install the package: (Require python 2.1 and higher)
 
   As for python version 1.6 and higher the procedure is:
     ./configure
     make
     make install
 
---- For python versions lower the 1.6
-
-  Python versions lower then 1.6 do not have the distutils
-  package default in their installation. You can test it:
-    python
-    import distutils
-
-  If this succeed then use the above procedure else use the procedure below:
-    cd src
-    Adjust the Makefile to where you installed Python and OPENPBS libraries.
-    make
-
-    The python PBS module consists of the following files:
-      _pbs.so
-      pbs.py
-      pbs.pyc     ( will be generated from pbs.py. The first time you load
-                    the module).
-      PBSQuery.py ( This is an simple query module. To see how it works...
-                    python <install_path>/PBSQuery.py )
-
-    You can install these file in your own directory and use the PYTHONPATH
-    environment variable or install it in a system wide directory, eg:
-      /usr/lib/python1.5/site-packages
+  Debian package:
+    debian/rules binary
 
 --- Testing the package:
 

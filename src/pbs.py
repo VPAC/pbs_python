@@ -1,10 +1,8 @@
 # This file was created automatically by SWIG.
 # Don't modify this file, modify the SWIG interface instead.
 # This file is compatible with both classic and new-style classes.
-
 import _pbs
-
-def _swig_setattr_nondynamic(self,class_type,name,value,static=1):
+def _swig_setattr(self,class_type,name,value):
     if (name == "this"):
         if isinstance(value, class_type):
             self.__dict__[name] = value.this
@@ -13,13 +11,7 @@ def _swig_setattr_nondynamic(self,class_type,name,value,static=1):
             return
     method = class_type.__swig_setmethods__.get(name,None)
     if method: return method(self,value)
-    if (not static) or hasattr(self,name) or (name == "thisown"):
-        self.__dict__[name] = value
-    else:
-        raise AttributeError("You cannot add attributes to %s" % self)
-
-def _swig_setattr(self,class_type,name,value):
-    return _swig_setattr_nondynamic(self,class_type,name,value,0)
+    self.__dict__[name] = value
 
 def _swig_getattr(self,class_type,name):
     method = class_type.__swig_getmethods__.get(name,None)
@@ -33,8 +25,6 @@ try:
 except AttributeError:
     class _object : pass
     _newclass = 0
-del types
-
 
 
 new_attrl = _pbs.new_attrl
@@ -42,6 +32,9 @@ new_attrl = _pbs.new_attrl
 new_attropl = _pbs.new_attropl
 
 new_batch_status = _pbs.new_batch_status
+
+get_error = _pbs.get_error
+
 ATTR_a = _pbs.ATTR_a
 ATTR_c = _pbs.ATTR_c
 ATTR_e = _pbs.ATTR_e
@@ -229,25 +222,25 @@ class attrl(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, attrl, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, attrl, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
-    def __repr__(self):
-        return "<%s.%s; proxy of C attrl instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
     __swig_setmethods__["name"] = _pbs.attrl_name_set
     __swig_getmethods__["name"] = _pbs.attrl_name_get
-    if _newclass:name = property(_pbs.attrl_name_get, _pbs.attrl_name_set)
+    if _newclass:name = property(_pbs.attrl_name_get,_pbs.attrl_name_set)
     __swig_setmethods__["resource"] = _pbs.attrl_resource_set
     __swig_getmethods__["resource"] = _pbs.attrl_resource_get
-    if _newclass:resource = property(_pbs.attrl_resource_get, _pbs.attrl_resource_set)
+    if _newclass:resource = property(_pbs.attrl_resource_get,_pbs.attrl_resource_set)
     __swig_setmethods__["value"] = _pbs.attrl_value_set
     __swig_getmethods__["value"] = _pbs.attrl_value_get
-    if _newclass:value = property(_pbs.attrl_value_get, _pbs.attrl_value_set)
+    if _newclass:value = property(_pbs.attrl_value_get,_pbs.attrl_value_set)
     __swig_setmethods__["op"] = _pbs.attrl_op_set
     __swig_getmethods__["op"] = _pbs.attrl_op_get
-    if _newclass:op = property(_pbs.attrl_op_get, _pbs.attrl_op_set)
-    def __str__(*args): return _pbs.attrl___str__(*args)
+    if _newclass:op = property(_pbs.attrl_op_get,_pbs.attrl_op_set)
+    def __str__(*args): return apply(_pbs.attrl___str__,args)
+    def __init__(self): raise RuntimeError, "No constructor defined"
+    def __repr__(self):
+        return "<C attrl instance at %s>" % (self.this,)
 
 class attrlPtr(attrl):
-    def __init__(self, this):
+    def __init__(self,this):
         _swig_setattr(self, attrl, 'this', this)
         if not hasattr(self,"thisown"): _swig_setattr(self, attrl, 'thisown', 0)
         _swig_setattr(self, attrl,self.__class__,attrl)
@@ -258,25 +251,25 @@ class attropl(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, attropl, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, attropl, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
-    def __repr__(self):
-        return "<%s.%s; proxy of C attropl instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
     __swig_setmethods__["name"] = _pbs.attropl_name_set
     __swig_getmethods__["name"] = _pbs.attropl_name_get
-    if _newclass:name = property(_pbs.attropl_name_get, _pbs.attropl_name_set)
+    if _newclass:name = property(_pbs.attropl_name_get,_pbs.attropl_name_set)
     __swig_setmethods__["resource"] = _pbs.attropl_resource_set
     __swig_getmethods__["resource"] = _pbs.attropl_resource_get
-    if _newclass:resource = property(_pbs.attropl_resource_get, _pbs.attropl_resource_set)
+    if _newclass:resource = property(_pbs.attropl_resource_get,_pbs.attropl_resource_set)
     __swig_setmethods__["value"] = _pbs.attropl_value_set
     __swig_getmethods__["value"] = _pbs.attropl_value_get
-    if _newclass:value = property(_pbs.attropl_value_get, _pbs.attropl_value_set)
+    if _newclass:value = property(_pbs.attropl_value_get,_pbs.attropl_value_set)
     __swig_setmethods__["op"] = _pbs.attropl_op_set
     __swig_getmethods__["op"] = _pbs.attropl_op_get
-    if _newclass:op = property(_pbs.attropl_op_get, _pbs.attropl_op_set)
-    def __str__(*args): return _pbs.attropl___str__(*args)
+    if _newclass:op = property(_pbs.attropl_op_get,_pbs.attropl_op_set)
+    def __str__(*args): return apply(_pbs.attropl___str__,args)
+    def __init__(self): raise RuntimeError, "No constructor defined"
+    def __repr__(self):
+        return "<C attropl instance at %s>" % (self.this,)
 
 class attroplPtr(attropl):
-    def __init__(self, this):
+    def __init__(self,this):
         _swig_setattr(self, attropl, 'this', this)
         if not hasattr(self,"thisown"): _swig_setattr(self, attropl, 'thisown', 0)
         _swig_setattr(self, attropl,self.__class__,attropl)
@@ -287,26 +280,25 @@ class batch_status(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, batch_status, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, batch_status, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
-    def __repr__(self):
-        return "<%s.%s; proxy of C batch_status instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
     __swig_setmethods__["name"] = _pbs.batch_status_name_set
     __swig_getmethods__["name"] = _pbs.batch_status_name_get
-    if _newclass:name = property(_pbs.batch_status_name_get, _pbs.batch_status_name_set)
+    if _newclass:name = property(_pbs.batch_status_name_get,_pbs.batch_status_name_set)
     __swig_setmethods__["attribs"] = _pbs.batch_status_attribs_set
     __swig_getmethods__["attribs"] = _pbs.batch_status_attribs_get
-    if _newclass:attribs = property(_pbs.batch_status_attribs_get, _pbs.batch_status_attribs_set)
+    if _newclass:attribs = property(_pbs.batch_status_attribs_get,_pbs.batch_status_attribs_set)
     __swig_setmethods__["text"] = _pbs.batch_status_text_set
     __swig_getmethods__["text"] = _pbs.batch_status_text_get
-    if _newclass:text = property(_pbs.batch_status_text_get, _pbs.batch_status_text_set)
+    if _newclass:text = property(_pbs.batch_status_text_get,_pbs.batch_status_text_set)
+    def __init__(self): raise RuntimeError, "No constructor defined"
+    def __repr__(self):
+        return "<C batch_status instance at %s>" % (self.this,)
 
 class batch_statusPtr(batch_status):
-    def __init__(self, this):
+    def __init__(self,this):
         _swig_setattr(self, batch_status, 'this', this)
         if not hasattr(self,"thisown"): _swig_setattr(self, batch_status, 'thisown', 0)
         _swig_setattr(self, batch_status,self.__class__,batch_status)
 _pbs.batch_status_swigregister(batch_statusPtr)
-
 
 avail = _pbs.avail
 
@@ -393,8 +385,8 @@ activereq = _pbs.activereq
 fullresp = _pbs.fullresp
 
 getreq = _pbs.getreq
-LOG_BUF_SIZE = _pbs.LOG_BUF_SIZE
 
+LOG_BUF_SIZE = _pbs.LOG_BUF_SIZE
 log_close = _pbs.log_close
 
 log_err = _pbs.log_err
@@ -408,6 +400,7 @@ log_record = _pbs.log_record
 setup_env = _pbs.setup_env
 
 chk_file_sec = _pbs.chk_file_sec
+
 PBSEVENT_ERROR = _pbs.PBSEVENT_ERROR
 PBSEVENT_SYSTEM = _pbs.PBSEVENT_SYSTEM
 PBSEVENT_ADMIN = _pbs.PBSEVENT_ADMIN
@@ -439,7 +432,6 @@ PBSEVENT_MASK = _pbs.PBSEVENT_MASK
 #
 import string
 import types
-
 # Default linux resources to get from the mom
 #
 default_linux_res = [   
@@ -453,7 +445,6 @@ default_linux_res = [
 	"totmem",	# total memory size in KB
 	"walltime",	# wall clock time for a pid
 ]
-
 # Default irix6 resources to get from the mom
 #
 default_irix6_res = [   
@@ -465,7 +456,6 @@ default_irix6_res = [
 	"walltime",	# wall clock time for a pid
 	"quota",	# quota information (sizes in KB)
 ]
-
 default_mom_res = [   
 	"arch",		# the architecture of the machine
 	"uname",	# the architecture of the machine
@@ -478,7 +468,6 @@ default_mom_res = [
 	"nusers",	# number of users in the system
 	"size",		# size of a file or filesystem
 ]
-
 def check_resp(dict, str):
   """
   Check the daemon response. If we have no permission to
@@ -492,12 +481,10 @@ def check_resp(dict, str):
   key, val = string.split(str, '=')
   key = string.strip(key)
   val = string.strip(val)
-
   # Did we got a valid response
   #
   if not val[0] == '?':
     dict[key] = val
-
 def use_default_keywords(id, d):
   """
   Get the default values from the mom daemon
@@ -506,18 +493,15 @@ def use_default_keywords(id, d):
     addreq(id, res)
     resp = getreq(id)
     check_resp(d, resp)
-
   # Do not proceed if we have an empty dictionary
   #
   if not d:
     return
-
   if d['arch' ] == 'linux':
     for res in default_linux_res:
       addreq(id, res)
       resp = getreq(id)
       check_resp(d, resp)
-
 def use_user_keywords(id, d, l):
   for res in l:
     if type(res) is types.StringType:
@@ -526,7 +510,6 @@ def use_user_keywords(id, d, l):
       check_resp(d, resp)
     else:
       raise TypeError, 'Expected a string got %s :%s' %(type(res), res) 
-
 def get_mom_values(id, list = None):
   """
   This function will query the mom with a default resmon keywords
@@ -539,7 +522,6 @@ def get_mom_values(id, list = None):
     list : optional parameter. If supplied then use this. A list
            of mom keywords.
   """
-
   d = {}
   if not list:
     use_default_keywords(id, d)
@@ -548,11 +530,109 @@ def get_mom_values(id, list = None):
      
   return d
 
+
 def version():
   """
   Returns the pbs python interface version as a string. 
   """
-  return '2.7.10'
+  return '2.8.0'
+
+
+# A useful dict with error codes to text
+#
+# SVN Info:
+#	$Id$
+#
+errors_txt = { 
+	0 : 'no error',
+	15001 :	 'Unknown Job Identifier',
+	15002 : 'Undefined Attribute',
+	15003 : 'attempt to set READ ONLY attribute',
+	15004 : 'Invalid request',
+	15005 : 'Unknown batch request',
+	15006 : 'Too many submit retries',
+	15007 : 'No permission',
+	15008 : 'access from host not allowed',
+	15009 : 'job already exists',
+	15010 : 'system error occurred',
+	15011 : 'internal server error occurred',
+	15012 : 'parent job of dependent in rte que',
+	15013 : 'unknown signal name',
+	15014 : 'bad attribute value',
+	15015 : 'Cannot modify attrib in run state',
+	15016 : 'request invalid for job state',
+	15018 : 'Unknown queue name',
+	15019 : 'Invalid Credential in request',
+	15020 : 'Expired Credential in request',
+	15021 : 'Queue not enabled',
+	15022 : 'No access permission for queue',
+	15023 : 'Bad user - no password entry',
+	15024 : 'Max hop count exceeded',
+	15025 : 'Queue already exists',
+	15026 : 'incompatable queue attribute type',
+	15027 : 'Queue Busy (not empty)',
+	15028 : 'Queue name too long',
+	15029 : 'Feature',
+	15030 : 'Cannot enable queue,needs add def',
+	15031 : 'Protocol (ASN.1) error',
+	15032 : 'Bad attribute list structure',
+	15033 : 'No free connections',
+	15034 : 'No server to connect to',
+	15035 : 'Unknown resource',
+	15036 : 'Job exceeds Queue resource limits',
+	15037 : 'No Default Queue Defined',
+	15038 : 'Job Not Rerunnable',
+	15039 : 'Route rejected by all destinations',
+	15040 : 'Time in Route Queue Expired',
+	15041 : 'Request to MOM failed',
+	15042 : '(qsub) cannot access script file',
+	15043 : 'Stage In of files failed',
+	15044 : 'Resources temporarily unavailable',
+	15045 : 'Bad Group specified',
+	15046 : 'Max number of jobs in queue',
+	15047 : 'Checkpoint Busy, may be retries',
+	15048 : 'Limit exceeds allowable',
+	15049 : 'Bad Account attribute value',
+	15050 : 'Job already in exit state',
+	15051 : 'Job files not copied',
+	15052 : 'unknown job id after clean init',
+	15053 : 'No Master in Sync Set',
+	15054 : 'Invalid dependency',
+	15055 : 'Duplicate entry in List',
+	15056 : 'Bad DIS based Request Protocol',
+	15057 : 'cannot execute there',
+	15058 : 'sister rejected',
+	15059 : 'sister could not communicate',
+	15060 : 'req rejected -server shutting down',
+	15061 : 'not all tasks could checkpoint',
+	15062 : 'Named node is not in the list',
+	15063 : 'node-attribute not recognized',
+	15064 : 'Server has no node list',
+	15065 : 'Node name is too big',
+	15066 : 'Node name already exists',
+	15067 : 'Bad node-attribute value',
+	15068 : 'State values are mutually exclusive',
+	15069 : 'Error(s) during global modification of nodes',
+	15070 : 'could not contact Mom',
+	15071 : 'no time-shared nodes',
+	15201 : 'resource unknown',
+	15202 : 'parameter could not be used',
+	15203 : 'a parameter needed did not exist',
+	15204 : "something specified didn't exist",
+	15205 : 'a system error occured',
+	15206 : 'only part of reservation made'
+}
+def error():
+  """
+  Check if there is an error, if so fetch the error message string. 
+  It says more then a number!
+  """
+  e = get_error()
+  if errors_txt.has_key(e):
+     return (e, errors_txt[e])
+  else:
+     return (e, "Could not find a text for this error, uhhh")
+
 
 cvar = _pbs.cvar
 

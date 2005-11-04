@@ -1,3 +1,23 @@
+=========== Version 2.8.0
+
+setup.py:
+	- Added /usr/lib to PBS_LIB_DIR
+
+pbs.py:
+	- Added new function "pbs.error()". This function checks if 
+	  an error has occured with previous pbs function, eg:
+	    task_id = pbs.pbs_submit(c, attrl, "A.tsk", 'NULL', 'NULL')
+	    error_number, err_txt = pbs.error()
+	    if error_number:
+	   	print error_number, err_txt
+
+          prints the following message if script A.tsk does not exists:
+	    15042 (qsub) cannot access script file
+
+pbs_python.spec:
+	- to make rpm packages from the source package, initial version
+
+         
 =========== Version 2.7.10
 
 PBSQuery.py:

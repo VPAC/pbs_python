@@ -88,7 +88,7 @@ class PBSQuery:
 
     def _list_2_dict(self, l, class_func):
         """Convert an pbsstat function list to an class dictionary"""
-        self.d = dict()
+        self.d = {}
         for item in l:
 	    new = class_func()
 	    for a in item.attribs:
@@ -114,7 +114,7 @@ class PBSQuery:
         serverinfo = pbs.pbs_statserver(self.con, self.attribs, 'NULL')
         self._disconnect()
 
-	self.serverinfo = dict()
+	self.serverinfo = {}
 	self._list_2_dict(serverinfo, server)
 
     def get_serverinfo(self, attrib_list=None):
@@ -132,7 +132,7 @@ class PBSQuery:
         queues = pbs.pbs_statque(self.con, queue_name, self.attribs, 'NULL')
         self._disconnect()
 
-	self.queues = dict()
+	self.queues = {}
 	self._list_2_dict(queues, queue)
 
     def getqueue(self, name, attrib_list=None):
@@ -154,7 +154,7 @@ class PBSQuery:
         nodes = pbs.pbs_statnode(self.con, node_name, self.attribs, 'NULL')
         self._disconnect()
 
-        self.nodes = dict()
+        self.nodes = {}
 	self._list_2_dict(nodes, node)
 
     def getnode(self, name, attrib_list=None):
@@ -176,7 +176,7 @@ class PBSQuery:
         jobs = pbs.pbs_statjob(self.con, job_name, self.attribs, 'NULL')
         self._disconnect()
 
-        self.jobs = dict()
+        self.jobs = {}
 	self._list_2_dict(jobs, job)
 
     def getjob(self, name, attrib_list=None):
@@ -192,7 +192,7 @@ class _PBSobject:
     FALSE = 0
 
     def __init__(self):
-        self.attribs = dict()
+        self.attribs = {}
 	self.name = None
 
     def __len__(self):

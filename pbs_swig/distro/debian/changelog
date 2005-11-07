@@ -1,3 +1,9 @@
+pbs-python (2.8.0-2) unstable; urgency=medium
+
+  * Used swig 1.3.24 with python2.1 works also on higher python versions
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Mon,  7 Nov 2005 14:55:00 +0100
+
 pbs-python (2.8.0-1) unstable; urgency=low
 
   * New pbs_python release, See CHANGES

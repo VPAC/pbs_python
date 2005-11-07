@@ -4,7 +4,7 @@
 
 import _pbs
 
-def _swig_setattr_nondynamic(self,class_type,name,value,static=1):
+def _swig_setattr(self,class_type,name,value):
     if (name == "this"):
         if isinstance(value, class_type):
             self.__dict__[name] = value.this
@@ -13,13 +13,7 @@ def _swig_setattr_nondynamic(self,class_type,name,value,static=1):
             return
     method = class_type.__swig_setmethods__.get(name,None)
     if method: return method(self,value)
-    if (not static) or hasattr(self,name) or (name == "thisown"):
-        self.__dict__[name] = value
-    else:
-        raise AttributeError("You cannot add attributes to %s" % self)
-
-def _swig_setattr(self,class_type,name,value):
-    return _swig_setattr_nondynamic(self,class_type,name,value,0)
+    self.__dict__[name] = value
 
 def _swig_getattr(self,class_type,name):
     method = class_type.__swig_getmethods__.get(name,None)
@@ -233,7 +227,7 @@ class attrl(_object):
     __getattr__ = lambda self, name: _swig_getattr(self, attrl, name)
     def __init__(self): raise RuntimeError, "No constructor defined"
     def __repr__(self):
-        return "<%s.%s; proxy of C attrl instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+        return "<C attrl instance at %s>" % (self.this,)
     __swig_setmethods__["name"] = _pbs.attrl_name_set
     __swig_getmethods__["name"] = _pbs.attrl_name_get
     if _newclass:name = property(_pbs.attrl_name_get, _pbs.attrl_name_set)
@@ -262,7 +256,7 @@ class attropl(_object):
     __getattr__ = lambda self, name: _swig_getattr(self, attropl, name)
     def __init__(self): raise RuntimeError, "No constructor defined"
     def __repr__(self):
-        return "<%s.%s; proxy of C attropl instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+        return "<C attropl instance at %s>" % (self.this,)
     __swig_setmethods__["name"] = _pbs.attropl_name_set
     __swig_getmethods__["name"] = _pbs.attropl_name_get
     if _newclass:name = property(_pbs.attropl_name_get, _pbs.attropl_name_set)
@@ -291,7 +285,7 @@ class batch_status(_object):
     __getattr__ = lambda self, name: _swig_getattr(self, batch_status, name)
     def __init__(self): raise RuntimeError, "No constructor defined"
     def __repr__(self):
-        return "<%s.%s; proxy of C batch_status instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+        return "<C batch_status instance at %s>" % (self.this,)
     __swig_setmethods__["name"] = _pbs.batch_status_name_set
     __swig_getmethods__["name"] = _pbs.batch_status_name_get
     if _newclass:name = property(_pbs.batch_status_name_get, _pbs.batch_status_name_set)

@@ -4,6 +4,9 @@ GZIP_ENV=--best
 PREFIX=@prefix@
 exec_prefix=$(PREFIX)
 BINDIR=$(PREFIX)/bin
+PBSLIB=@pbspath@
+
+
 DOCDIR=/usr/share/doc/pbs-python
 EXAMPLES=$(DOCDIR)/examples
 

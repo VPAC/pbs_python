@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 #
-# $Id$
+# $Id: setup.py 434 2005-11-04 15:02:07Z bas $
 
 import sys
 import os
 #from pbslibdir import PBS_LIB_DIR
-PBS_LIB_DIR='bas'
+PBS_LIB_DIR='@pbspath@'
 
 from distutils.core import setup, Extension 
 

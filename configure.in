@@ -1,10 +1,24 @@
-AC_INIT(Makefile.in)
+AC_INIT(src/pbs.py)
 AC_SUBST(prefix)
 AC_SUBST(exec_prefix)
 AC_SUBST(pyexecdir)
+AC_SUBST(pbspath)
+
+
+AC_ARG_WITH(pbsdir,
+[  
+  --with-pbsdir=PATH	directory that contains the torque libraries],
+
+  [case "${withval}" in
+	*) pbspath="${withval}" ;;
+  esac], 
+
+  [pbspath=""]
+)dnl
 
 AM_PATH_PYTHON
 
 AC_OUTPUT(
         Makefile
+	setup.py
 	)

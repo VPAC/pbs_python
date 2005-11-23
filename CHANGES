@@ -6,10 +6,16 @@ Configure has a new option:
 If set it will use PATH specified as argument to
 find the pbs/torque libraries. If unset it will use
 some useful defaults to find the libaries.
-
 Suggested by: Troy Baer
 
+PBSQuery.py:
+	- If we can not make an connection with the server
+	  the raise an exception.
 
+pbs_python.spec:
+	-  It can now handle mode bits
+	Author: Martin Pels from SARA
+        
 =========== Version 2.8.0
 
 setup.py:

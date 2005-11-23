@@ -60,6 +60,14 @@ you are interested in, eg: only show state of nodes
 """
 import pbs
 
+class PBSError(Exception):
+        def __init__(self, msg=''):
+                self.msg = msg
+                Exception.__init__(self, msg)
+        def __repr__(self):
+                return self.msg
+        __str__ = __repr__
+
 
 class PBSQuery:
     def __init__(self, server=None):
@@ -72,6 +80,9 @@ class PBSQuery:
     def _connect(self):
        """Connect to the PBS/Torque server"""
        self.con = pbs.pbs_connect(self.server)
+       if self.con < 0:
+          str = "Could not make an connection with %s\n" %(self.server)
+          raise PBSError(str)
 
     def _disconnect(self):
        """Close the PBS/Torque connection"""
@@ -85,6 +96,12 @@ class PBSQuery:
         for attrib in list:
 	    self.attribs[i].name = attrib
 	    i = i + 1
+
+    def _pbsstr_2_list(self, str, delimiter):
+        """Convert an string to an python list and use delimiter as spit char"""
+	l = sting.splitfields(str, delimiter)
+	if len(l) > 1:
+	   return l
 
     def _list_2_dict(self, l, class_func):
         """Convert an pbsstat function list to an class dictionary"""

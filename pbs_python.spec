@@ -10,6 +10,9 @@ BuildRoot: /var/tmp/%{name}-buildroot
 %description
 This package contains the pbs python module.
 
+%prep
+%setup -q
+./configure
 %build
 python setup.py build
 
@@ -33,6 +36,8 @@ rm -rf $RPM_BUILD_ROOT
 /usr/lib/python2.2/site-packages/pbs.pth
 
 %changelog
+* Wed Nov 23 2005 Ramon Bastiaans <bastiaans@sara.nl>
+- Fixed missing prep setup and added configure
 * Tue Nov 22 2005 Martin Pels <pels@sara.nl>
 - Changed default directory permissions
 * Tue Nov 01 2005 Martin Pels <pels@sara.nl> 

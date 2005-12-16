@@ -9,12 +9,13 @@ some useful defaults to find the libaries.
 Suggested by: Troy Baer
 
 PBSQuery.py:
-	- If we can not make an connection with the server
-	  the raise an exception.
+	- If we can not make a connection with the server
+	  then raise an exception and let the programmer 
+	  decides what to do.
 
 pbs_python.spec:
-	-  It can now handle mode bits
-	Author: Martin Pels from SARA
+	- It can now handle mode bits
+	  Author: Martin Pels from SARA
         
 =========== Version 2.8.0
 

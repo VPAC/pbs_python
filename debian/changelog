@@ -1,3 +1,9 @@
+pbs-python (2.8.0-3) unstable; urgency=low
+
+  *  Added new pbsmon example: new_rack_pbsmon.py uses PBSQuery
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Thu,  6 Apr 2006 15:12:03 +0200
+
 pbs-python (2.8.0-2) unstable; urgency=medium
 
   * Used swig 1.3.24 with python2.1 works also on higher python versions

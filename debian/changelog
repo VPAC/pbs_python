@@ -1,4 +1,4 @@
-pbs-python (2.8.0-3) unstable; urgency=low
+pbs-python (2.8.2-1) unstable; urgency=low
 
   *  Added new pbsmon example: new_rack_pbsmon.py uses PBSQuery
 

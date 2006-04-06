@@ -26,7 +26,7 @@ install: pythonlib sara_install
 	(cd examples; for i in *py; do install -D $$i  $(DESTDIR)/$(EXAMPLES)/$${i}; done)
 
 sara_install:
-	install -D examples/rack_pbsmon.py $(DESTDIR)/$(BINDIR)/pbsmon
+	install -D examples/new_rack_pbsmon.py $(DESTDIR)/$(BINDIR)/pbsmon
 
 clean:
 	cd src; make clean	

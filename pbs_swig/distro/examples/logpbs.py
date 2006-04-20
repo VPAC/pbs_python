@@ -4,7 +4,7 @@
 # Date  : 21 Oct 2002
 # Desc. : How to use the logging facility of Openpbs
 #
-# $Id: logpbs.py,v 1.1 2002/10/21 12:31:41 sscpbas Exp $
+# $Id$
 #
 import pbs
 import sys
@@ -25,8 +25,8 @@ def main():
 
    # Open the sched log file
    #
-   if pbs.log_open('', '/var/spool/openpbs/sched_logs'):
-     print 'Could not open log file in /var/spool/openpbs/sched_logs'
+   if pbs.log_open('', '/var/spool/torque/sched_logs'):
+     print 'Could not open log file in /var/spool/torque/sched_logs'
      sys.exit(1)
 
    pbs.log_record(pbs.PBSEVENT_JOB, pbs.PBS_EVENTCLASS_JOB, 'test1', 'this a test message')

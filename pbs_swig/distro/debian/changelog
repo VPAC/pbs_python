@@ -1,3 +1,9 @@
+pbs-python (2.9.0-1) unstable; urgency=low
+
+  * Added new build system for torque 2.1.0 and higher
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Thu, 20 Apr 2006 14:25:21 +0200
+
 pbs-python (2.8.2-3) unstable; urgency=low
 
   * Changed new_rack_pbsmon.py script by walter 

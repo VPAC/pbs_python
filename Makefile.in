@@ -15,7 +15,7 @@ pythonlib:
 	#(cd src; make)
 	python setup.py build
 
-install: pythonlib sara_install
+install: pythonlib
 	#mkdir -p $(DESTDIR)/@pyexecdir@ $(DESTDIR)/$(BINDIR)
 	#install build/lib*/* $(DESTDIR)/@pyexecdir@
 	#(cd examples; for i in *py; do install $$i  $(DESTDIR)/$(EXAMPLES)/$${i//.py/}; done)

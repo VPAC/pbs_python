@@ -1,0 +1,13 @@
+Source: pbs-python
+Section: misc
+Priority: optional
+Maintainer: Yaroslav Halchenko <debian@onerussian.com>
+Build-Depends: debhelper (>> 4.0.0), cdbs, chrpath, python, torque
+Standards-Version: 3.5.8
+
+Package: pbs-python
+Section: misc
+Architecture: i386
+Depends: torque
+Description: XXX
+ XXX

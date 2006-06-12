@@ -1,3 +1,9 @@
+pbs-python (2.9.1-3) unstable; urgency=low
+
+  * New version adjusted new_rack_pbsmon.py to 39 racks 
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Mon, 12 Jun 2006 11:56:26 +0200
+
 pbs-python (2.9.1-2) unstable; urgency=low
 
   * Fixed a bug in new_rack_pbsmon.py 

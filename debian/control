@@ -9,5 +9,7 @@ Package: pbs-python
 Section: misc
 Architecture: i386
 Depends: torque
-Description: XXX
- XXX
+Description: python API for the Torque library
+ PBS_PYTHON interface is a wrapper class for the OPENPBS/TORQUE C LIB API.
+ Now you can write utilities/extensions in Python instead of C.
+

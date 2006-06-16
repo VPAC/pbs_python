@@ -85,7 +85,12 @@ def pbsmon(server = None):
 
 		state = node['state']
 		if string.find(state, ',') >= 0:			# multiple states for a node?
-			state = string.split(state, ',')[-1]
+			state_list = string.split(state, ',')
+			if pbs.ND_down in state_list: 
+				state = pbs.ND_down
+			else:
+				state = string.split(state, ',')[-1]
+				
 
 		state_char = PBS_STATES[state]
 

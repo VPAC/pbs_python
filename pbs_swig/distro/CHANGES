@@ -1,6 +1,6 @@
 =========== Version 2.9.1
 	- Fixed a bug in new_rack_pbsmon.py. Counting of serial
-	  nodes was wrong.
+	  nodes was wrong and state down has topmost priority
 
 =========== Version 2.9.0
 	- Added support for new torque build system 2.1.0

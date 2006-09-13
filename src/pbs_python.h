@@ -327,7 +327,7 @@ extern int pbs_msgjob(int connect, char *job_id, int file, char *message,
 extern int pbs_orderjob (int connect, char *job1, char *job2, char *extend);
 
 extern int pbs_rescquery(int connect, char **IN, int nresc, int *OUTPUT,
-	int *INPUT, int *INPUT, int *INPUT);
+	int *OUTPUT, int *OUTPUT, int *OUTPUT);
 
 extern int pbs_rescreserve(int connect, char **IN, int nresc, resource_t *phandle);
 

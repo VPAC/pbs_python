@@ -3225,12 +3225,12 @@ static PyObject *_wrap_pbs_rescquery(PyObject *self, PyObject *args) {
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
-    PyObject * obj3 = 0 ;
-    PyObject * obj4 = 0 ;
-    PyObject * obj5 = 0 ;
     
     arg4 = &temp4; res4 = SWIG_NEWOBJ;
-    if(!PyArg_ParseTuple(args,(char *)"OOOOOO:pbs_rescquery",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) goto fail;
+    arg5 = &temp5; res5 = SWIG_NEWOBJ;
+    arg6 = &temp6; res6 = SWIG_NEWOBJ;
+    arg7 = &temp7; res7 = SWIG_NEWOBJ;
+    if(!PyArg_ParseTuple(args,(char *)"OOO:pbs_rescquery",&obj0,&obj1,&obj2)) goto fail;
     {
         arg1 = (int)(SWIG_As_int(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
@@ -3273,30 +3273,6 @@ static PyObject *_wrap_pbs_rescquery(PyObject *self, PyObject *args) {
         arg3 = (int)(SWIG_As_int(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    {
-        if (!(SWIG_ConvertPtr(obj3,(void **)(&arg5),SWIGTYPE_p_int,0) != -1)) {
-            temp5 = SWIG_As_int(obj3);
-            if (SWIG_arg_fail(5)) SWIG_fail;
-            arg5 = &temp5;
-            res5 = SWIG_NEWOBJ;
-        }
-    }
-    {
-        if (!(SWIG_ConvertPtr(obj4,(void **)(&arg6),SWIGTYPE_p_int,0) != -1)) {
-            temp6 = SWIG_As_int(obj4);
-            if (SWIG_arg_fail(6)) SWIG_fail;
-            arg6 = &temp6;
-            res6 = SWIG_NEWOBJ;
-        }
-    }
-    {
-        if (!(SWIG_ConvertPtr(obj5,(void **)(&arg7),SWIGTYPE_p_int,0) != -1)) {
-            temp7 = SWIG_As_int(obj5);
-            if (SWIG_arg_fail(7)) SWIG_fail;
-            arg7 = &temp7;
-            res7 = SWIG_NEWOBJ;
-        }
-    }
     result = (int)pbs_rescquery(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
     
     {
@@ -3304,6 +3280,12 @@ static PyObject *_wrap_pbs_rescquery(PyObject *self, PyObject *args) {
     }
     resultobj = t_output_helper(resultobj, ((res4 == SWIG_NEWOBJ) ?
     SWIG_From_int((*arg4)) : SWIG_NewPointerObj((void*)(arg4), SWIGTYPE_p_int, 0)));
+    resultobj = t_output_helper(resultobj, ((res5 == SWIG_NEWOBJ) ?
+    SWIG_From_int((*arg5)) : SWIG_NewPointerObj((void*)(arg5), SWIGTYPE_p_int, 0)));
+    resultobj = t_output_helper(resultobj, ((res6 == SWIG_NEWOBJ) ?
+    SWIG_From_int((*arg6)) : SWIG_NewPointerObj((void*)(arg6), SWIGTYPE_p_int, 0)));
+    resultobj = t_output_helper(resultobj, ((res7 == SWIG_NEWOBJ) ?
+    SWIG_From_int((*arg7)) : SWIG_NewPointerObj((void*)(arg7), SWIGTYPE_p_int, 0)));
     {
         free( (char *) arg2);
     }

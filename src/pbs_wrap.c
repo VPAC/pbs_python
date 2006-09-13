@@ -1358,17 +1358,14 @@ int Get_List_Size(PyObject *src)
 {
   if (PyList_Check(src))
     return(PyList_Size(src));
-  else {
 
-    /* check if valid NULL pointer */
-    if ( PyString_Check(src) ) {
-      if ( ! strcmp(PyString_AsString(src), "NULL") )
-        return(0);
-    }
-    else
-      return(-1);
+  /* check if valid NULL pointer */
+  if ( PyString_Check(src) ) {
+    if ( ! strcmp(PyString_AsString(src), "NULL") )
+      return(0);
+  }
+  return(-1);
 
-  } // end else
 } // end Get_List_Size()
 
 
@@ -1459,7 +1456,7 @@ int get_error()
 {
    char *errmsg;
 
-   errmsg = pbse_to_txt();
+   errmsg = pbse_to_txt(pbs_errno);
    if (SARA_DEBUG)
    {
       printf("Bas = %d\n", pbs_errno);
@@ -1684,14 +1681,7 @@ SWIG_AsNewCharPtr(PyObject *obj, char **val)
   return 0;
 }
 
-char avail(int,char *);
-
-SWIGINTERNSHORT PyObject*
-  SWIG_From_char(char c) 
-{ 
-  return PyString_FromStringAndSize(&c,1);
-}
-
+char *avail(int,char *);
 int pbs_asyrunjob(int,char *,char *,char *);
 int pbs_alterjob(int,char *,struct attrl *,char *);
 int pbs_connect(char *);
@@ -1707,6 +1697,26 @@ int pbs_movejob(int,char *,char *,char *);
 int pbs_msgjob(int,char *,int,char *,char *);
 int pbs_orderjob(int,char *,char *,char *);
 int pbs_rescquery(int,char **,int,int *,int *,int *,int *);
+
+SWIGINTERN PyObject*
+t_output_helper(PyObject* target, PyObject* o) {
+  if (!target) {
+    target = o;
+  } else if (target == Py_None) {  
+    Py_DECREF(target);
+    target = o;
+  } else {
+    if (!PyList_Check(target)) {
+      PyObject *o2 = target;
+      target = PyList_New(1);
+      PyList_SetItem(target, 0, o2);
+    }
+    PyList_Append(target,o);
+    }
+  return target;
+}
+
+
 int pbs_rescreserve(int,char **,int,resource_t *);
 int pbs_rescrelease(int,resource_t);
 int pbs_rerunjob(int,char *,char *);
@@ -2647,7 +2657,7 @@ static PyObject *_wrap_avail(PyObject *self, PyObject *args) {
     PyObject *resultobj;
     int arg1 ;
     char *arg2 = (char *) 0 ;
-    char result;
+    char *result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     
@@ -2659,11 +2669,9 @@ static PyObject *_wrap_avail(PyObject *self, PyObject *args) {
     if (!SWIG_AsCharPtr(obj1, (char**)&arg2)) {
         SWIG_arg_fail(2);SWIG_fail;
     }
-    result = (char)avail(arg1,arg2);
+    result = (char *)avail(arg1,arg2);
     
-    {
-        resultobj = SWIG_From_char((char)(result)); 
-    }
+    resultobj = SWIG_FromCharPtr(result);
     return resultobj;
     fail:
     return NULL;
@@ -3206,15 +3214,23 @@ static PyObject *_wrap_pbs_rescquery(PyObject *self, PyObject *args) {
     int *arg6 = (int *) 0 ;
     int *arg7 = (int *) 0 ;
     int result;
+    int temp4 ;
+    int res4 = 0 ;
+    int temp5 ;
+    int res5 = 0 ;
+    int temp6 ;
+    int res6 = 0 ;
+    int temp7 ;
+    int res7 = 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
     PyObject * obj3 = 0 ;
     PyObject * obj4 = 0 ;
     PyObject * obj5 = 0 ;
-    PyObject * obj6 = 0 ;
     
-    if(!PyArg_ParseTuple(args,(char *)"OOOOOOO:pbs_rescquery",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6)) goto fail;
+    arg4 = &temp4; res4 = SWIG_NEWOBJ;
+    if(!PyArg_ParseTuple(args,(char *)"OOOOOO:pbs_rescquery",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) goto fail;
     {
         arg1 = (int)(SWIG_As_int(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
@@ -3257,19 +3273,37 @@ static PyObject *_wrap_pbs_rescquery(PyObject *self, PyObject *args) {
         arg3 = (int)(SWIG_As_int(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    SWIG_Python_ConvertPtr(obj3, (void **)&arg4, SWIGTYPE_p_int, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(4)) SWIG_fail;
-    SWIG_Python_ConvertPtr(obj4, (void **)&arg5, SWIGTYPE_p_int, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(5)) SWIG_fail;
-    SWIG_Python_ConvertPtr(obj5, (void **)&arg6, SWIGTYPE_p_int, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(6)) SWIG_fail;
-    SWIG_Python_ConvertPtr(obj6, (void **)&arg7, SWIGTYPE_p_int, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(7)) SWIG_fail;
+    {
+        if (!(SWIG_ConvertPtr(obj3,(void **)(&arg5),SWIGTYPE_p_int,0) != -1)) {
+            temp5 = SWIG_As_int(obj3);
+            if (SWIG_arg_fail(5)) SWIG_fail;
+            arg5 = &temp5;
+            res5 = SWIG_NEWOBJ;
+        }
+    }
+    {
+        if (!(SWIG_ConvertPtr(obj4,(void **)(&arg6),SWIGTYPE_p_int,0) != -1)) {
+            temp6 = SWIG_As_int(obj4);
+            if (SWIG_arg_fail(6)) SWIG_fail;
+            arg6 = &temp6;
+            res6 = SWIG_NEWOBJ;
+        }
+    }
+    {
+        if (!(SWIG_ConvertPtr(obj5,(void **)(&arg7),SWIGTYPE_p_int,0) != -1)) {
+            temp7 = SWIG_As_int(obj5);
+            if (SWIG_arg_fail(7)) SWIG_fail;
+            arg7 = &temp7;
+            res7 = SWIG_NEWOBJ;
+        }
+    }
     result = (int)pbs_rescquery(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
     
     {
         resultobj = SWIG_From_int((int)(result)); 
     }
+    resultobj = t_output_helper(resultobj, ((res4 == SWIG_NEWOBJ) ?
+    SWIG_From_int((*arg4)) : SWIG_NewPointerObj((void*)(arg4), SWIGTYPE_p_int, 0)));
     {
         free( (char *) arg2);
     }

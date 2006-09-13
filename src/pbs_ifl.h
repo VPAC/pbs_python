@@ -345,7 +345,7 @@ extern char *
 pbs_server;		/* server attempted to connect | connected to */
 			/* see pbs_connect(3B)			      */
 
-extern char avail(int connect, char *resc);
+extern char * avail(int connect, char *resc);
 
 extern int pbs_asyrunjob(int c, char *jobid, char *location, char *extend);
 

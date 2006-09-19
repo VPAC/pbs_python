@@ -1,3 +1,9 @@
+pbs-python (2.9.2-1) unstable; urgency=low
+
+  * New upstream version, read CHANGES file 
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Tue, 19 Sep 2006 16:17:54 +0200
+
 pbs-python (2.9.1-6) unstable; urgency=low
 
   *  New torque build system

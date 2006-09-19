@@ -3560,16 +3560,30 @@ static PyObject *_wrap_pbs_selectjob(PyObject *self, PyObject *args) {
     {
         int len=0, i;
         
+        if (SARA_DEBUG) 
+        printf("Converteren char ** -> python list\n");
+        
+        
         if (result == NULL) 
         resultobj = PyList_New(0);
         else {
             while (result[len]) 
             len++;
-            
-            resultobj = PyList_New(len);
-            for (i=0; i < len; i++ )
-            PyList_SetItem(resultobj, i , PyString_FromString(result[i])); 
         }
+        
+        if (SARA_DEBUG) 
+        printf("\tSize of List: %d\n", len);
+        
+        resultobj = PyList_New(len);
+        if (SARA_DEBUG) 
+        printf("\t<Contents>\n");
+        for (i=0; i < len; i++ ) {
+            PyList_SetItem(resultobj, i , PyString_FromString(result[i])); 
+            if (SARA_DEBUG) 
+            printf("\t\t- %s\n", result[i]);
+        }
+        if (SARA_DEBUG) 
+        printf("\t</Contents>\n");
     }
     return resultobj;
     fail:

@@ -1348,7 +1348,7 @@ static swig_type_info *swig_types[10];
 #include "rm.h"
 #include "log.h"
 
-#define SARA_DEBUG 0
+#define SARA_DEBUG 1
 
 //extern int pbs_errno;
 
@@ -1689,7 +1689,6 @@ int pbs_query_max_connections();
 char *pbs_default(void);
 int pbs_deljob(int,char *,char *);
 int pbs_disconnect(int);
-char *pbs_geterrmsg(int);
 int pbs_holdjob(int,char *,char *,char *);
 char *pbs_locjob(int,char *,char *);
 int pbs_manager(int,int,int,char *,struct attropl *,char *);
@@ -1717,8 +1716,8 @@ t_output_helper(PyObject* target, PyObject* o) {
 }
 
 
-int pbs_rescreserve(int,char **,int,resource_t *);
-int pbs_rescrelease(int,resource_t);
+int pbs_rescreserve(int,char **,int,int *);
+int pbs_rescrelease(int,int);
 int pbs_rerunjob(int,char *,char *);
 int pbs_rlsjob(int,char *,char *,char *);
 int pbs_runjob(int,char *,char *,char *);
@@ -2904,26 +2903,6 @@ static PyObject *_wrap_pbs_disconnect(PyObject *self, PyObject *args) {
 }
 
 
-static PyObject *_wrap_pbs_geterrmsg(PyObject *self, PyObject *args) {
-    PyObject *resultobj;
-    int arg1 ;
-    char *result;
-    PyObject * obj0 = 0 ;
-    
-    if(!PyArg_ParseTuple(args,(char *)"O:pbs_geterrmsg",&obj0)) goto fail;
-    {
-        arg1 = (int)(SWIG_As_int(obj0)); 
-        if (SWIG_arg_fail(1)) SWIG_fail;
-    }
-    result = (char *)pbs_geterrmsg(arg1);
-    
-    resultobj = SWIG_FromCharPtr(result);
-    return resultobj;
-    fail:
-    return NULL;
-}
-
-
 static PyObject *_wrap_pbs_holdjob(PyObject *self, PyObject *args) {
     PyObject *resultobj;
     int arg1 ;
@@ -3303,14 +3282,16 @@ static PyObject *_wrap_pbs_rescreserve(PyObject *self, PyObject *args) {
     int arg1 ;
     char **arg2 = (char **) 0 ;
     int arg3 ;
-    resource_t *arg4 = (resource_t *) 0 ;
+    int *arg4 = (int *) 0 ;
     int result;
+    int temp4 ;
+    int res4 = 0 ;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
     PyObject * obj2 = 0 ;
-    PyObject * obj3 = 0 ;
     
-    if(!PyArg_ParseTuple(args,(char *)"OOOO:pbs_rescreserve",&obj0,&obj1,&obj2,&obj3)) goto fail;
+    arg4 = &temp4; res4 = SWIG_NEWOBJ;
+    if(!PyArg_ParseTuple(args,(char *)"OOO:pbs_rescreserve",&obj0,&obj1,&obj2)) goto fail;
     {
         arg1 = (int)(SWIG_As_int(obj0)); 
         if (SWIG_arg_fail(1)) SWIG_fail;
@@ -3353,13 +3334,13 @@ static PyObject *_wrap_pbs_rescreserve(PyObject *self, PyObject *args) {
         arg3 = (int)(SWIG_As_int(obj2)); 
         if (SWIG_arg_fail(3)) SWIG_fail;
     }
-    SWIG_Python_ConvertPtr(obj3, (void **)&arg4, SWIGTYPE_p_int, SWIG_POINTER_EXCEPTION | 0);
-    if (SWIG_arg_fail(4)) SWIG_fail;
     result = (int)pbs_rescreserve(arg1,arg2,arg3,arg4);
     
     {
         resultobj = SWIG_From_int((int)(result)); 
     }
+    resultobj = t_output_helper(resultobj, ((res4 == SWIG_NEWOBJ) ?
+    SWIG_From_int((*arg4)) : SWIG_NewPointerObj((void*)(arg4), SWIGTYPE_p_int, 0)));
     {
         free( (char *) arg2);
     }
@@ -3375,7 +3356,7 @@ static PyObject *_wrap_pbs_rescreserve(PyObject *self, PyObject *args) {
 static PyObject *_wrap_pbs_rescrelease(PyObject *self, PyObject *args) {
     PyObject *resultobj;
     int arg1 ;
-    resource_t arg2 ;
+    int arg2 ;
     int result;
     PyObject * obj0 = 0 ;
     PyObject * obj1 = 0 ;
@@ -3386,7 +3367,7 @@ static PyObject *_wrap_pbs_rescrelease(PyObject *self, PyObject *args) {
         if (SWIG_arg_fail(1)) SWIG_fail;
     }
     {
-        arg2 = (resource_t)(SWIG_As_int(obj1)); 
+        arg2 = (int)(SWIG_As_int(obj1)); 
         if (SWIG_arg_fail(2)) SWIG_fail;
     }
     result = (int)pbs_rescrelease(arg1,arg2);
@@ -4971,7 +4952,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pbs_default", _wrap_pbs_default, METH_VARARGS, NULL},
 	 { (char *)"pbs_deljob", _wrap_pbs_deljob, METH_VARARGS, NULL},
 	 { (char *)"pbs_disconnect", _wrap_pbs_disconnect, METH_VARARGS, NULL},
-	 { (char *)"pbs_geterrmsg", _wrap_pbs_geterrmsg, METH_VARARGS, NULL},
 	 { (char *)"pbs_holdjob", _wrap_pbs_holdjob, METH_VARARGS, NULL},
 	 { (char *)"pbs_locjob", _wrap_pbs_locjob, METH_VARARGS, NULL},
 	 { (char *)"pbs_manager", _wrap_pbs_manager, METH_VARARGS, NULL},
@@ -5027,7 +5007,7 @@ static swig_type_info _swigt__size_t[] = {{"_size_t", 0, "size_t", 0, 0, 0, 0},{
 static swig_type_info _swigt__p_attrl[] = {{"_p_attrl", 0, "struct attrl *", 0, 0, 0, 0},{"_p_attrl", 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0}};
 static swig_type_info _swigt__p_long[] = {{"_p_long", 0, "long *", 0, 0, 0, 0},{"_p_long", 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0}};
 static swig_type_info _swigt__ptrdiff_t[] = {{"_ptrdiff_t", 0, "ptrdiff_t", 0, 0, 0, 0},{"_ptrdiff_t", 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0}};
-static swig_type_info _swigt__p_int[] = {{"_p_int", 0, "int *|resource_t *", 0, 0, 0, 0},{"_p_int", 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0}};
+static swig_type_info _swigt__p_int[] = {{"_p_int", 0, "int *", 0, 0, 0, 0},{"_p_int", 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0}};
 
 static swig_type_info *swig_types_initial[] = {
 _swigt__p_batch_status, 
@@ -5804,6 +5784,12 @@ SWIGEXPORT(void) SWIG_init(void) {
     }
     {
         PyDict_SetItemString(d,"DFLT", SWIG_From_int((int)(DFLT))); 
+    }
+    {
+        PyDict_SetItemString(d,"RESOURCE_T_NULL", SWIG_From_int((int)(0))); 
+    }
+    {
+        PyDict_SetItemString(d,"RESOURCE_T_ALL", SWIG_From_int((int)(-1))); 
     }
     PyDict_SetItemString(d,(char*)"cvar", SWIG_globals);
     SWIG_addvarlink(SWIG_globals,(char*)"pbs_errno",_wrap_pbs_errno_get, _wrap_pbs_errno_set);

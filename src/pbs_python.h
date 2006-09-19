@@ -278,11 +278,8 @@ struct batch_status {
 	char		    *text;
 };
 
-/* Resource Reservation Information */
-typedef int	resource_t;	/* resource reservation handle */
-
-#define RESOURCE_T_NULL		(resource_t)0
-#define RESOURCE_T_ALL		(resource_t)-1
+#define RESOURCE_T_NULL		0
+#define RESOURCE_T_ALL		-1
 
 extern int
 pbs_errno;		/* error number */
@@ -308,7 +305,9 @@ extern int pbs_deljob(int connect, char *job_id, char *extend);
 
 extern int pbs_disconnect(int connect);
 
+/*  Replaced by a python function. No need to wrap it HvB
 extern char * pbs_geterrmsg(int connect);
+*/
 
 extern int pbs_holdjob(int connect, char *job_id, char *hold_type, 
 		       char *extend);
@@ -329,9 +328,9 @@ extern int pbs_orderjob (int connect, char *job1, char *job2, char *extend);
 extern int pbs_rescquery(int connect, char **IN, int nresc, int *OUTPUT,
 	int *OUTPUT, int *OUTPUT, int *OUTPUT);
 
-extern int pbs_rescreserve(int connect, char **IN, int nresc, resource_t *phandle);
+extern int pbs_rescreserve(int connect, char **IN, int nresc, int *OUTPUT);
 
-extern int pbs_rescrelease(int connect, resource_t rhandle);
+extern int pbs_rescrelease(int connect, int resource_id);
 
 extern int pbs_rerunjob(int connect, char *job_id, char *extend);
 

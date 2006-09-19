@@ -309,6 +309,8 @@ class batch_statusPtr(batch_status):
         _swig_setattr(self, batch_status,self.__class__,batch_status)
 _pbs.batch_status_swigregister(batch_statusPtr)
 
+RESOURCE_T_NULL = _pbs.RESOURCE_T_NULL
+RESOURCE_T_ALL = _pbs.RESOURCE_T_ALL
 
 avail = _pbs.avail
 
@@ -325,8 +327,6 @@ pbs_default = _pbs.pbs_default
 pbs_deljob = _pbs.pbs_deljob
 
 pbs_disconnect = _pbs.pbs_disconnect
-
-pbs_geterrmsg = _pbs.pbs_geterrmsg
 
 pbs_holdjob = _pbs.pbs_holdjob
 

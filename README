@@ -1,6 +1,9 @@
 the latest stable pbs_python interface is available from:
 	ftp://ftp.sara.nl/pub/outgoing/pbs_python.tar.gz
 
+Information, documentation and reporting bugs for the package:
+	https://subtrac.sara.nl/oss/pbs_python
+
 Pbs_python interface is a wrapper class for the OPENPBS/TORQUE C LIB API. 
 Now you can write utilities/extensions in Python instead of C.  
 
@@ -11,10 +14,6 @@ The Python wrapper class is tested on:
 
   - For X86_64 systems you have to compile torque/openpbs with 
     the -fPIC option. Else you can not build the python module
-
-  - Compaq Alpha cluster debian GNU/LINUX woody OPENPBS 2.3.16
-
-  - SGI Origin 3000: Irix 6.5, OPENPBS 2.3.16
 
   - TRU64 system, NOTE: must rename libnet.a to libpbs_net.a and edit
     setup.py to reflect the change. There is also a system wide libnet.so.
@@ -36,9 +35,9 @@ to the LIBS line
 
 --- Testing the package:
 
-The test programs are include as a reference how to use the PBS
+The test programs are include as a reference how to use the pbs
 python module. You have to edit some test programs to reflect
-your PBS installation.
+your PBS/Torque installation.
 
 pbsmon.py        - ascii xpbsmon
 rack_pbsmon.py   - ascii xpbsmon by rack layout
@@ -50,7 +49,6 @@ logpbs.py	 - Shows the usage of the PBS logging routines
 new_interface.py - Example how to use PBSQuery module
 PBSQuery.py      - python <install_path>/PBSQuery.py (has builtin demo)
 
-Comments,suggestions or bugfixes mail them to: Bas van der Vlies <basv@sara.nl>
 For more info about SARA see:
 	http://www.sara.nl/index_eng.html
 	

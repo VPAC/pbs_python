@@ -4,7 +4,7 @@
 # Date  : 27 Feb 2002
 # Desc. : This will query the pbs_mom daemon about its resources
 #
-# $Id: resmom_info.py,v 1.4 2002/10/22 08:58:48 sscpbas Exp $
+# $Id$
 #
 import pbs
 import sys

@@ -479,6 +479,10 @@ default_mom_res = [
 	"nsessions",	# number of sessions in the system
 	"nusers",	# number of users in the system
 	"size",		# size of a file or filesystem
+	"host",		# Name  of host on which job should be run 
+	"nodes",	# Number and/or type of nodes to be reserved for exclusive use by the job
+	"other",	# Allows a  user  to  specify  site  specific  information
+	"software",	# Allows a user to specify software required by the job
 ]
 
 def check_resp(dict, str):
@@ -554,7 +558,7 @@ def version():
   """
   Returns the pbs python interface version as a string. 
   """
-  return '2.9.2'
+  return '2.9.3-beta'
 
 # A useful dict with error codes to text
 #

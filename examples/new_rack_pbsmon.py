@@ -204,10 +204,12 @@ def pbsmon_summary(server = None):
 				count_states[pbs.ND_free] -=  1
 				count_states[pbs_ND_single] += 1
 			else:
-				if  node['properties'].find('gigabit') >= 0:
-					count_states[pbs_ND_free_serial] +=  1 
-				else:
+				if  node['properties'].find('infiniband') >= 0:
 					count_states[pbs_ND_free_parallel] +=  1 
+				elif  node['properties'].find('gigabit') >= 0:
+					count_states[pbs_ND_free_serial] +=  1 
+				#else:
+				#	count_states[pbs_ND_free_serial] +=  1 
 				
 #		print 'TD: %s %s' % (nodename, state_char)
 		dummy = string.split(nodename, '-')

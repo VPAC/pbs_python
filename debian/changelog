@@ -1,3 +1,9 @@
+pbs-python (2.9.2-2) unstable; urgency=low
+
+  * new_rack_pbsmon.py fixes serial/parallel calculations 
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Tue, 10 Oct 2006 12:13:25 +0200
+
 pbs-python (2.9.2-1) unstable; urgency=low
 
   * New upstream version, read CHANGES file 

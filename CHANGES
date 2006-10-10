@@ -1,3 +1,11 @@
+=========== Version 2.9.X
+	-  Function pbs.pbs_geterrmsg does not exits any more is
+	   replaced by pbs.error():
+                errno, text = pbs.error()
+		print errno, text
+	   Reported by: pk at q-leap dot com
+	   Fixed by   : Bas van der Vlies
+
 =========== Version 2.9.2
 	- The function pbs_rescquery() did not work. Fixed it
 	- The function avail(), did not work fixed it

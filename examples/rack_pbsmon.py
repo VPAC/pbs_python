@@ -48,7 +48,8 @@ def pbsmon():
 
 	con = pbs.pbs_connect(pbs_server)
 	if con < 0:
-		print pbs.pbs_geterrmsg(con)
+		errno, text = pbs.error()
+		print errno, text
 		sys.exit(1)
 
 # get the state of the nodes

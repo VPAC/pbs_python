@@ -5,7 +5,7 @@
 # Desc. : Set a node property
 #
 # CVS info:
-# $Id: set_property.py,v 1.1 2002/02/27 14:35:51 sscpbas Exp $
+# $Id$
 #
 #
 #
@@ -29,6 +29,8 @@ def main():
                     "e2", attrop_l, 'NULL')
 
   if r > 0:
-    print r, ";", pbs.pbs_geterrmsg(con) 
+    print r, ";"
+    errno, text = pbs.error() 
+    print errno, text
 
 main()

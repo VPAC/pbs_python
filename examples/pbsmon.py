@@ -103,8 +103,9 @@ def main():
 
   con = pbs.pbs_connect(pbs_server)
   if con < 0:
-   print  pbs.pbs_geterrmsg(con)
-   sys.exit(1)
+     errno, text = pbs.error()
+     print errno, text
+     sys.exit(1)
 
   # We are only interested in the state and jobs of a node
   #

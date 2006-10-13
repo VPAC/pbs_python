@@ -6,6 +6,12 @@
 	   Reported by: pk at q-leap dot com
 	   Fixed by   : Bas van der Vlies
 
+	- PBSQuery.py fixed an error is the has_key() function of 
+	  batch objects. It returned None if het key was not found,
+	  must be 0.
+	  Reported by: Ramon Bastiaans
+	  Fixedby    : Bas van der Vlies
+
 =========== Version 2.9.2
 	- The function pbs_rescquery() did not work. Fixed it
 	- The function avail(), did not work fixed it

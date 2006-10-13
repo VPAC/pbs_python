@@ -239,7 +239,7 @@ class _PBSobject:
         if self.attribs.has_key(key):
 	   return self.TRUE
         else:
-	   return None
+	   return self.FAlSE
 
     def keys(self):
         return self.attribs.keys()

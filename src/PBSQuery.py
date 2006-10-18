@@ -117,20 +117,9 @@ class PBSQuery:
 			for a in item.attribs:
 				new.name = item.name 
 				if a.resource:
-					#new.attribs[a.name + '.' + a.resource] = a.value
 					new[a.name + '.' + a.resource] = a.value
 				else:
-					#new.attribs[a.name] = a.value
 					new[a.name] = a.value
-
-		#print new
-		print 'Basje'
-		print self.d['q_express'].has_key('resources_max.walltime')
-		#print 'items ', new.items() 
-		q_attr =  self.d['q_express']
-		print 'q_attr: ', type(q_attr)
-		print 'q_attr class: ', q_attr.__class__
-		print 'has_key', q_attr.has_key('resources_max.walltime')
 		self._free(l)
 	        
 	def _free(self, memory):
@@ -169,9 +158,7 @@ class PBSQuery:
 
 	def getqueue(self, name, attrib_list=None):
 		self._statqueue(name, attrib_list)
-		print 'getqueue ', self.d['q_express'].has_key('resources_max.walltime')
 		q_attrs = self.d['q_express']
-		print 'getqueue has_key', q_attrs.has_key('resources_max.walltime') 
 		return self.d
         
 	def getqueues(self, attrib_list=None):
@@ -294,6 +281,10 @@ def main():
 	for queue in queues.values():
 		if queue.is_execution():
 			print queue
+		if queue.has_key('acl_groups'):
+			print 'acl_groups: yes'
+		else:
+			print 'acl_groups: no'
 
 	jobs = p.getjobs()
 	for name,job in jobs.items():

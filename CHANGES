@@ -6,8 +6,8 @@
 	   Reported by: pk at q-leap dot com
 	   Fixed by   : Bas van der Vlies
 
-	- PBSQuery.py rewrite make use of UserDict module
-	  Reported by: Ramon Bastiaans
+	- PBSQuery.py rewrite make use of UserDict module.
+	  Suggested by: Ramon Bastiaans
 	  Fixed by    : Bas van der Vlies
 
 =========== Version 2.9.2

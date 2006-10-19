@@ -1,3 +1,9 @@
+pbs-python (2.9.2-4) unstable; urgency=low
+
+  * PBSQuery: Make use of UserDict module
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Wed, 18 Oct 2006 11:46:34 +0200
+
 pbs-python (2.9.2-3) unstable; urgency=low
 
   *  Fixed a has_key bug must return zero instead of None

@@ -60,6 +60,7 @@ you are interested in, eg: only show state of nodes
 """
 import pbs
 import UserDict
+import string
 import sys
 
 class PBSError(Exception):
@@ -231,6 +232,14 @@ class job(_PBSobject):
 		else:
 			return self.TRUE 
 
+	def get_nodes(self):
+		nodes = self.get_value('exec_host')
+		if nodes:
+			l = string.split(nodes,'+')
+			return l
+		return list()
+
+
 class node(_PBSobject):
 	"""PBS node class"""
 	
@@ -250,10 +259,6 @@ class node(_PBSobject):
 
 class queue(_PBSobject):
 	"""PBS queue class"""
-	def __init__(self):
-		UserDict.UserDict.__init__(self)
-		self.name = None
-
 	def is_enabled(self):
 		if self.get_value('enabled') == 'True':
 			return self.TRUE 
@@ -269,22 +274,26 @@ class queue(_PBSobject):
 class server(_PBSobject):
 	"""PBS server class"""
 
+	def get_version(self):
+		return self.get_value('pbs_version')
+
 def main():
 	p = PBSQuery() 
 	serverinfo = p.get_serverinfo()
-	for name, server in serverinfo.items():
-		print server
-	for key in server.keys():
-		print key, ' = ', server[key]
+	for server in serverinfo.keys():
+		print server, ' version: ', serverinfo[server].get_version()
+	for resource in serverinfo[server].keys():
+		print '\t ', resource, ' = ', serverinfo[server][resource]
 
 	queues = p.getqueues()
-	for queue in queues.values():
-		if queue.is_execution():
-			print queue
-		if queue.has_key('acl_groups'):
-			print 'acl_groups: yes'
+	for queue in queues.keys():
+		print queue
+		if queues[queue].is_execution():
+			print '\t ', queues[queue]
+		if queues[queue].has_key('acl_groups'):
+			print '\t acl_groups: yes'
 		else:
-			print 'acl_groups: no'
+			print '\t acl_groups: no'
 
 	jobs = p.getjobs()
 	for name,job in jobs.items():

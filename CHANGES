@@ -10,6 +10,12 @@
 	  Suggested by: Ramon Bastiaans
 	  Fixed by    : Bas van der Vlies
 
+	- PBSQuery.py
+	   * Added get_version() for server class, returns the version of 
+	     the batch server
+	   * Added get_nodes() for job class, returns a list of nodes on 
+	     which the job is run
+
 =========== Version 2.9.2
 	- The function pbs_rescquery() did not work. Fixed it
 	- The function avail(), did not work fixed it

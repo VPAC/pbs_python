@@ -4,8 +4,10 @@ the latest stable pbs_python interface is available from:
 Information, documentation and reporting bugs for the package:
 	https://subtrac.sara.nl/oss/pbs_python
 
-Pbs_python interface is a wrapper class for the OPENPBS/TORQUE C LIB API. 
-Now you can write utilities/extensions in Python instead of C.  
+=============== Brief description =============================
+Pbs_python interface is a wrapper class for the OPENPBS/TORQUE 
+C LIB API.  Now you can write utilities/extensions in Python 
+instead of C.  
 
 The Python wrapper class is tested on:
 
@@ -15,15 +17,16 @@ The Python wrapper class is tested on:
   - For X86_64 systems you have to compile torque/openpbs with 
     the -fPIC option. Else you can not build the python module
 
-  - TRU64 system, NOTE: must rename libnet.a to libpbs_net.a and edit
-    setup.py to reflect the change. There is also a system wide libnet.so.
+  - TRU64 system, NOTE: must rename libnet.a to libpbs_net.a and 
+    edit setup.py to reflect the change. There is also a system wide 
+    libnet.so.
 
   - It should run on different OSes.
 
-In the past our Alpha cluster was redhat (6.2)  and we had to add '-lots'
-to the LIBS line
+In the past our Alpha cluster was redhat (6.2)  and we had to 
+add '-lots' to the LIBS line
 
---- Compile and install the package: (Require python 2.1 and higher)
+-- Compile and install the package: (Require python 2.1 and higher)
 
   As for python version 1.6 and higher the procedure is:
     ./configure

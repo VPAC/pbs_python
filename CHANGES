@@ -1,4 +1,4 @@
-=========== Version 2.9.X
+=========== Version 2.9.4
 	-  Function pbs.pbs_geterrmsg does not exits any more is
 	   replaced by pbs.error():
                 errno, text = pbs.error()
@@ -6,15 +6,18 @@
 	   Reported by: pk at q-leap dot com
 	   Fixed by   : Bas van der Vlies
 
-	- PBSQuery.py rewrite make use of UserDict module.
-	  Suggested by: Ramon Bastiaans
-	  Fixed by    : Bas van der Vlies
-
 	- PBSQuery.py
 	   * Added get_version() for server class, returns the version of 
 	     the batch server
+	     Added by    : Bas van der Vlies
+
 	   * Added get_nodes() for job class, returns a list of nodes on 
 	     which the job is run
+	     Added by    : Bas van der Vlies
+
+	   * PBSQuery.py rewrite make use of UserDict module.
+	     Suggested by: Ramon Bastiaans
+	     Fixed by    : Bas van der Vlies
 
 =========== Version 2.9.2
 	- The function pbs_rescquery() did not work. Fixed it

@@ -1,3 +1,9 @@
+pbs-python (2.9.4-1) unstable; urgency=low
+
+  * New version with all the fixes as mentioned below 
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Thu, 16 Nov 2006 14:29:16 +0100
+
 pbs-python (2.9.2-4) unstable; urgency=low
 
   * PBSQuery: Make use of UserDict module

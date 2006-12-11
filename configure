@@ -1236,6 +1236,7 @@ if test "${with_pbsdir+set}" = set; then
   esac
 else
   pbspath=""
+  #[pbspath=`pbs-config --libs`]
 
 fi;
 

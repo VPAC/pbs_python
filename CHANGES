@@ -1,3 +1,9 @@
+=========== XXXXXXX
+	- pbs_python.spec file patch added libdir and python defines so it will
+	  build for RHEL5.1/CentOS 5.1
+	  by        : Michael Sternberg <sternberg add anl dot gov>
+	  applied by: Bas van der Vlies
+
 =========== Version 2.9.4
 	-  Function pbs.pbs_geterrmsg does not exits any more is
 	   replaced by pbs.error():

@@ -200,6 +200,8 @@
 #define ATTR_NODE_properties	"properties"
 #define ATTR_NODE_ntype         "ntype"
 #define ATTR_NODE_jobs          "jobs"
+#define ATTR_NODE_status	"status"
+#define ATTR_NODE_note		"note"
 
 /* various attribute values */
 

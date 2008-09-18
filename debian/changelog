@@ -4,7 +4,7 @@ pbs-python (2.9.6-1) intrepid; urgency=low
     will build for RHEL5.1/CentOS 5.1 (by Michael Sternberg) and some
     minor changes to the pbs_ifl.h file
 
- -- Dennis Stam <dennis@sara0318.ka.sara.nl>  Thu, 18 Sep 2008 11:22:57 +0200
+ -- Dennis Stam <dennis.stam@sara.nl>  Thu, 18 Sep 2008 11:23:16 +0200
 
 pbs-python (2.9.4-1) unstable; urgency=low
 

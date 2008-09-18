@@ -1,13 +1,13 @@
-=========== XXXXXXX
+=========== 2.9.6 
 	- pbs_python.spec file patch added libdir and python defines so it will
 	  build for RHEL5.1/CentOS 5.1
 	  by        : Michael Sternberg <sternberg add anl dot gov>
 	  applied by: Bas van der Vlies
 
-=========== Version 2.9.6
 	- Added two new attributes to the pbs_ifl.h
 		* ATTR_NODE_status
 		* ATTR_NODE_note
+	  Added by	: Dennis Stam <dennis.stam@sara.nl>
 
 =========== Version 2.9.4
 	-  Function pbs.pbs_geterrmsg does not exits any more is

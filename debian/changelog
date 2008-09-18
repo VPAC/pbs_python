@@ -1,3 +1,9 @@
+pbs-python (2.9.6-1ubuntu1) intrepid; urgency=low
+
+  * New version with some minor changes to the pbs_ifl.h
+
+ -- Dennis Stam <dennis.stam@sara.nl>  Thu, 18 Sep 2008 11:06:26 +0200
+
 pbs-python (2.9.4-1) unstable; urgency=low
 
   * New version with all the fixes as mentioned below 

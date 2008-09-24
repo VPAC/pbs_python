@@ -30,7 +30,10 @@
 	        attributes 'state' and 'properties':
 		 attrl = [ 'state', 'properties' ]
 		 getnodes_with_property('cores2', attrl)
-	  Added by: Bas van der Vlies
+
+             Only for torque version > 2.1.0
+
+	   Added by: Bas van der Vlies
 
 =========== Version 2.9.4
 	-  Function pbs.pbs_geterrmsg does not exits any more is

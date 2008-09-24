@@ -1,3 +1,9 @@
+pbs-python (2.9.8-1) intrepid; urgency=low
+
+  * New version with updated torque header file (version 2.X)
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Wed, 24 Sep 2008 12:32:29 +0200
+
 pbs-python (2.9.6-1) intrepid; urgency=low
 
   * pbs_python.spec file patch added libdir and python defines so it

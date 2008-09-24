@@ -1,13 +1,20 @@
-=========== 2.9.6 
+=========== 2.9.8 
 	- pbs_python.spec file patch added libdir and python defines so it will
 	  build for RHEL5.1/CentOS 5.1
 	  by        : Michael Sternberg <sternberg add anl dot gov>
 	  applied by: Bas van der Vlies
 
-	- Added two new attributes to the pbs_ifl.h
+	- Updated the header files for pbs_python. So it can use some new 
+	  defines variables/defines, eg:
 		* ATTR_NODE_status
 		* ATTR_NODE_note
-	  Added by	: Dennis Stam <dennis.stam@sara.nl>
+		* ...
+	  Added by: Dennis Stam <dennis.stam@sara.nl>, Bas van der Vlies
+
+	- Two new functions to log.h:
+		log_roll(int size);
+		log_size(void);
+	  Added by: Bas van der Vlies
 
 =========== Version 2.9.4
 	-  Function pbs.pbs_geterrmsg does not exits any more is

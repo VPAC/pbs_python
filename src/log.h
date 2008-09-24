@@ -111,6 +111,8 @@ extern void log_err(int err, char *func, char *text);
 extern void log_event(int type, int class_int, char *id, char *text);
 extern int  log_open(char *name, char *directory);
 extern void log_record(int type, int class_int, char *id, char *text);
+extern void log_roll(int size);
+extern long log_size(void);
 extern char log_buffer[LOG_BUF_SIZE];
 extern int  setup_env(char *filename);
 

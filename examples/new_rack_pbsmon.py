@@ -22,7 +22,7 @@ from PBSQuery import PBSError
 
 NODES_PER_RACK = 20
 START_RACK = 1
-N_RACKS = 39
+N_RACKS = 43
 
 pbs_ND_single			= 'job (single)'
 pbs_ND_total			= 'total'

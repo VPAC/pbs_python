@@ -17,11 +17,6 @@ pythonlib:
 
 install: pythonlib sara_install
 #install: pythonlib
-	#mkdir -p $(DESTDIR)/@pyexecdir@ $(DESTDIR)/$(BINDIR)
-	#install build/lib*/* $(DESTDIR)/@pyexecdir@
-	#(cd examples; for i in *py; do install $$i  $(DESTDIR)/$(EXAMPLES)/$${i//.py/}; done)
-	#python ./setup.py install --prefix $(DESTDIR)/@pyexecdir@ ;
-
 	python ./setup.py install --prefix $(DESTDIR)/$(exec_prefix) ;
 	install -D LICENSE.SARA $(DESTDIR)/$(DOCDIR)/LICENSE.SARA
 	(cd examples; for i in *py; do install -D $$i  $(DESTDIR)/$(EXAMPLES)/$${i}; done)

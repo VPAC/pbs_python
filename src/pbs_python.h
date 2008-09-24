@@ -175,9 +175,6 @@
     - insert usage code in proper location
 */
 
-/* HvB required */
-#define ATTR_reqprop    "required_property"
-
 #define ATTR_aclroot     "acl_roots"
 #define ATTR_managers    "managers"
 #define ATTR_dfltque     "default_queue"

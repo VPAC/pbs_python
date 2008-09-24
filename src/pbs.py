@@ -1,19 +1,19 @@
-# This file was created automatically by SWIG.
+# This file was created automatically by SWIG 1.3.29.
 # Don't modify this file, modify the SWIG interface instead.
 # This file is compatible with both classic and new-style classes.
 
 import _pbs
-
+import new
+new_instancemethod = new.instancemethod
 def _swig_setattr_nondynamic(self,class_type,name,value,static=1):
+    if (name == "thisown"): return self.this.own(value)
     if (name == "this"):
-        if isinstance(value, class_type):
-            self.__dict__[name] = value.this
-            if hasattr(value,"thisown"): self.__dict__["thisown"] = value.thisown
-            del value.thisown
+        if type(value).__name__ == 'PySwigObject':
+            self.__dict__[name] = value
             return
     method = class_type.__swig_setmethods__.get(name,None)
     if method: return method(self,value)
-    if (not static) or hasattr(self,name) or (name == "thisown"):
+    if (not static) or hasattr(self,name):
         self.__dict__[name] = value
     else:
         raise AttributeError("You cannot add attributes to %s" % self)
@@ -22,9 +22,15 @@ def _swig_setattr(self,class_type,name,value):
     return _swig_setattr_nondynamic(self,class_type,name,value,0)
 
 def _swig_getattr(self,class_type,name):
+    if (name == "thisown"): return self.this.own()
     method = class_type.__swig_getmethods__.get(name,None)
     if method: return method(self)
     raise AttributeError,name
+
+def _swig_repr(self):
+    try: strthis = "proxy of " + self.this.__repr__()
+    except: strthis = ""
+    return "<%s.%s; %s >" % (self.__class__.__module__, self.__class__.__name__, strthis,)
 
 import types
 try:
@@ -36,13 +42,9 @@ except AttributeError:
 del types
 
 
-
 new_attrl = _pbs.new_attrl
-
 new_attropl = _pbs.new_attropl
-
 new_batch_status = _pbs.new_batch_status
-
 get_error = _pbs.get_error
 ATTR_a = _pbs.ATTR_a
 ATTR_c = _pbs.ATTR_c
@@ -92,6 +94,10 @@ ATTR_cookie = _pbs.ATTR_cookie
 ATTR_qrank = _pbs.ATTR_qrank
 ATTR_altid = _pbs.ATTR_altid
 ATTR_etime = _pbs.ATTR_etime
+ATTR_exitstat = _pbs.ATTR_exitstat
+ATTR_forwardx11 = _pbs.ATTR_forwardx11
+ATTR_submit_args = _pbs.ATTR_submit_args
+ATTR_umask = _pbs.ATTR_umask
 ATTR_aclgren = _pbs.ATTR_aclgren
 ATTR_aclgroup = _pbs.ATTR_aclgroup
 ATTR_aclhten = _pbs.ATTR_aclhten
@@ -122,7 +128,10 @@ ATTR_rsvsync = _pbs.ATTR_rsvsync
 ATTR_start = _pbs.ATTR_start
 ATTR_count = _pbs.ATTR_count
 ATTR_number = _pbs.ATTR_number
-ATTR_reqprop = _pbs.ATTR_reqprop
+ATTR_acllogic = _pbs.ATTR_acllogic
+ATTR_aclgrpslpy = _pbs.ATTR_aclgrpslpy
+ATTR_keepcompleted = _pbs.ATTR_keepcompleted
+ATTR_disallowedtypes = _pbs.ATTR_disallowedtypes
 ATTR_aclroot = _pbs.ATTR_aclroot
 ATTR_managers = _pbs.ATTR_managers
 ATTR_dfltque = _pbs.ATTR_dfltque
@@ -130,6 +139,7 @@ ATTR_defnode = _pbs.ATTR_defnode
 ATTR_locsvrs = _pbs.ATTR_locsvrs
 ATTR_logevents = _pbs.ATTR_logevents
 ATTR_logfile = _pbs.ATTR_logfile
+ATTR_loglevel = _pbs.ATTR_loglevel
 ATTR_mailfrom = _pbs.ATTR_mailfrom
 ATTR_nodepack = _pbs.ATTR_nodepack
 ATTR_operators = _pbs.ATTR_operators
@@ -142,18 +152,38 @@ ATTR_status = _pbs.ATTR_status
 ATTR_syscost = _pbs.ATTR_syscost
 ATTR_pingrate = _pbs.ATTR_pingrate
 ATTR_ndchkrate = _pbs.ATTR_ndchkrate
-ATTR_procpack = _pbs.ATTR_procpack
+ATTR_tcptimeout = _pbs.ATTR_tcptimeout
+ATTR_jobstatrate = _pbs.ATTR_jobstatrate
+ATTR_polljobs = _pbs.ATTR_polljobs
+ATTR_downonerror = _pbs.ATTR_downonerror
+ATTR_jobnanny = _pbs.ATTR_jobnanny
+ATTR_ownerpurge = _pbs.ATTR_ownerpurge
+ATTR_qcqlimits = _pbs.ATTR_qcqlimits
+ATTR_momjobsync = _pbs.ATTR_momjobsync
+ATTR_maildomain = _pbs.ATTR_maildomain
+ATTR_pbsversion = _pbs.ATTR_pbsversion
+ATTR_submithosts = _pbs.ATTR_submithosts
+ATTR_allownodesubmit = _pbs.ATTR_allownodesubmit
+ATTR_autonodenp = _pbs.ATTR_autonodenp
+ATTR_servername = _pbs.ATTR_servername
+ATTR_logfilemaxsize = _pbs.ATTR_logfilemaxsize
+ATTR_logfilerolldepth = _pbs.ATTR_logfilerolldepth
+ATTR_nextjobnum = _pbs.ATTR_nextjobnum
 ATTR_NODE_state = _pbs.ATTR_NODE_state
 ATTR_NODE_np = _pbs.ATTR_NODE_np
 ATTR_NODE_properties = _pbs.ATTR_NODE_properties
 ATTR_NODE_ntype = _pbs.ATTR_NODE_ntype
 ATTR_NODE_jobs = _pbs.ATTR_NODE_jobs
+ATTR_NODE_status = _pbs.ATTR_NODE_status
+ATTR_NODE_note = _pbs.ATTR_NODE_note
 CHECKPOINT_UNSPECIFIED = _pbs.CHECKPOINT_UNSPECIFIED
 NO_HOLD = _pbs.NO_HOLD
 NO_JOIN = _pbs.NO_JOIN
 NO_KEEP = _pbs.NO_KEEP
 MAIL_AT_ABORT = _pbs.MAIL_AT_ABORT
 DELDELAY = _pbs.DELDELAY
+DELPURGE = _pbs.DELPURGE
+EXECQUEONLY = _pbs.EXECQUEONLY
 USER_HOLD = _pbs.USER_HOLD
 OTHER_HOLD = _pbs.OTHER_HOLD
 SYSTEM_HOLD = _pbs.SYSTEM_HOLD
@@ -167,6 +197,10 @@ ND_busy = _pbs.ND_busy
 ND_state_unknown = _pbs.ND_state_unknown
 ND_timeshared = _pbs.ND_timeshared
 ND_cluster = _pbs.ND_cluster
+Q_DT_batch = _pbs.Q_DT_batch
+Q_DT_interactive = _pbs.Q_DT_interactive
+Q_DT_rerunable = _pbs.Q_DT_rerunable
+Q_DT_nonrerunable = _pbs.Q_DT_nonrerunable
 MAX_ENCODE_BFR = _pbs.MAX_ENCODE_BFR
 MGR_CMD_CREATE = _pbs.MGR_CMD_CREATE
 MGR_CMD_DELETE = _pbs.MGR_CMD_DELETE
@@ -191,6 +225,8 @@ SIG_SUSPEND = _pbs.SIG_SUSPEND
 PBS_MAXHOSTNAME = _pbs.PBS_MAXHOSTNAME
 MAXPATHLEN = _pbs.MAXPATHLEN
 MAXNAMLEN = _pbs.MAXNAMLEN
+MAX_NOTE = _pbs.MAX_NOTE
+MAX_NOTE_STR = _pbs.MAX_NOTE_STR
 PBS_MAXUSER = _pbs.PBS_MAXUSER
 PBS_MAXGRPN = _pbs.PBS_MAXGRPN
 PBS_MAXQUEUENAME = _pbs.PBS_MAXQUEUENAME
@@ -231,9 +267,8 @@ class attrl(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, attrl, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, attrl, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
-    def __repr__(self):
-        return "<%s.%s; proxy of C attrl instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    def __init__(self): raise AttributeError, "No constructor defined"
+    __repr__ = _swig_repr
     __swig_setmethods__["name"] = _pbs.attrl_name_set
     __swig_getmethods__["name"] = _pbs.attrl_name_get
     if _newclass:name = property(_pbs.attrl_name_get, _pbs.attrl_name_set)
@@ -247,22 +282,18 @@ class attrl(_object):
     __swig_getmethods__["op"] = _pbs.attrl_op_get
     if _newclass:op = property(_pbs.attrl_op_get, _pbs.attrl_op_set)
     def __str__(*args): return _pbs.attrl___str__(*args)
-
-class attrlPtr(attrl):
-    def __init__(self, this):
-        _swig_setattr(self, attrl, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, attrl, 'thisown', 0)
-        _swig_setattr(self, attrl,self.__class__,attrl)
-_pbs.attrl_swigregister(attrlPtr)
+    __swig_destroy__ = _pbs.delete_attrl
+    __del__ = lambda self : None;
+attrl_swigregister = _pbs.attrl_swigregister
+attrl_swigregister(attrl)
 
 class attropl(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, attropl, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, attropl, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
-    def __repr__(self):
-        return "<%s.%s; proxy of C attropl instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    def __init__(self): raise AttributeError, "No constructor defined"
+    __repr__ = _swig_repr
     __swig_setmethods__["name"] = _pbs.attropl_name_set
     __swig_getmethods__["name"] = _pbs.attropl_name_get
     if _newclass:name = property(_pbs.attropl_name_get, _pbs.attropl_name_set)
@@ -276,22 +307,18 @@ class attropl(_object):
     __swig_getmethods__["op"] = _pbs.attropl_op_get
     if _newclass:op = property(_pbs.attropl_op_get, _pbs.attropl_op_set)
     def __str__(*args): return _pbs.attropl___str__(*args)
-
-class attroplPtr(attropl):
-    def __init__(self, this):
-        _swig_setattr(self, attropl, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, attropl, 'thisown', 0)
-        _swig_setattr(self, attropl,self.__class__,attropl)
-_pbs.attropl_swigregister(attroplPtr)
+    __swig_destroy__ = _pbs.delete_attropl
+    __del__ = lambda self : None;
+attropl_swigregister = _pbs.attropl_swigregister
+attropl_swigregister(attropl)
 
 class batch_status(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, batch_status, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, batch_status, name)
-    def __init__(self): raise RuntimeError, "No constructor defined"
-    def __repr__(self):
-        return "<%s.%s; proxy of C batch_status instance at %s>" % (self.__class__.__module__, self.__class__.__name__, self.this,)
+    def __init__(self): raise AttributeError, "No constructor defined"
+    __repr__ = _swig_repr
     __swig_setmethods__["name"] = _pbs.batch_status_name_set
     __swig_getmethods__["name"] = _pbs.batch_status_name_get
     if _newclass:name = property(_pbs.batch_status_name_get, _pbs.batch_status_name_set)
@@ -301,114 +328,62 @@ class batch_status(_object):
     __swig_setmethods__["text"] = _pbs.batch_status_text_set
     __swig_getmethods__["text"] = _pbs.batch_status_text_get
     if _newclass:text = property(_pbs.batch_status_text_get, _pbs.batch_status_text_set)
-
-class batch_statusPtr(batch_status):
-    def __init__(self, this):
-        _swig_setattr(self, batch_status, 'this', this)
-        if not hasattr(self,"thisown"): _swig_setattr(self, batch_status, 'thisown', 0)
-        _swig_setattr(self, batch_status,self.__class__,batch_status)
-_pbs.batch_status_swigregister(batch_statusPtr)
+batch_status_swigregister = _pbs.batch_status_swigregister
+batch_status_swigregister(batch_status)
 
 RESOURCE_T_NULL = _pbs.RESOURCE_T_NULL
 RESOURCE_T_ALL = _pbs.RESOURCE_T_ALL
-
 avail = _pbs.avail
-
 pbs_asyrunjob = _pbs.pbs_asyrunjob
-
 pbs_alterjob = _pbs.pbs_alterjob
-
 pbs_connect = _pbs.pbs_connect
-
 pbs_query_max_connections = _pbs.pbs_query_max_connections
-
 pbs_default = _pbs.pbs_default
-
 pbs_deljob = _pbs.pbs_deljob
-
 pbs_disconnect = _pbs.pbs_disconnect
-
 pbs_holdjob = _pbs.pbs_holdjob
-
 pbs_locjob = _pbs.pbs_locjob
-
 pbs_manager = _pbs.pbs_manager
-
 pbs_movejob = _pbs.pbs_movejob
-
 pbs_msgjob = _pbs.pbs_msgjob
-
 pbs_orderjob = _pbs.pbs_orderjob
-
 pbs_rescquery = _pbs.pbs_rescquery
-
 pbs_rescreserve = _pbs.pbs_rescreserve
-
 pbs_rescrelease = _pbs.pbs_rescrelease
-
 pbs_rerunjob = _pbs.pbs_rerunjob
-
 pbs_rlsjob = _pbs.pbs_rlsjob
-
 pbs_runjob = _pbs.pbs_runjob
-
 pbs_selectjob = _pbs.pbs_selectjob
-
 pbs_sigjob = _pbs.pbs_sigjob
-
 pbs_statfree = _pbs.pbs_statfree
-
 pbs_statjob = _pbs.pbs_statjob
-
 pbs_selstat = _pbs.pbs_selstat
-
 pbs_statque = _pbs.pbs_statque
-
 pbs_statserver = _pbs.pbs_statserver
-
 pbs_statnode = _pbs.pbs_statnode
-
 pbs_submit = _pbs.pbs_submit
-
 pbs_terminate = _pbs.pbs_terminate
-
 totpool = _pbs.totpool
-
 usepool = _pbs.usepool
-
 openrm = _pbs.openrm
-
 closerm = _pbs.closerm
-
 downrm = _pbs.downrm
-
 configrm = _pbs.configrm
-
 addreq = _pbs.addreq
-
 allreq = _pbs.allreq
-
 flushreq = _pbs.flushreq
-
 activereq = _pbs.activereq
-
 fullresp = _pbs.fullresp
-
 getreq = _pbs.getreq
 LOG_BUF_SIZE = _pbs.LOG_BUF_SIZE
-
 log_close = _pbs.log_close
-
 log_err = _pbs.log_err
-
 log_event = _pbs.log_event
-
 log_open = _pbs.log_open
-
 log_record = _pbs.log_record
-
+log_roll = _pbs.log_roll
+log_size = _pbs.log_size
 setup_env = _pbs.setup_env
-
 chk_file_sec = _pbs.chk_file_sec
 PBSEVENT_ERROR = _pbs.PBSEVENT_ERROR
 PBSEVENT_SYSTEM = _pbs.PBSEVENT_SYSTEM
@@ -558,7 +533,7 @@ def version():
   """
   Returns the pbs python interface version as a string. 
   """
-  return '2.9.4'
+  return '2.9.8'
 
 # A useful dict with error codes to text
 #
@@ -655,6 +630,7 @@ def error():
      return (e, errors_txt[e])
   else:
      return (e, "Could not find a text for this error, uhhh")
+
 
 cvar = _pbs.cvar
 

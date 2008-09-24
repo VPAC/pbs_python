@@ -4,6 +4,9 @@ the latest stable pbs_python interface is available from:
 Information, documentation and reporting bugs for the package:
 	https://subtrac.sara.nl/oss/pbs_python
 
+bug resport:
+	pbs_python add sara dot nl
+
 =============== Brief description =============================
 Pbs_python interface is a wrapper class for the OPENPBS/TORQUE 
 C LIB API.  Now you can write utilities/extensions in Python 

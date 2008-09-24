@@ -2859,6 +2859,8 @@ SWIGINTERN char *attrl___str__(struct attrl *self){
     return &temp[0];
   }
 SWIGINTERN void delete_attrl(struct attrl *self){
+  	if (SARA_DEBUG)
+		printf("Bas free attrl\n");
   	free(self);
   }
 SWIGINTERN char *attropl___str__(struct attropl *self){
@@ -2869,6 +2871,8 @@ SWIGINTERN char *attropl___str__(struct attropl *self){
     return &temp[0];
   }
 SWIGINTERN void delete_attropl(struct attropl *self){
+  	if (SARA_DEBUG)
+		printf("Bas free attropl\n");
   	free(self);
   }
 

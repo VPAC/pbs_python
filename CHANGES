@@ -16,6 +16,10 @@
 		log_size(void);
 	  Added by: Bas van der Vlies
 
+	- We now have proper destructors (free memory) in SWIG for attrl and attropl
+	  attributes.
+	  Added by: Bas van der Vlies
+
 =========== Version 2.9.4
 	-  Function pbs.pbs_geterrmsg does not exits any more is
 	   replaced by pbs.error():

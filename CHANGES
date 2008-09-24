@@ -1,6 +1,6 @@
 =========== 2.9.8 
-	- pbs_python.spec file patch added libdir and python defines so it will
-	  build for RHEL5.1/CentOS 5.1
+	- pbs_python.spec file patch added libdir and python defines so it 
+	  will build for RHEL5.1/CentOS 5.1
 	  by        : Michael Sternberg <sternberg add anl dot gov>
 	  applied by: Bas van der Vlies
 
@@ -16,8 +16,20 @@
 		log_size(void);
 	  Added by: Bas van der Vlies
 
-	- We now have proper destructors (free memory) in SWIG for attrl and attropl
-	  attributes.
+	- We now have proper destructors (free memory) in SWIG for attrl and 
+	  attropl attributes.
+	  Added by: Bas van der Vlies
+
+	- PBSQuery
+           * Added getnodes_with_property() function. This will get all nodes with
+	     a certain property, eg:
+	      - get all nodes with property 'cores8' and return all attributes:
+	         getnodes_with_property('cores8')
+
+	      - get all nodes with property 'cores2' and omly return the 
+	        attributes 'state' and 'properties':
+		 attrl = [ 'state', 'properties' ]
+		 getnodes_with_property('cores2', attrl)
 	  Added by: Bas van der Vlies
 
 =========== Version 2.9.4

@@ -168,15 +168,18 @@ class PBSQuery:
 		self._statqueue('', attrib_list)
 		return self.d
 
-	def _statnode(self, node_name='', attrib_list=None):
+	def _statnode(self, select='', attrib_list=None, property=None):
 		"""Get the node config from the pbs server"""
 		if attrib_list:
 			self._list_2_attrib(attrib_list)
 		else:
 			self.attribs = 'NULL' 
 			
+		if property:
+			select = ':%s' %(property)
+
 		self._connect()
-		nodes = pbs.pbs_statnode(self.con, node_name, self.attribs, 'NULL')
+		nodes = pbs.pbs_statnode(self.con, select, self.attribs, 'NULL')
 		self._disconnect() 
 		
 		self.nodes = {}
@@ -188,6 +191,10 @@ class PBSQuery:
         
 	def getnodes(self, attrib_list=None):
 		self._statnode('', attrib_list)
+		return self.d
+
+	def getnodes_with_property(self, property, attrib_list=None):
+		self._statnode('', attrib_list, property)
 		return self.d
 
 	def _statjob(self, job_name='', attrib_list=None):

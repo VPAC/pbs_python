@@ -86,7 +86,7 @@ class PBSQuery:
 		"""Connect to the PBS/Torque server"""
 		self.con = pbs.pbs_connect(self.server)
 		if self.con < 0:
-			str = "Could not make an connection with %s\n" %(self.server)
+			str = "Could not make a connection with %s\n" %(self.server)
 			raise PBSError(str)
 
 	def _disconnect(self):
@@ -95,7 +95,7 @@ class PBSQuery:
 		self.attribs = 'NULL'
 
 	def _list_2_attrib(self, list):
-		"""Convert an python list to an attrib list suitable for pbs"""
+		"""Convert a python list to an attrib list suitable for pbs"""
 		self.attribs = pbs.new_attrl( len(list) )
 		i = 0 
 		for attrib in list:
@@ -103,13 +103,13 @@ class PBSQuery:
 			i = i + 1
 
 	def _pbsstr_2_list(self, str, delimiter):
-		"""Convert an string to an python list and use delimiter as spit char"""
+		"""Convert a string to a python list and use delimiter as spit char"""
 		l = sting.splitfields(str, delimiter)
 		if len(l) > 1:
 			return l
 
 	def _list_2_dict(self, l, class_func):
-		"""Convert an pbsstat function list to an class dictionary"""
+		"""Convert a pbsstat function list to a class dictionary"""
 		self.d = {}
 		for item in l:
 			new = class_func()
@@ -265,6 +265,24 @@ class node(_PBSobject):
 			return self.TRUE
 		else:
 			return self.FALSE
+	
+	def get_jobs(self, unique=None):
+		"""Returns a list of the currently running job-id('s) on the node"""
+		jobs = self.get_value('jobs')
+		if jobs:
+			re.compile('[^\\ /]\\d+[^/.]').findall( jobstring )
+			if not unique:
+				return jobs
+			else:
+				uniq = {}
+				for job in jobs:
+					uniq[job] = 1
+				return uniq.keys()
+		return list()
+
+
+
+
 
 class queue(_PBSobject):
 	"""PBS queue class"""

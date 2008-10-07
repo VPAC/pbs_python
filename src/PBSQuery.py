@@ -62,6 +62,7 @@ import pbs
 import UserDict
 import string
 import sys
+import re
 
 class PBSError(Exception):
 	def __init__(self, msg=''):
@@ -268,14 +269,14 @@ class node(_PBSobject):
 	
 	def get_jobs(self, unique=None):
 		"""Returns a list of the currently running job-id('s) on the node"""
-		jobs = self.get_value('jobs')
-		if jobs:
-			re.compile('[^\\ /]\\d+[^/.]').findall( jobstring )
+		jobstring = self.get_value('jobs')
+		if jobstring:
+			joblist = re.compile('[^\\ /]\\d+[^/.]').findall( jobstring )
 			if not unique:
-				return jobs
+				return joblist
 			else:
 				uniq = {}
-				for job in jobs:
+				for job in joblist:
 					uniq[job] = 1
 				return uniq.keys()
 		return list()

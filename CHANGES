@@ -21,19 +21,25 @@
 	  Added by: Bas van der Vlies
 
 	- PBSQuery
-           * Added getnodes_with_property() function. This will get all nodes with
-	     a certain property, eg:
-	      - get all nodes with property 'cores8' and return all attributes:
-	         getnodes_with_property('cores8')
+		* Added getnodes_with_property() function. This will get all nodes with
+		  a certain property, eg:
+	       - get all nodes with property 'cores8' and return all attributes:
+	          getnodes_with_property('cores8')
 
-	      - get all nodes with property 'cores2' and omly return the 
-	        attributes 'state' and 'properties':
-		 attrl = [ 'state', 'properties' ]
-		 getnodes_with_property('cores2', attrl)
+	       - get all nodes with property 'cores2' and only return the 
+	         attributes 'state' and 'properties':
+		      attrl = [ 'state', 'properties' ]
+		      getnodes_with_property('cores2', attrl)
 
-             Only for torque version > 2.1.0
+             Only for torque version > 2.1.0 
+	     
+		Added by: Bas van der Vlies
 
-	   Added by: Bas van der Vlies
+		* Added to class node the function
+       	 - get_jobs(self, unique=None)
+		   Returns a list of the currently running job-id('s) on the nodea, 
+
+		Added by: Sil Westerveld <Sil.Westerveld@sara.nl>
 
 =========== Version 2.9.4
 	-  Function pbs.pbs_geterrmsg does not exits any more is

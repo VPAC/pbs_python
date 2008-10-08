@@ -1,3 +1,9 @@
+pbs-python (2.9.8-2) intrepid; urgency=low
+
+  * New PBSQuery module
+
+ -- Bas van der Vlies <bas@sara.nl>  Wed,  8 Oct 2008 14:05:44 +0200
+
 pbs-python (2.9.8-1) intrepid; urgency=low
 
   * New version with updated torque header file (version 2.X)

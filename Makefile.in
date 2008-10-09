@@ -25,8 +25,7 @@ sara_install:
 	install -D examples/new_rack_pbsmon.py $(DESTDIR)/$(BINDIR)/pbsmon
 
 clean:
-	cd src; make clean	
-	rm -rf config.log config.cache config.status build
+	rm -rf config.log config.cache config.status build 
 
 distclean: clean
 	rm -rf Makefile

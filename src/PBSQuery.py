@@ -220,6 +220,9 @@ class PBSQuery:
 		self._statjob('', attrib_list)
 		return self.d
 
+	def get_server_name(self):
+		return self.server
+
 class _PBSobject(UserDict.UserDict):
 	TRUE  = 1
 	FALSE = 0

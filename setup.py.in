@@ -50,7 +50,8 @@ setup ( name = 'pbs_python',
 	description = 'openpbs/torque python interface',
 	author = 'Bas van der Vlies',
 	author_email = 'basv@sara.nl',
-	url = 'http://www.sara.nl/index_eng.html',
+	url = 'http://subtrac.sara.nl/oss/pbs_python',
+
 
 	extra_path = 'pbs',
 		package_dir = { '' : 'src' }, 

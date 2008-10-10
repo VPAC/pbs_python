@@ -237,6 +237,13 @@ class _PBSobject(UserDict.UserDict):
 		else:
 			return None
 
+	def uniq(self, list):
+		"""Filter out unique items of a list"""
+		uniq_items = {}
+		for item in list:
+			uniq_items[item] = 1
+		return uniq_items.keys()
+
 class job(_PBSobject):
 	"""PBS job class""" 
 	def is_running(self):
@@ -245,11 +252,15 @@ class job(_PBSobject):
 		else:
 			return self.TRUE 
 
-	def get_nodes(self):
+	def get_nodes(self, unique=None):
+		"""Returns a list of the nodes which run this job"""
 		nodes = self.get_value('exec_host')
 		if nodes:
-			l = string.split(nodes,'+')
-			return l
+			nodelist = string.split(nodes,'+')
+			if not unique:
+				return nodelist
+			else:
+				return self.uniq(nodelist)
 		return list()
 
 
@@ -278,10 +289,7 @@ class node(_PBSobject):
 			if not unique:
 				return joblist
 			else:
-				uniq = {}
-				for job in joblist:
-					uniq[job] = 1
-				return uniq.keys()
+				return self.uniq(joblist)
 		return list()
 
 

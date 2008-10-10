@@ -37,14 +37,22 @@
 
 		* Added to class node the function
 		 - get_jobs(self, unique=None)
-		   Returns a list of the currently running job-id('s) on the node. 
-		
-		  Added by: Sil Westerveld <Sil.Westerveld@sara.nl>
+		   Returns a list of the currently running job-id('s) on the node.
+		Added by: Sil Westerveld <Sil.Westerveld@sara.nl>
 
 		* Added get_server_name() function.
 		  This will return the PBS-server's name.
+		Added by: Sil Westerveld <Sil.Westerveld@sara.nl>
 
-		  Added by: Sil Westerveld <Sil.Westerveld@sara.nl>
+		* Added to class _PBSobject the function
+		  - uniq(self, list)
+		    Filters out unique items of a list.
+		Added by: Sil Westerveld <Sil.Westerveld@sara.nl>
+
+		* Added to class job the function
+		  - get_nodes(self, unique=None)
+		    Returns a list of the nodes which run the job.
+		Added by: Sil Westerveld <Sil.Westerveld@sara.nl>
 
 =========== Version 2.9.4
 	-  Function pbs.pbs_geterrmsg does not exits any more is

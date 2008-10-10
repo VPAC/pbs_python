@@ -1,3 +1,9 @@
+pbs-python (2.9.8-3) intrepid; urgency=low
+
+  * New functions added to PBSQuery
+
+ -- Bas van der Vlies <basv@sara.nl>  Fri, 10 Oct 2008 11:18:38 +0200
+
 pbs-python (2.9.8-2) intrepid; urgency=low
 
   * New PBSQuery module

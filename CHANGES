@@ -1,3 +1,13 @@
+=========== 3.0.0
+	- PBSQuery
+		* Cleaned up some old lines of code which didn't do anything.
+		* Changed the returnvalue of getqueue, getnode and getjob. Now
+		  they return an instance of the object, instead of a dict.
+		* Now the getnode-function accepts the short name as well as
+		  the long name as an argument.
+
+		By: Sil Westerveld <Sil.Westerveld@sara.nl>
+
 =========== 2.9.8 
 	- pbs_python.spec file patch added libdir and python defines so it 
 	  will build for RHEL5.1/CentOS 5.1

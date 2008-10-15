@@ -140,7 +140,6 @@ class PBSQuery:
 		serverinfo = pbs.pbs_statserver(self.con, self.attribs, 'NULL')
 		self._disconnect() 
 		
-		self.serverinfo = {}
 		self._list_2_dict(serverinfo, server)
 
 	def get_serverinfo(self, attrib_list=None):
@@ -163,7 +162,7 @@ class PBSQuery:
 	def getqueue(self, name, attrib_list=None):
 		self._statqueue(name, attrib_list)
 		q_attrs = self.d['q_express']
-		return self.d
+		return self.d[name]
         
 	def getqueues(self, attrib_list=None):
 		self._statqueue('', attrib_list)
@@ -183,12 +182,11 @@ class PBSQuery:
 		nodes = pbs.pbs_statnode(self.con, select, self.attribs, 'NULL')
 		self._disconnect() 
 		
-		self.nodes = {}
 		self._list_2_dict(nodes, node)
 
 	def getnode(self, name, attrib_list=None):
 		self._statnode(name, attrib_list)
-		return self.d
+		return self.d[name]
         
 	def getnodes(self, attrib_list=None):
 		self._statnode('', attrib_list)
@@ -209,12 +207,15 @@ class PBSQuery:
 		jobs = pbs.pbs_statjob(self.con, job_name, self.attribs, 'NULL')
 		self._disconnect() 
 		
-		self.jobs = {}
 		self._list_2_dict(jobs, job)
 
 	def getjob(self, name, attrib_list=None):
+		# To make sure we use the full name of a job; Changes a name
+		# like 1234567 into 1234567.server.name 
+		name = name.split('.')[0] + "." + self.get_server_name()
+
 		self._statjob(name, attrib_list)
-		return self.d
+		return self.d[name]
         
 	def getjobs(self, attrib_list=None):
 		self._statjob('', attrib_list)

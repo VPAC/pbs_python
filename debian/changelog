@@ -1,3 +1,9 @@
+pbs-python (3.0.0-1) intrepid; urgency=low
+
+  * New api and build on any architecture
+
+ -- Bas van der Vlies <bas@sara.nl>  Tue, 11 Nov 2008 12:48:39 +0100
+
 pbs-python (2.9.8-3) intrepid; urgency=low
 
   * New functions added to PBSQuery

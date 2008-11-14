@@ -14,7 +14,7 @@ AC_ARG_WITH(pbsdir,
   esac], 
 
   [pbspath=""]
-  #[pbspath=`pbs-config --libs`]
+  [pbspath=`pbs-config --libs`]
 )dnl
 
 AM_PATH_PYTHON

@@ -125,9 +125,10 @@ class PBSQuery:
 		self._free(l)
 	        
 	def _free(self, memory):
-		# Not needed any more
-		#pbs.pbs_statfree(memory)
-		a = 1 
+		"""
+		freeing up used memmory
+		"""
+		pbs.pbs_statfree(memory)
 
 	def _statserver(self, attrib_list=None):
 		"""Get the server config from the pbs server"""

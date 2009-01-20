@@ -8,6 +8,9 @@
 
 		By: Sil Westerveld <Sil.Westerveld@sara.nl>
 
+	- pbs.py, _pbs.so
+		* Fixed a memory leak when used in daemon mode
+
 =========== 2.9.8 
 	- pbs_python.spec file patch added libdir and python defines so it 
 	  will build for RHEL5.1/CentOS 5.1

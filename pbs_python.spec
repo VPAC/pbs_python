@@ -1,6 +1,6 @@
 Summary: This package contains the pbs python module.
 Name: pbs_python
-Version: 2.9.8
+Version: 3.0.0
 Release: 2anl
 License: See LICENSE
 Group: Development/Libraries

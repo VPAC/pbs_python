@@ -2861,7 +2861,10 @@ SWIGINTERN char *attrl___str__(struct attrl *self){
 SWIGINTERN void delete_attrl(struct attrl *self){
   	if (SARA_DEBUG)
 		printf("Bas free attrl\n");
+
+	/*
   	free(self);
+	*/
   }
 SWIGINTERN char *attropl___str__(struct attropl *self){
     static char temp[4 * 255] ;
@@ -2873,7 +2876,10 @@ SWIGINTERN char *attropl___str__(struct attropl *self){
 SWIGINTERN void delete_attropl(struct attropl *self){
   	if (SARA_DEBUG)
 		printf("Bas free attropl\n");
+
+	/*
   	free(self);
+	*/
   }
 
 SWIGINTERN int
@@ -3091,6 +3097,7 @@ SWIGINTERN PyObject *_wrap_new_batch_status(PyObject *SWIGUNUSEDPARM(self), PyOb
       }
       ptr = ptr->next;
     }
+    
     if (SARA_DEBUG) printf("\t</Contents>\n");
   }
   return resultobj;
@@ -4078,7 +4085,7 @@ SWIGINTERN PyObject *_wrap_pbs_alterjob(PyObject *SWIGUNUSEDPARM(self), PyObject
     if (SARA_DEBUG) printf("Converteren python -> c (struct attrl *):\n");
     
     size = Get_List_Size(obj2);
-    if (SARA_DEBUG) printf("\tSize of List: %d\n", size);
+    if (SARA_DEBUG) printf("\tSize of attrl List: %d\n", size);
     
     if ( size == -1 ) {
       PyErr_SetString(PyExc_TypeError, "not a list");
@@ -4418,7 +4425,7 @@ SWIGINTERN PyObject *_wrap_pbs_manager(PyObject *SWIGUNUSEDPARM(self), PyObject 
     
     size = Get_List_Size(obj4);
     
-    if (SARA_DEBUG) printf("\tSize of List: %d\n", size);
+    if (SARA_DEBUG) printf("\tSize attropl List: %d\n", size);
     
     if ( size == -1 ) {
       PyErr_SetString(PyExc_TypeError, "not a list");
@@ -5078,7 +5085,7 @@ SWIGINTERN PyObject *_wrap_pbs_selectjob(PyObject *SWIGUNUSEDPARM(self), PyObjec
     
     size = Get_List_Size(obj1);
     
-    if (SARA_DEBUG) printf("\tSize of List: %d\n", size);
+    if (SARA_DEBUG) printf("\tSize attropl List: %d\n", size);
     
     if ( size == -1 ) {
       PyErr_SetString(PyExc_TypeError, "not a list");
@@ -5233,7 +5240,7 @@ SWIGINTERN PyObject *_wrap_pbs_statfree(PyObject *SWIGUNUSEDPARM(self), PyObject
     if (SARA_DEBUG) printf("Converteren python -> c (struct batch_status *):\n");
     
     size = Get_List_Size(obj0);
-    if (SARA_DEBUG) printf("\tSize of list: %d\n", size);
+    if (SARA_DEBUG) printf("\tSize of batch_status list: %d\n", size);
     
     if ( size == -1 ) {
       PyErr_SetString(PyExc_TypeError, "not a list");
@@ -5324,7 +5331,7 @@ SWIGINTERN PyObject *_wrap_pbs_statjob(PyObject *SWIGUNUSEDPARM(self), PyObject 
     if (SARA_DEBUG) printf("Converteren python -> c (struct attrl *):\n");
     
     size = Get_List_Size(obj2);
-    if (SARA_DEBUG) printf("\tSize of List: %d\n", size);
+    if (SARA_DEBUG) printf("\tSize of attrl List: %d\n", size);
     
     if ( size == -1 ) {
       PyErr_SetString(PyExc_TypeError, "not a list");
@@ -5400,6 +5407,7 @@ SWIGINTERN PyObject *_wrap_pbs_statjob(PyObject *SWIGUNUSEDPARM(self), PyObject 
       }
       ptr = ptr->next;
     }
+    
     if (SARA_DEBUG) printf("\t</Contents>\n");
   }
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
@@ -5445,7 +5453,7 @@ SWIGINTERN PyObject *_wrap_pbs_selstat(PyObject *SWIGUNUSEDPARM(self), PyObject 
     
     size = Get_List_Size(obj1);
     
-    if (SARA_DEBUG) printf("\tSize of List: %d\n", size);
+    if (SARA_DEBUG) printf("\tSize attropl List: %d\n", size);
     
     if ( size == -1 ) {
       PyErr_SetString(PyExc_TypeError, "not a list");
@@ -5520,6 +5528,7 @@ SWIGINTERN PyObject *_wrap_pbs_selstat(PyObject *SWIGUNUSEDPARM(self), PyObject 
       }
       ptr = ptr->next;
     }
+    
     if (SARA_DEBUG) printf("\t</Contents>\n");
   }
   if (alloc3 == SWIG_NEWOBJ) free((char*)buf3);
@@ -5572,7 +5581,7 @@ SWIGINTERN PyObject *_wrap_pbs_statque(PyObject *SWIGUNUSEDPARM(self), PyObject 
     if (SARA_DEBUG) printf("Converteren python -> c (struct attrl *):\n");
     
     size = Get_List_Size(obj2);
-    if (SARA_DEBUG) printf("\tSize of List: %d\n", size);
+    if (SARA_DEBUG) printf("\tSize of attrl List: %d\n", size);
     
     if ( size == -1 ) {
       PyErr_SetString(PyExc_TypeError, "not a list");
@@ -5648,6 +5657,7 @@ SWIGINTERN PyObject *_wrap_pbs_statque(PyObject *SWIGUNUSEDPARM(self), PyObject 
       }
       ptr = ptr->next;
     }
+    
     if (SARA_DEBUG) printf("\t</Contents>\n");
   }
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
@@ -5692,7 +5702,7 @@ SWIGINTERN PyObject *_wrap_pbs_statserver(PyObject *SWIGUNUSEDPARM(self), PyObje
     if (SARA_DEBUG) printf("Converteren python -> c (struct attrl *):\n");
     
     size = Get_List_Size(obj1);
-    if (SARA_DEBUG) printf("\tSize of List: %d\n", size);
+    if (SARA_DEBUG) printf("\tSize of attrl List: %d\n", size);
     
     if ( size == -1 ) {
       PyErr_SetString(PyExc_TypeError, "not a list");
@@ -5768,6 +5778,7 @@ SWIGINTERN PyObject *_wrap_pbs_statserver(PyObject *SWIGUNUSEDPARM(self), PyObje
       }
       ptr = ptr->next;
     }
+    
     if (SARA_DEBUG) printf("\t</Contents>\n");
   }
   if (alloc3 == SWIG_NEWOBJ) free((char*)buf3);
@@ -5820,7 +5831,7 @@ SWIGINTERN PyObject *_wrap_pbs_statnode(PyObject *SWIGUNUSEDPARM(self), PyObject
     if (SARA_DEBUG) printf("Converteren python -> c (struct attrl *):\n");
     
     size = Get_List_Size(obj2);
-    if (SARA_DEBUG) printf("\tSize of List: %d\n", size);
+    if (SARA_DEBUG) printf("\tSize of attrl List: %d\n", size);
     
     if ( size == -1 ) {
       PyErr_SetString(PyExc_TypeError, "not a list");
@@ -5896,6 +5907,7 @@ SWIGINTERN PyObject *_wrap_pbs_statnode(PyObject *SWIGUNUSEDPARM(self), PyObject
       }
       ptr = ptr->next;
     }
+    
     if (SARA_DEBUG) printf("\t</Contents>\n");
   }
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
@@ -5951,7 +5963,7 @@ SWIGINTERN PyObject *_wrap_pbs_submit(PyObject *SWIGUNUSEDPARM(self), PyObject *
     
     size = Get_List_Size(obj1);
     
-    if (SARA_DEBUG) printf("\tSize of List: %d\n", size);
+    if (SARA_DEBUG) printf("\tSize attropl List: %d\n", size);
     
     if ( size == -1 ) {
       PyErr_SetString(PyExc_TypeError, "not a list");

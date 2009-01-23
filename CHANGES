@@ -3,6 +3,7 @@
 		* Cleaned up some old lines of code which didn't do anything.
 		* Changed the returnvalue of getqueue, getnode and getjob. Now
 		  they return an instance of the object, instead of a dict.
+		  This is API change so we bumped the version to 3.0.0
 		* Now the getnode-function accepts the short name as well as
 		  the long name as an argument.
 

@@ -6,10 +6,11 @@
 		* Now the getnode-function accepts the short name as well as
 		  the long name as an argument.
 
-		By: Sil Westerveld <Sil.Westerveld@sara.nl>
+		Author: Sil Westerveld <Sil.Westerveld@sara.nl>
 
-	- pbs.py, _pbs.so
+	- pbs.py, _pbs.so, PBSQuery.py
 		* Fixed a memory leak when used in daemon mode
+		Author: Bas van der Vlies <basv@sara.nl>
 
 =========== 2.9.8 
 	- pbs_python.spec file patch added libdir and python defines so it 

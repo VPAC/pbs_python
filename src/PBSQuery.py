@@ -162,7 +162,6 @@ class PBSQuery:
 
 	def getqueue(self, name, attrib_list=None):
 		self._statqueue(name, attrib_list)
-		q_attrs = self.d['q_express']
 		return self.d[name]
         
 	def getqueues(self, attrib_list=None):

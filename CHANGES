@@ -1,3 +1,9 @@
+=========== 3.0.1
+	- PBSQuery
+		* Removed a testing code line
+		Reported By: sam @ vpac dot org
+		Fixed by: Bas van der Vlies
+
 =========== 3.0.0
 	- PBSQuery
 		* Cleaned up some old lines of code which didn't do anything.

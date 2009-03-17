@@ -1,3 +1,9 @@
+pbs-python (3.0.1-2) intrepid; urgency=low
+
+  * adjust number of nodes to 32 
+
+ -- root <root@rc.sara.nl>  Tue, 17 Mar 2009 18:17:18 +0100
+
 pbs-python (3.0.1-1) intrepid; urgency=low
 
   * Small bug fix

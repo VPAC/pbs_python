@@ -20,7 +20,7 @@ from PBSQuery import PBSQuery
 from PBSQuery import PBSError
 
 
-NODES_PER_RACK = 20
+NODES_PER_RACK = 32
 START_RACK = 1
 N_RACKS = 43
 

@@ -1,3 +1,8 @@
+=========== 3.0.2
+	- New build system for rpm packages, make -f Makefile.rpm
+	  Author: Michel Jouvin <jouvin add lal dot in2p3 dot fr>
+	  Applied: Bas van der Vlies
+
 =========== 3.0.1
 	- PBSQuery
 		* Removed a testing code line

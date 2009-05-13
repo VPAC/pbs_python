@@ -76,12 +76,16 @@ class PBSError(Exception):
 
 
 class PBSQuery:
+
+	# a[key] = value, key and value are data type string
+	#
+	OLD_DATA_STRUCTURE = True
+
 	def __init__(self, server=None):
 		if not server:
 			self.server = pbs.pbs_default()
 		else:
 			self.server = server
-
 
 	def _connect(self):
 		"""Connect to the PBS/Torque server"""
@@ -100,7 +104,9 @@ class PBSQuery:
 		self.attribs = pbs.new_attrl( len(list) )
 		i = 0 
 		for attrib in list:
-			self.attribs[i].name = attrib
+			# So we can user Resource
+			attrib = attrib.split('.')
+			self.attribs[i].name = attrib[0]
 			i = i + 1
 
 	def _pbsstr_2_list(self, str, delimiter):
@@ -110,23 +116,78 @@ class PBSQuery:
 			return l
 
 	def _list_2_dict(self, l, class_func):
-		"""Convert a pbsstat function list to a class dictionary"""
+		"""
+		Convert a pbsstat function list to a class dictionary, The 
+		data structure depends on the function new_data_structure().
+		
+		Default data structure is:
+			class[key] = value, Where key and value are of type string
+
+		Future release, can be set by new_data_structure():
+			- class[key] = value where value can be:
+			  1. a list of values of type string
+			  2. a dictionary with as list of values of type string. If
+			     values contain a '=' character
+
+			  eg: 
+			    print node['np']
+				>> [ '2' ]
+
+				print node['status']['arch']
+				>> [ 'x86_64' ]
+		"""
 		self.d = {}
 		for item in l:
 			new = class_func()
+
 			self.d[item.name] = new 
 			
+			new.name = item.name 
+
 			for a in item.attribs:
-				new.name = item.name 
+
 				if a.resource:
-					new[a.name + '.' + a.resource] = a.value
+					key = '%s.%s' %(a.name, a.resource)
 				else:
-					new[a.name] = a.value
+					key = a.name
+
+				if self.OLD_DATA_STRUCTURE:
+					new[key] = a.value
+				else:
+					values = string.split(a.value, ',') 
+					
+					if len(values) == 1:
+						# simple form
+						# print 'simple %s =  %s' %(key, values[0])
+						#
+						new[key] = values
+
+					else:
+						# list check
+						list_or_dict = string.split(a.value, '=')
+
+
+						if len(list_or_dict) == 1:
+							# This is a list
+							# print 'list %s = %s' %(key, values)
+							#
+							new[key] = values
+
+						else:
+							# This is dictionary
+							# print 'dict %s = %s' %(key, values)
+							#
+							new[key] = dict()
+							for v in values:
+								a,b = v.split('=')
+								new[key][a] = [ b ]
+						
 		self._free(l)
 	        
 	def _free(self, memory):
 		"""
 		freeing up used memmory
+
 		"""
 		pbs.pbs_statfree(memory)
 
@@ -224,6 +285,12 @@ class PBSQuery:
 	def get_server_name(self):
 		return self.server
 
+	def new_data_structure(self): 
+		"""
+		Use new data structure, will be standard in future release
+		"""
+		self.OLD_DATA_STRUCTURE = False
+
 class _PBSobject(UserDict.UserDict):
 	TRUE  = 1
 	FALSE = 0
@@ -237,6 +304,19 @@ class _PBSobject(UserDict.UserDict):
 			return self[key]
 		else:
 			return None
+
+	def __repr__(self):
+		return repr(self.data)
+
+	def __str__(self):
+		return str(self.data)
+
+	def __getattr__(self, name):
+		try:
+			return self.data[name]
+		except KeyError:
+			error = 'invalid attribute %s' %(name)
+			raise PBSError(error)
 
 	def uniq(self, list):
 		"""Filter out unique items of a list"""
@@ -292,9 +372,6 @@ class node(_PBSobject):
 			else:
 				return self.uniq(joblist)
 		return list()
-
-
-
 
 
 class queue(_PBSobject):

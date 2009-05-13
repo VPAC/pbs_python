@@ -1,3 +1,41 @@
+pbs-python (3.2.0-1) intrepid; urgency=low
+
+  *  PBSQuery:
+	 New data structure. In the old structure it is a dictionary
+	 with a value and the value is a string. This is changed that 
+	 dictionary values are now of type list or dictionary depends
+	 on the value of keyword, eg for a node:
+	  - np = 2: 
+	  	- node['np'] = [ '2' ]  
+	  - properties = cores2, mem4gb, parallel
+	  	- node['properties'] = [ 'cores2', 'mem4gb', 'parallel' ] 
+    	  - status = arch=x86_64,sessions=22599,,size=70627864kb, ...                                                                                   
+		- node['status']['arch'] = [ 'x86_64' ] 
+		- node['status']['sessions'] = [ '222599' ]
+		- ...
+
+         The data structure is activated by the function:
+          - new_data_structure()
+
+         In a future release it will be come the default.
+         example:
+		p = PBSQuery()
+		p.new_data_structure() 
+
+		nodes = p.getnodes()
+		print nodes.np, nodes['np']
+
+         Author: Bas van der Vlies
+
+  * PBSQuery
+   	For old and new data structure we now can use another syntax:
+	 - node['np'] and node.np are equivalent 
+
+     	This new syntax works for all keywords.  
+	Author: Bas van der Vlies 
+
+ -- Bas van der Vlies <basv@sara.nl>  Wed, 13 May 2009 16:20:27 +0200
+
 pbs-python (3.0.1-2) intrepid; urgency=low
 
   * adjust number of nodes to 32 

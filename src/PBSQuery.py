@@ -179,8 +179,11 @@ class PBSQuery:
 							#
 							new[key] = dict()
 							for v in values:
-								a,b = v.split('=')
-								new[key][a] = [ b ]
+								# First argument is the key and the rest is the value 
+								# - value can contain a '='
+								#
+								tmp = v.split('=')
+								new[key][ tmp[0] ] = [ tmp[1:] ]
 						
 		self._free(l)
 	        
@@ -317,6 +320,9 @@ class _PBSobject(UserDict.UserDict):
 		except KeyError:
 			error = 'invalid attribute %s' %(name)
 			raise PBSError(error)
+
+	def __iter__(self):
+		return iter(self.data.keys())
 
 	def uniq(self, list):
 		"""Filter out unique items of a list"""

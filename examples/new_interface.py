@@ -15,21 +15,20 @@ from PBSQuery import PBSQuery
 def main():
 
   p = PBSQuery()
-
-  nodes = p.getnodes()
-  for name, node in nodes.items():
-  	print node
-	if node.is_free():
-		print "%s : Found an free node" %name
+  p.new_data_structure()
 
   jobs = p.getjobs()
-  for name, job in jobs.items():
-     for key in job.keys():
-        print '%s = %s' %(key, job[key])
- 
+  for id in jobs:
+     print id + ':'
+     for attr in jobs[id]:
+        print '\t' + attr, jobs[id][attr]
+     
   l = ['state', 'np' ]
   nodes = p.getnodes(l)
-  for node in nodes.values():
-     print node
+  for id in nodes:
+     print id + ': ', nodes[id].state, nodes[id].np
+
+     for attrib in nodes[id]:
+     	print attrib, nodes[id][attrib]
 
 main()

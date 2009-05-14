@@ -226,7 +226,10 @@ class PBSQuery:
 
 	def getqueue(self, name, attrib_list=None):
 		self._statqueue(name, attrib_list)
-		return self.d[name]
+		try:
+			return self.d[name]
+		except KeyError, detail:
+			return self.d
         
 	def getqueues(self, attrib_list=None):
 		self._statqueue('', attrib_list)
@@ -250,7 +253,10 @@ class PBSQuery:
 
 	def getnode(self, name, attrib_list=None):
 		self._statnode(name, attrib_list)
-		return self.d[name]
+		try:
+			return self.d[name]
+		except KeyError, detail:
+			return self.d
         
 	def getnodes(self, attrib_list=None):
 		self._statnode('', attrib_list)
@@ -279,7 +285,10 @@ class PBSQuery:
 		name = name.split('.')[0] + "." + self.get_server_name()
 
 		self._statjob(name, attrib_list)
-		return self.d[name]
+		try:
+			return self.d[name]
+		except KeyError, detail:
+			return self.d
         
 	def getjobs(self, attrib_list=None):
 		self._statjob('', attrib_list)

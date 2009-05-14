@@ -2,15 +2,15 @@ pbs-python (3.2.0-1) intrepid; urgency=low
 
   *  PBSQuery:
 	 New data structure. In the old structure it is a dictionary
-	 with a value and the value is a string. This is changed that 
+	 with a value and the value is a string. This is changed that
 	 dictionary values are now of type list or dictionary depends
 	 on the value of keyword, eg for a node:
-	  - np = 2: 
-	  	- node['np'] = [ '2' ]  
+	  - np = 2:
+	  	- node['np'] = [ '2' ]
 	  - properties = cores2, mem4gb, parallel
-	  	- node['properties'] = [ 'cores2', 'mem4gb', 'parallel' ] 
-    	  - status = arch=x86_64,sessions=22599,,size=70627864kb, ...                                                                                   
-		- node['status']['arch'] = [ 'x86_64' ] 
+	  	- node['properties'] = [ 'cores2', 'mem4gb', 'parallel' ]
+    	  - status = arch=x86_64,sessions=22599,,size=70627864kb, ...
+		- node['status']['arch'] = [ 'x86_64' ]
 		- node['status']['sessions'] = [ '222599' ]
 		- ...
 
@@ -20,21 +20,39 @@ pbs-python (3.2.0-1) intrepid; urgency=low
          In a future release it will be come the default.
          example:
 		p = PBSQuery()
-		p.new_data_structure() 
+		p.new_data_structure()
 
 		nodes = p.getnodes()
 		print nodes.np, nodes['np']
 
          Author: Bas van der Vlies
 
-  * PBSQuery
-   	For old and new data structure we now can use another syntax:
-	 - node['np'] and node.np are equivalent 
+  *  PBSQuery:
+  	For old and new data structure we now can use another syntax:
+	 - node['np'] and node.np are equivalent
 
-     	This new syntax works for all keywords.  
-	Author: Bas van der Vlies 
+        This new syntax works for all keywords.
+        Author: Bas van der Vlies
 
- -- Bas van der Vlies <basv@sara.nl>  Wed, 13 May 2009 16:20:27 +0200
+  *  PBSQuery:
+  	Added iter object for job, node, queue and server objects, eg:
+		node = p.getnode('gb-r1n1')
+		print node.name
+		for attrib in node:
+			print '%\t%s = %s' %(attrib, node[attrib])
+        Author: Bas van der Vlies
+
+  *  PBSQuery: 
+  	fixed an error in getnode, getqueue and getjob, return 
+	empty dictionary if not found.
+	Author: Bas van der Vlies
+
+  *  PBSQuery:
+  	New build system for rpm packages, make -f Makefile.rpm
+	Author: Michel Jouvin <jouvin add lal dot in2p3 dot fr> 
+	Applied: Bas van der Vlies
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Thu, 14 May 2009 13:41:00 +0200
 
 pbs-python (3.0.1-2) intrepid; urgency=low
 

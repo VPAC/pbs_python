@@ -35,10 +35,22 @@
 	  This new syntax works for all keywords.
 
 	Author: Bas van der Vlies
+
+	- Added iter object for job, node, queue and server objects, eg:
+	  node = p.getnode('gb-r1n1')
+	  print node.name
+	  for attrib in node:
+	  	print '%\t%s = %s' %(attrib, node[attrib]) 
+	Author: Bas van der Vlies
+
+	- fixed an error in getnode, getqueue and getjob, return empty
+	  dictionary if not found
+	Author: Bas van der Vlies
 	
 	- New build system for rpm packages, make -f Makefile.rpm
 	  Author: Michel Jouvin <jouvin add lal dot in2p3 dot fr>
-	  Applied: Bas van der Vlies
+
+        Applied: Bas van der Vlies
 
 =========== 3.0.1
 	- PBSQuery

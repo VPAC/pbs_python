@@ -183,7 +183,7 @@ class PBSQuery:
 								# - value can contain a '='
 								#
 								tmp = v.split('=')
-								new[key][ tmp[0] ] = [ tmp[1:] ]
+								new[key][ tmp[0] ] =  tmp[1:] 
 						
 		self._free(l)
 	        

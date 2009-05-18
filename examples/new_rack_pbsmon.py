@@ -65,6 +65,8 @@ def pbsmon(server = None):
 		print 'error: %s' % reason
 		sys.exit(-1)
 
+	p.new_data_structure()
+
 # get the state of the nodes
 	attr = [ 'state', 'jobs', 'properties' ]
 
@@ -76,30 +78,28 @@ def pbsmon(server = None):
 
 	node_dict = {}
 
-	for nodename, node in nodes.items():
+	for id in nodes:
 
 		# Skip login nodes in status display
 		#
-		if not nodename.find('login'):
+		if not nodes[id].name.find('login'):
 			continue
 
-		state = node['state']
-		if string.find(state, ',') >= 0:			# multiple states for a node?
-			state_list = string.split(state, ',')
-			if pbs.ND_down in state_list: 
-				state = pbs.ND_down
-			else:
-				state = string.split(state, ',')[-1]
-				
+		if pbs.ND_down in nodes[id].state:
+			state = pbs.ND_down
+		else:
+			state = nodes[id].state[0]
 
 		state_char = PBS_STATES[state]
 
-		if node.is_free() and node.has_job():		# single job
+#		print 'TD: ', nodes[id].name, nodes[id].is_free() ,nodes[id].has_job()
+
+		if nodes[id].is_free() and nodes[id].has_job():		# single job
 #			print 'TD: %s' % nodename, node
 			state_char = PBS_STATES[pbs_ND_single]
 
 #		print 'TD: %s %s' % (nodename, state_char)
-		dummy = string.split(nodename, '-')
+		dummy = string.split(nodes[id].name, '-')
 		node_dict[dummy[1]] = state_char
 
 # print header lines

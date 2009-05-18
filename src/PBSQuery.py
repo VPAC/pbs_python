@@ -63,6 +63,7 @@ import UserDict
 import string
 import sys
 import re
+import types
 
 class PBSError(Exception):
 	def __init__(self, msg=''):
@@ -340,13 +341,22 @@ class _PBSobject(UserDict.UserDict):
 			uniq_items[item] = 1
 		return uniq_items.keys()
 
+	def return_value(self, key):
+		"""Function that returns a value independent of new or old data structure"""
+		if isinstance(self[key], types.ListType):
+			return self[key][0]
+		else:
+			return self[key] 
+
 class job(_PBSobject):
 	"""PBS job class""" 
 	def is_running(self):
-		if self.get_value('job_state') == 'Q':
-			return self.FALSE
-		else:
+
+		value = self.return_value('job_state')
+		if value == 'Q':
 			return self.TRUE 
+		else:
+			return self.FALSE
 
 	def get_nodes(self, unique=None):
 		"""Returns a list of the nodes which run this job"""
@@ -365,16 +375,19 @@ class node(_PBSobject):
 	
 	def is_free(self):
 		"""Check if node is free"""
-		if self.get_value('state') == 'free':
+
+		value = self.return_value('state')
+		if value == 'free':
 			return self.TRUE
 		else: 
 			return self.FALSE 
 
 	def has_job(self):
 		"""Does the node run a job"""
-		if self.get_value('jobs'):
+		try:
+			a = self['jobs']
 			return self.TRUE
-		else:
+		except KeyError, detail:
 			return self.FALSE
 	
 	def get_jobs(self, unique=None):
@@ -392,13 +405,17 @@ class node(_PBSobject):
 class queue(_PBSobject):
 	"""PBS queue class"""
 	def is_enabled(self):
-		if self.get_value('enabled') == 'True':
+
+		value = self.return_value('enabled')
+		if value == 'True':
 			return self.TRUE 
 		else:
 			return self.FALSE
 
 	def is_execution(self):
-		if self.get_value('queue_type') == 'Execution':
+
+		value = self.return_value('queue_type')
+		if value == 'Execution':
 			return self.TRUE 
 		else:
 			return self.FALSE

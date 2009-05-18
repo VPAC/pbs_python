@@ -46,7 +46,7 @@ else:
 			sys.exit(1)
 
 setup ( name = 'pbs_python',
-	version = '3.0.2',
+	version = '3.2.5',
 	description = 'openpbs/torque python interface',
 	author = 'Bas van der Vlies',
 	author_email = 'basv@sara.nl',

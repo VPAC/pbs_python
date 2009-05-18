@@ -1,3 +1,12 @@
+pbs-python (3.2.5-1) intrepid; urgency=low
+
+  * PBSQuery
+        The class function of node, job and queue support old and new data
+        structure.
+    Author: Bas van der Vlies
+
+ -- Bas van der Vlies <bas@rc.sara.nl>  Mon, 18 May 2009 17:03:16 +0200
+
 pbs-python (3.2.0-1) intrepid; urgency=low
 
   *  PBSQuery:
@@ -42,15 +51,15 @@ pbs-python (3.2.0-1) intrepid; urgency=low
 			print '%\t%s = %s' %(attrib, node[attrib])
         Author: Bas van der Vlies
 
-  *  PBSQuery: 
-  	fixed an error in getnode, getqueue and getjob, return 
-	empty dictionary if not found.
-	Author: Bas van der Vlies
+  *  PBSQuery:
+        fixed an error in getnode, getqueue and getjob, return
+        empty dictionary if not found.
+        Author: Bas van der Vlies
 
   *  PBSQuery:
-  	New build system for rpm packages, make -f Makefile.rpm
-	Author: Michel Jouvin <jouvin add lal dot in2p3 dot fr> 
-	Applied: Bas van der Vlies
+        New build system for rpm packages, make -f Makefile.rpm
+        Author: Michel Jouvin <jouvin add lal dot in2p3 dot fr>
+        Applied: Bas van der Vlies
 
  -- Bas van der Vlies <bas@rc.sara.nl>  Thu, 14 May 2009 13:41:00 +0200
 

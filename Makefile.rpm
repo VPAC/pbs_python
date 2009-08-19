@@ -1,6 +1,6 @@
 PRODUCT=pbs_python
-VERSION=3.0.2
-RELEASE=2anl
+VERSION=3.2.0
+RELEASE=1
 
 #PYTHON_VERSION=2.3
 PYTHON_VERSION=$(shell python -c "import re;import sys;print re.match('(?P<major>\d\.\d)',sys.version).group('major')")

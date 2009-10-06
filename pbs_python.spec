@@ -2,7 +2,7 @@
 
 ### Abstract ###
 
-Name: pbs-python
+Name: pbs_python
 Version: 3.2.0
 Release: 1%{?dist}
 License: See LICENSE

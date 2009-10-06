@@ -1,27 +1,37 @@
-Summary: This package contains the pbs python module.
-Name: pbs_python
-Version: %{prodversion}
-Release: %{prodrelease}
+%{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
+
+### Abstract ###
+
+Name: pbs-python
+Version: 3.2.0
+Release: 1%{?dist}
 License: See LICENSE
 Group: Development/Libraries
+Summary: This package contains the PBS python module.
+URL: https://subtrac.sara.nl/oss/pbs_python
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 Source: ftp://ftp.sara.nl/pub/outgoing/pbs_python.tar.gz 
-BuildRoot: /var/tmp/%{name}-buildroot
 
+### Dependencies ###
+# None
+
+### Build Dependencies ###
+
+BuildRequires: libtorque-devel >= %{libtorque_version}
+BuildRequires: python2-devel >= %{python_version}
 
 %description
 This package contains the pbs python module.
 
 %prep
-%setup -q
-./configure --with-pbsdir=%{libdir}
+%setup -q -n pbs_python-%{version}
 
 %build
-python setup.py build
+%configure
+%{__python} setup.py build
 
 %install
-echo %{pythonlib}
-echo %{libdir}
-python ./setup.py install --prefix $RPM_BUILD_ROOT/usr ;
+%{__python} ./setup.py install --prefix $RPM_BUILD_ROOT%{_prefix} ;
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -29,12 +39,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,0755)
 %doc README TODO examples
-%{libdir}/%{pythonlib}/site-packages/pbs.pth
-%{libdir}/%{pythonlib}/site-packages/pbs/*
+%{python_sitearch}/pbs.pth
+%{python_sitearch}/pbs/*
 
 %changelog
-* Tue May  5 2009 Michel Jouvin <jouvin@lal.in2p3.fr>
-- Rework spec file to make it generic with respect to platforms, python version... Intended to be used with Makefile.rpm
+* Tue Oct 06 2009 Ramon Bastiaans <ramon.bastiaans@sara.nl>
+- Fixed tmppath, %setup sourcedir
+* Tue Mar 24 2009 David Chin <chindw@wfu.edu>
+- Fedora-ize
 * Sun Mar  9 2008 Michael Sternberg <sternberg@anl.gov>
 - libdir and python defines
 * Wed Nov 23 2005 Ramon Bastiaans <bastiaans@sara.nl>

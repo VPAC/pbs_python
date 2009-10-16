@@ -1,4 +1,4 @@
-pbs-python (3.2.5-1) intrepid; urgency=low
+pbs-python (3.2.5-2) intrepid; urgency=low
 
   * PBSQuery
         The class function of node, job and queue support old and new data
@@ -7,7 +7,9 @@ pbs-python (3.2.5-1) intrepid; urgency=low
 
  * new_rack_pbsmon.py
  	Rewrite to new data structure and automatically determine how many nodes
-	and racks a cluster has. 
+	and racks cluster has and skip printing of empty racks (default), use -w/--wide
+	for old behaviour.
+	
    Author: Bas van der Vlies
 
  -- Bas van der Vlies <bas@rc.sara.nl>  Mon, 18 May 2009 17:03:16 +0200

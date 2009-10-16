@@ -34,16 +34,7 @@ NODE_EXPR = re.compile(r"""
 SKIP_CHARS_RACK = 1 
 SKIP_CHARS_NODE = 1 
 
-NODE_SPLIT_STR = '-'
-NODE_STR = 'r%dn%d'
-
-
-
-
-
-NODES_PER_RACK = 32
 START_RACK = 1
-N_RACKS = 43
 
 pbs_ND_single			= 'job (single)'
 pbs_ND_total			= 'total'
@@ -70,34 +61,26 @@ PBS_STATES = {
 # command line options
 OPT_NODESTATUS = 1
 OPT_SUMMARY = 0
-OPT_WIDE = 0
 OPT_SERVERNAME = None
+OPT_SKIP_EMPTY_RACKS = 1
 
 
-def determine_limits(nodes):
+def parse_hostname(id):
 	"""
 	Determiine the the limits of the cluster:
 	  - How many racks are in the cluster
 	  - What is the max amount of nodes per rack
 	"""
-	rack_max = node_max = 0
-	for id in nodes:
-		result = NODE_EXPR.search(id)
-		if result:
+	result = NODE_EXPR.search(id)
+	if result:
+		r = int(result.group('racknr')[SKIP_CHARS_RACK:])
+		n = int(result.group('nodenr')[SKIP_CHARS_NODE:])
 
-			number = int(result.group('racknr')[SKIP_CHARS_RACK:])
-			if number > rack_max:
-				rack_max = number
-
-			number = int(result.group('nodenr')[SKIP_CHARS_NODE:])
-			if number > node_max:
-				node_max = number
-
-	return (rack_max+1, node_max+1)
+	return (r,n)
  		
 
 def pbsmon(server = None):
-	global NODES_PER_RACK, N_RACKS, PBS_STATES, OPT_WIDE
+	global PBS_STATES
 
 	try:
 		if not server:
@@ -121,7 +104,8 @@ def pbsmon(server = None):
 
 	node_dict = {}
 
-	number_of_racks, nodes_per_rack = determine_limits(nodes)
+	number_of_racks = nodes_per_rack = 0
+	#determine_limits(nodes)
 
 	for id in nodes:
 
@@ -143,71 +127,76 @@ def pbsmon(server = None):
 			#print 'TD: %s' % id, nodes[id]
 			state_char = PBS_STATES[pbs_ND_single]
 
-		#print 'TD: %s %s' % (nodename, state_char)
+		#print 'TD: %s %s' % (id, state_char)
 
-		# Remove the prefix of the node, eg gb-r15n1 --> r15n1
-		#
-		dummy = string.split(nodes[id].name, NODE_SPLIT_STR)
-		node_dict[dummy[1]] = state_char
+		racknr, nodenr = parse_hostname(id)
 
+		if racknr > number_of_racks:
+			number_of_racks = racknr
 
+		if nodenr > nodes_per_rack:
+			nodes_per_rack = nodenr
+
+		try:
+			node_dict[racknr][nodenr] = state_char
+		except KeyError:
+			node_dict[racknr] = dict()
+			node_dict[racknr][nodenr] = state_char
+			
 
 # print header lines
+	save_column = None
 	print '  ',
-	for rack in xrange(START_RACK, number_of_racks):
+	for rack in xrange(START_RACK, number_of_racks + 1):
+
 		if not (rack % 10):
-			print '%d' % (rack / 10),
+			char = '%d' %(rack/10)
+			save_column = char
 		else:
-			print ' ',
+			char = ' '
 
-		if OPT_WIDE:
-			print '',
+		if OPT_SKIP_EMPTY_RACKS:
+			if node_dict.has_key(rack):
+				if save_column:
+					char = save_column
+					save_column = None
+
+				print char,
+		else:
+			print char,
 	print
 
 	print '  ',
-	for rack in xrange(START_RACK, number_of_racks):
-		print '%d' % (rack % 10),
-		if OPT_WIDE:
-			print '',
+	for rack in xrange(START_RACK, number_of_racks + 1):
+		
+		char = rack % 10
+		if OPT_SKIP_EMPTY_RACKS:
+			if node_dict.has_key(rack):
+				print char,
+		else:
+			print char,
 	print
 
-# print nodes with r%dn%d naming scheme
-	for node_nr in xrange(1, nodes_per_rack):
+
+	for node_nr in xrange(1, nodes_per_rack + 1):
 		print '%2d' % node_nr,
 
-		for rack in xrange(START_RACK, number_of_racks):
-			node_name = NODE_STR %(rack, node_nr)
+		for rack in xrange(START_RACK, number_of_racks + 1):
 
-			if node_dict.has_key(node_name):
-				print '%s' % node_dict[node_name],
-
-				del node_dict[node_name]
-			else:
+			if OPT_SKIP_EMPTY_RACKS:
+				if not node_dict.has_key(rack):
+					continue
+			try:
+				print node_dict[rack][node_nr],
+			except KeyError:
 				print ' ',
-		
-			if OPT_WIDE:
-				print '',
-
 		print
-
-	print
-
-# any other nodes?
-	arr = node_dict.keys()
-	if arr:
-		arr.sort()
-
-		for node in arr:
-			print '%s %s' % (node, node_dict[node])
-
-		print
-
 
 #
 #	summary() counts the number of nodes in a particular state
 #
 def pbsmon_summary(server = None):
-	global NODES_PER_RACK, N_RACKS, PBS_STATES
+	global PBS_STATES
 
 	try:
 		if not server:
@@ -314,7 +303,7 @@ def usage():
 	
 
 def getopts():
-	global PROGNAME, OPT_NODESTATUS, OPT_SUMMARY, OPT_WIDE, OPT_SERVERNAME
+	global PROGNAME, OPT_NODESTATUS, OPT_SUMMARY, OPT_SKIP_EMPTY_RACKS, OPT_SERVERNAME
 
 	if len(sys.argv) <= 1:
 		return
@@ -354,7 +343,7 @@ def getopts():
 			continue
 
 		if opt in ('-w', '--wide'):
-			OPT_WIDE = 1
+			OPT_SKIP_EMPTY_RACKS = 0
 			continue
 
 		if opt in ('-S', '--server'):

@@ -5,6 +5,11 @@ pbs-python (3.2.5-1) intrepid; urgency=low
         structure.
     Author: Bas van der Vlies
 
+ * new_rack_pbsmon.py
+ 	Rewrite to new data structure and automatically determine how many nodes
+	and racks a cluster has. 
+   Author: Bas van der Vlies
+
  -- Bas van der Vlies <bas@rc.sara.nl>  Mon, 18 May 2009 17:03:16 +0200
 
 pbs-python (3.2.0-1) intrepid; urgency=low

@@ -14,10 +14,31 @@ import os
 import sys
 import string
 import getopt
+import re
 
 import pbs
 from PBSQuery import PBSQuery
 from PBSQuery import PBSError
+
+# A node has the following syntax gb-r10n10
+#  r10 is rack name -> skip one char --> gives us rack number = 10
+#  n10 is node name -> skip one char --> gives us node number = 10
+# Then we have to set these variables to determine automatically the 
+# number of nodes and racks 
+#
+NODE_EXPR = re.compile(r"""
+	(?P<racknr>r[0-9]+)
+	(?P<nodenr>n[0-9]+)
+""", re.VERBOSE) 
+
+SKIP_CHARS_RACK = 1 
+SKIP_CHARS_NODE = 1 
+
+NODE_SPLIT_STR = '-'
+NODE_STR = 'r%dn%d'
+
+
+
 
 
 NODES_PER_RACK = 32
@@ -53,6 +74,28 @@ OPT_WIDE = 0
 OPT_SERVERNAME = None
 
 
+def determine_limits(nodes):
+	"""
+	Determiine the the limits of the cluster:
+	  - How many racks are in the cluster
+	  - What is the max amount of nodes per rack
+	"""
+	rack_max = node_max = 0
+	for id in nodes:
+		result = NODE_EXPR.search(id)
+		if result:
+
+			number = int(result.group('racknr')[SKIP_CHARS_RACK:])
+			if number > rack_max:
+				rack_max = number
+
+			number = int(result.group('nodenr')[SKIP_CHARS_NODE:])
+			if number > node_max:
+				node_max = number
+
+	return (rack_max+1, node_max+1)
+ 		
+
 def pbsmon(server = None):
 	global NODES_PER_RACK, N_RACKS, PBS_STATES, OPT_WIDE
 
@@ -78,6 +121,8 @@ def pbsmon(server = None):
 
 	node_dict = {}
 
+	number_of_racks, nodes_per_rack = determine_limits(nodes)
+
 	for id in nodes:
 
 		# Skip login nodes in status display
@@ -92,19 +137,24 @@ def pbsmon(server = None):
 
 		state_char = PBS_STATES[state]
 
-#		print 'TD: ', nodes[id].name, nodes[id].is_free() ,nodes[id].has_job()
+		#print 'TD: ', nodes[id].name, nodes[id].is_free() ,nodes[id].has_job()
 
 		if nodes[id].is_free() and nodes[id].has_job():		# single job
-#			print 'TD: %s' % nodename, node
+			#print 'TD: %s' % id, nodes[id]
 			state_char = PBS_STATES[pbs_ND_single]
 
-#		print 'TD: %s %s' % (nodename, state_char)
-		dummy = string.split(nodes[id].name, '-')
+		#print 'TD: %s %s' % (nodename, state_char)
+
+		# Remove the prefix of the node, eg gb-r15n1 --> r15n1
+		#
+		dummy = string.split(nodes[id].name, NODE_SPLIT_STR)
 		node_dict[dummy[1]] = state_char
+
+
 
 # print header lines
 	print '  ',
-	for rack in xrange(START_RACK, N_RACKS+1):
+	for rack in xrange(START_RACK, number_of_racks):
 		if not (rack % 10):
 			print '%d' % (rack / 10),
 		else:
@@ -115,18 +165,18 @@ def pbsmon(server = None):
 	print
 
 	print '  ',
-	for rack in xrange(START_RACK, N_RACKS+1):
+	for rack in xrange(START_RACK, number_of_racks):
 		print '%d' % (rack % 10),
 		if OPT_WIDE:
 			print '',
 	print
 
 # print nodes with r%dn%d naming scheme
-	for node_nr in xrange(1, NODES_PER_RACK+1):
+	for node_nr in xrange(1, nodes_per_rack):
 		print '%2d' % node_nr,
 
-		for rack in xrange(START_RACK, N_RACKS+1):
-			node_name = 'r%dn%d' % (rack, node_nr)
+		for rack in xrange(START_RACK, number_of_racks):
+			node_name = NODE_STR %(rack, node_nr)
 
 			if node_dict.has_key(node_name):
 				print '%s' % node_dict[node_name],

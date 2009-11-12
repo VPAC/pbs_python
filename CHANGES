@@ -1,7 +1,33 @@
-=========== 3.2.5
-	- PBSQuery
-	  The class function of node, job and queue support old and new data structure. 
-	Author: Bas van der Vlies
+=========== 3.5.0
+  * PBSQuery
+        The class functions of node, job and queue support old and new data
+        structure.
+
+        Changed the behaviour of the new data stucture, We can use it as
+        dictionary and as class attribute, this is equivalent, eg:
+          - print node['np'] and print node.np
+
+        for a node we parse the 'status' line and split on '=' char, You now can
+        use these statements, eg
+          - print node.status.arch     (node['status'].arch or node['status']['arch'])
+          - print node.status.nsession
+
+        for a job we parse the 'Variable_List' line and split on '=' char, You now can
+        use the statements, eg:
+          - print job.Variable_List.PBS_O_WORKDIR
+          - print job.Variable_List.PBS_O_HOME
+
+	For more info see examples/new_interface.py
+
+    Author: Bas van der Vlies
+
+ * new_rack_pbsmon.py
+        Rewrite to new data structure and automatically determine how many nodes
+        and racks cluster has and skip printing of empty racks (default), use -w/--wide
+        for old behaviour.
+
+   Author: Bas van der Vlies
+
 
 =========== 3.2.0
 	- PBSQuery:

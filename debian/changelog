@@ -1,8 +1,25 @@
-pbs-python (3.2.5-2) intrepid; urgency=low
+pbs-python (3.5.0-1) lenny; urgency=low
 
   * PBSQuery
-        The class function of node, job and queue support old and new data
+        The class functions of node, job and queue support old and new data
         structure.
+
+	Changed the behaviour of the new data stucture, We can use it as 
+	dictionary and as class attribute, this is equivalent, eg:
+	  - print node['np'] and print node.np 
+
+	for a node we parse the 'status' line and split on '=' char, You now can 
+	use these statements, eg
+	  - print node.status.arch     (node['status'].arch or node['status']['arch'])
+	  - print node.status.nsession
+
+	for a job we parse the 'Variable_List' line and split on '=' char, You now can 
+	use the statements, eg:
+	  - print job.Variable_List.PBS_O_WORKDIR
+	  - print job.Variable_List.PBS_O_HOME
+
+	For more info see examples/new_interface.py
+
     Author: Bas van der Vlies
 
  * new_rack_pbsmon.py
@@ -12,7 +29,7 @@ pbs-python (3.2.5-2) intrepid; urgency=low
 	
    Author: Bas van der Vlies
 
- -- Bas van der Vlies <bas@rc.sara.nl>  Mon, 18 May 2009 17:03:16 +0200
+ -- Bas van der Vlies <bas@rc.sara.nl>  Mon, 12 Nov 2009 15:03:16 +0200
 
 pbs-python (3.2.0-1) intrepid; urgency=low
 

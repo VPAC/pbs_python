@@ -5,7 +5,6 @@ Configure and Debian package support:
 	Yaroslav Halchenko
 
 PBSQuery module:
-	Roy Dragseth
 	Bas van der Vlies
 
 Contributors:
@@ -13,3 +12,4 @@ Contributors:
 	Ramon Bastiaans
 	Dennis Stam
 	Sil Westerveld
+	Roy Dragseth

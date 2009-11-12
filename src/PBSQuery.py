@@ -130,7 +130,7 @@ class PBSQuery:
 			  2. a dictionary with as list of values of type string. If
 			     values contain a '=' character
 
-			  eg: 
+ 		  eg: 
 			    print node['np']
 				>> [ '2' ]
 
@@ -143,49 +143,62 @@ class PBSQuery:
 
 			self.d[item.name] = new 
 			
-			new.name = item.name 
+			new.name = item.name
 
 			for a in item.attribs:
 
-				if a.resource:
-					key = '%s.%s' %(a.name, a.resource)
-				else:
-					key = a.name
-
 				if self.OLD_DATA_STRUCTURE:
+
+					if a.resource:
+						key = '%s.%s' %(a.name, a.resource)
+					else:
+						key = '%s' %(a.name)
+
 					new[key] = a.value
+
 				else:
 					values = string.split(a.value, ',') 
-					
-					if len(values) == 1:
-						# simple form
-						# print 'simple %s =  %s' %(key, values[0])
+					sub_dict = string.split(a.value, '=')
+
+
+					if len(sub_dict) > 1:
+						# We must creat sub dict, only for specified 
+						# key values
 						#
-						new[key] = values
+						if a.name in ['status', 'Variable_List']:
 
-					else:
-						# list check
-						list_or_dict = string.split(a.value, '=')
-
-
-						if len(list_or_dict) == 1:
-							# This is a list
-							# print 'list %s = %s' %(key, values)
-							#
-							new[key] = values
-
-						else:
-							# This is dictionary
-							# print 'dict %s = %s' %(key, values)
-							#
-							new[key] = dict()
 							for v in values:
-								# First argument is the key and the rest is the value 
-								# - value can contain a '='
+
+								tmp_l = v.split('=')
+
+								# Check if we already added the key
 								#
-								tmp = v.split('=')
-								new[key][ tmp[0] ] =  tmp[1:] 
-						
+								if new.has_key(a.name):
+									new[a.name][ tmp_l[0] ] = tmp_l[1:]
+
+								else:
+									tmp_d  = dict()
+									tmp_d[ tmp_l[0] ] = tmp_l[1:]
+									new[a.name] = class_func(tmp_d) 
+
+					else: 
+						# Check if it is a resource type variable, eg:
+						#  - Resource_List.(nodes, walltime, ..)
+						#
+						if a.resource:
+
+							if new.has_key(a.name):
+								new[a.name][a.resource] = values
+
+							else:
+								tmp_d = dict()
+								tmp_d[a.resource] = values
+								new[a.name] = class_func(tmp_d) 
+						else:
+							# Simple value
+							#
+							new[a.name] = values
+
 		self._free(l)
 	        
 	def _free(self, memory):
@@ -308,9 +321,15 @@ class _PBSobject(UserDict.UserDict):
 	TRUE  = 1
 	FALSE = 0
 
-	def __init__(self):
+	def __init__(self, dictin = None):
 		UserDict.UserDict.__init__(self)
 		self.name = None
+
+		if dictin:
+			if dictin.has_key('name'):
+				self.name = dictin['name']
+				del dictin['name']
+			self.data = dictin
 
 	def get_value(self, key):
 		if self.has_key(key):
@@ -328,7 +347,7 @@ class _PBSobject(UserDict.UserDict):
 		try:
 			return self.data[name]
 		except KeyError:
-			error = 'invalid attribute %s' %(name)
+			error = 'Attribute key error: %s' %(name)
 			raise PBSError(error)
 
 	def __iter__(self):

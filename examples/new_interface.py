@@ -11,24 +11,39 @@
 #
 
 from PBSQuery import PBSQuery
+from PBSQuery import PBSError
+
+import sys
 
 def main():
 
   p = PBSQuery()
   p.new_data_structure()
 
-  jobs = p.getjobs()
-  for id in jobs:
-     print id + ':'
-     for attr in jobs[id]:
-        print '\t' + attr, jobs[id][attr]
-     
-  l = ['state', 'np' ]
+  #job = p.getjob('2983215')
+  #print job['substate']
+  #print job.substate
+  #print job.queue
+  #print job.Resource_List
+  #print job.Resource_List.nodes 
+  #print job.Resource_List.arch 
+  #print job.Variable_List.PBS_O_HOME
+
+  l = ['np', 'status', 'state' ]
   nodes = p.getnodes(l)
   for id in nodes:
-     print id + ': ', nodes[id].state, nodes[id].np
+	print id
 
-     for attrib in nodes[id]:
-     	print attrib, nodes[id][attrib]
+	try:
+		print nodes[id].np
+		print nodes[id].status.arch
+		print nodes[id].status.uname
+		print nodes[id].state
+	except PBSError, detail:
+		print detail
+		pass
+	
+     #for attrib in nodes[id]:
+     #	print attrib, nodes[id][attrib]
 
 main()

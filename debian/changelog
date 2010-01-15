@@ -1,78 +1,84 @@
+pbs-python (3.6.0-1) lenny; urgency=low
+
+  * New generated files pbs_wrap.c and pbs.py fixes an error in pbs_runjob() 
+
+ -- root <root@gb-r31vn6.irc.sara.nl.irc.sara.nl>  Fri, 15 Jan 2010 04:40:35 +0100
+
 pbs-python (3.5.0-1) lenny; urgency=low
 
   * PBSQuery
         The class functions of node, job and queue support old and new data
         structure.
 
-	Changed the behaviour of the new data stucture, We can use it as 
-	dictionary and as class attribute, this is equivalent, eg:
-	  - print node['np'] and print node.np 
+    Changed the behaviour of the new data stucture, We can use it as 
+    dictionary and as class attribute, this is equivalent, eg:
+      - print node['np'] and print node.np 
 
-	for a node we parse the 'status' line and split on '=' char, You now can 
-	use these statements, eg
-	  - print node.status.arch     (node['status'].arch or node['status']['arch'])
-	  - print node.status.nsession
+    for a node we parse the 'status' line and split on '=' char, You now can 
+    use these statements, eg
+     - print node.status.arch     (node['status'].arch or node['status']['arch'])
+     - print node.status.nsession
 
-	for a job we parse the 'Variable_List' line and split on '=' char, You now can 
-	use the statements, eg:
-	  - print job.Variable_List.PBS_O_WORKDIR
-	  - print job.Variable_List.PBS_O_HOME
+    for a job we parse the 'Variable_List' line and split on '=' char, You now can 
+    use the statements, eg:
+     - print job.Variable_List.PBS_O_WORKDIR
+     - print job.Variable_List.PBS_O_HOME
 
-	For more info see examples/new_interface.py
+    for more info see examples/new_interface.py
 
     Author: Bas van der Vlies
 
- * new_rack_pbsmon.py
- 	Rewrite to new data structure and automatically determine how many nodes
-	and racks cluster has and skip printing of empty racks (default), use -w/--wide
-	for old behaviour.
-	
-   Author: Bas van der Vlies
+  * new_rack_pbsmon.py
+    Rewrite to new data structure and automatically determine how many nodes
+    and racks cluster has and skip printing of empty racks (default), use -w/--wide
+    for old behaviour.
 
- -- Bas van der Vlies <bas@rc.sara.nl>  Mon, 12 Nov 2009 15:03:16 +0200
+    Author: Bas van der Vlies
+
+ -- Bas van der Vlies <bas@sara.nl>  Mon, 12 Nov 2009 15:03:16 +0200
 
 pbs-python (3.2.0-1) intrepid; urgency=low
 
   *  PBSQuery:
-	 New data structure. In the old structure it is a dictionary
-	 with a value and the value is a string. This is changed that
-	 dictionary values are now of type list or dictionary depends
-	 on the value of keyword, eg for a node:
-	  - np = 2:
-	  	- node['np'] = [ '2' ]
-	  - properties = cores2, mem4gb, parallel
-	  	- node['properties'] = [ 'cores2', 'mem4gb', 'parallel' ]
-    	  - status = arch=x86_64,sessions=22599,,size=70627864kb, ...
-		- node['status']['arch'] = [ 'x86_64' ]
-		- node['status']['sessions'] = [ '222599' ]
-		- ...
+     New data structure. In the old structure it is a dictionary
+     with a value and the value is a string. This is changed that
+     dictionary values are now of type list or dictionary depends
+     on the value of keyword, eg for a node:
+       - np = 2:
+       - node['np'] = [ '2' ]
+       - properties = cores2, mem4gb, parallel
+       - node['properties'] = [ 'cores2', 'mem4gb', 'parallel' ]
+       - status = arch=x86_64,sessions=22599,,size=70627864kb, ...
+       - node['status']['arch'] = [ 'x86_64' ]
+       - node['status']['sessions'] = [ '222599' ]
+       - ...
 
          The data structure is activated by the function:
           - new_data_structure()
 
          In a future release it will be come the default.
          example:
-		p = PBSQuery()
-		p.new_data_structure()
+         p = PBSQuery()
+         p.new_data_structure() 
 
-		nodes = p.getnodes()
-		print nodes.np, nodes['np']
+        nodes = p.getnodes()
+        print nodes.np, nodes['np']
 
          Author: Bas van der Vlies
 
   *  PBSQuery:
   	For old and new data structure we now can use another syntax:
-	 - node['np'] and node.np are equivalent
+     - node['np'] and node.np are equivalent
 
         This new syntax works for all keywords.
         Author: Bas van der Vlies
 
   *  PBSQuery:
   	Added iter object for job, node, queue and server objects, eg:
-		node = p.getnode('gb-r1n1')
-		print node.name
-		for attrib in node:
-			print '%\t%s = %s' %(attrib, node[attrib])
+        node = p.getnode('gb-r1n1')
+        print node.name
+        for attrib in node:
+           print '%\t%s = %s' %(attrib, node[attrib])
         Author: Bas van der Vlies
 
   *  PBSQuery:

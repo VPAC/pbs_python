@@ -15,8 +15,8 @@ pythonlib:
 	#(cd src; make)
 	python setup.py build
 
-install: pythonlib sara_install
-#install: pythonlib
+#install: pythonlib sara_install
+install: pythonlib
 	python ./setup.py install --prefix $(DESTDIR)/$(exec_prefix) ;
 	install -D LICENSE.SARA $(DESTDIR)/$(DOCDIR)/LICENSE.SARA
 	(cd examples; for i in *py; do install -D $$i  $(DESTDIR)/$(EXAMPLES)/$${i}; done)

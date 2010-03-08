@@ -1,7 +1,7 @@
 /*
 *         OpenPBS (Portable Batch System) v2.3 Software License
 * 
-* Copyright (c) 1999-2002 Veridian Information Solutions, Inc.
+* Copyright (c) 1999-2000 Veridian Information Solutions, Inc.
 * All rights reserved.
 * 
 * ---------------------------------------------------------------------------
@@ -18,7 +18,7 @@
 * Software to other sites and locations.  Use and redistribution of
 * OpenPBS v2.3 in source and binary forms, with or without modification,
 * are permitted provided that all of the following conditions are met.
-* After December 31, 2003, only conditions 3-6 must be met:
+* After December 31, 2001, only conditions 3-6 must be met:
 * 
 * 1. Commercial and/or non-commercial use of the Software is permitted
 *    provided a current software registration is on file at www.OpenPBS.org.
@@ -77,17 +77,6 @@
 * without reference to its choice of law rules.
 */
 
-/*
- * @(#) $Id$
- */
-
-/*
- * The error returns possible to a Batch Request
- *
- * Each error is prefixed with the string PBSE_ for Portable (Posix)
- * Batch System Error.  The numeric values start with 15000 since the
- * POSIX Batch Extensions Working group is 1003.15
- */
 /*
  * The error returns possible to a Batch Request
  *
@@ -186,25 +175,23 @@
 #define RM_ERR_EXIST	PBSE_RMEXIST
 #define RM_ERR_SYSTEM	PBSE_RMSYSTEM
 
-/* HvB 
- * TORQUE addition
-*/
 #ifndef NULL
 #define NULL (char *)0
 #endif /* NULL */
+
 
 /* the following structure is used to tie error number      */
 /* with text to be returned to a client, see svr_messages.c */
 
 struct pbs_err_to_txt {
-	int    err_no;
-	char **err_txt;
-};
+  int    err_no;
+  char **err_txt;
+  };
 
-extern char *pbse_to_txt();
+extern char *pbse_to_txt(int);
 
-/*
- * HvB Torque addition
-*/
 extern int pbs_errno;
-#endif
+
+#endif  /* END PBSE_ */
+
+

@@ -3,7 +3,7 @@
 ### Abstract ###
 
 Name: pbs_python
-Version: 3.2.0
+Version: 3.5.0
 Release: 1%{?dist}
 License: See LICENSE
 Group: Development/Libraries
@@ -43,6 +43,8 @@ rm -rf $RPM_BUILD_ROOT
 %{python_sitearch}/pbs/*
 
 %changelog
+* Tue Mar 24 2010 Ramon Bastiaans <ramon.bastiaans@sara.nl>
+- Updates for new version
 * Tue Oct 06 2009 Ramon Bastiaans <ramon.bastiaans@sara.nl>
 - Fixed tmppath, %setup sourcedir
 * Tue Mar 24 2009 David Chin <chindw@wfu.edu>

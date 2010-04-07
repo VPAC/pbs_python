@@ -1,3 +1,18 @@
+=========== 3.8.0
+  * Added some new functions for 2.4 version:
+    - pbs_fbserver(void);
+    - pbs_get_server_list(void);
+    - pbs_sigjobasync(int connect, char *job_id, char *signal, char *extend);
+    - pbs_alterjob_async(int connect, char *job_id, struct attrl *ATTRL, char *extend);
+    - pbs_checkpointjob(int connect, char *job_id, char *extend);
+    - log_ext(int,char *,char *,int);
+    - log_init(char *, char *);
+    - log_remove_old(char *,unsigned long);
+
+    Note: version 2.1.X is still supported
+
+
+
 =========== 3.6.0
   * pbs, new generated pbs_wrap.c, pbs.py fixes a bug in pbs_runjob()
     Reported by: Dennis Stam

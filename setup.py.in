@@ -45,6 +45,9 @@ else:
 			print 'You need to install "%s" in %s' %(library, PBS_LIB_DIR)
 			sys.exit(1)
 
+### Make symlinks to right torque version
+#
+
 setup ( name = 'pbs_python',
 	version = '3.8.0',
 	description = 'openpbs/torque python interface',

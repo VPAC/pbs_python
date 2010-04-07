@@ -2,7 +2,7 @@ pbs-python (3.6.0-1) lenny; urgency=low
 
   * New generated files pbs_wrap.c and pbs.py fixes an error in pbs_runjob() 
 
- -- root <root@gb-r31vn6.irc.sara.nl.irc.sara.nl>  Fri, 15 Jan 2010 04:40:35 +0100
+ -- Bas van der Vlies <basv@sara.nl>  Fri, 15 Jan 2010 04:40:35 +0100
 
 pbs-python (3.5.0-1) lenny; urgency=low
 

@@ -12,7 +12,7 @@ from distutils.core import setup, Extension
 
 # Try some usefule defaults if not set
 #
-PBS_LIB_DIR='@pbspath@'
+PBS_LIB_DIR='@pbs_library_dir@'
 NEW_BUILD_SYSTEM=1
 
 if not PBS_LIB_DIR:
@@ -47,6 +47,29 @@ else:
 
 ### Make symlinks to right torque version
 #
+VERSION = "@pbs_version@"
+tmp = VERSION.split('.')
+major_version = '.'.join( tmp[0:2] )
+
+
+
+os.chdir('src')
+
+## Always unlink previous links
+#
+try:
+	os.unlink('pbs.py')
+	os.unlink('pbs_wrap.c')
+except OSError:
+	pass
+
+if major_version in [ '2.3', '2.4']:
+	os.symlink('pbs_wrap_2.4.c', 'pbs_wrap.c')
+	os.symlink('pbs_2.4.py', 'pbs.py')
+else:
+	os.symlink('pbs_wrap_2.1.c', 'pbs_wrap.c')
+	os.symlink('pbs_2.1.py', 'pbs.py')
+os.chdir('..')
 
 setup ( name = 'pbs_python',
 	version = '3.8.0',

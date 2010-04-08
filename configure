@@ -576,7 +576,7 @@ PACKAGE_VERSION=
 PACKAGE_STRING=
 PACKAGE_BUGREPORT=
 
-ac_unique_file="src/pbs.py"
+ac_unique_file="src/pbs_2.4.py"
 ac_subst_vars='SHELL
 PATH_SEPARATOR
 PACKAGE_NAME
@@ -615,7 +615,10 @@ build_alias
 host_alias
 target_alias
 pyexecdir
-pbspath
+pbsdir
+PBSCONFIG
+pbs_library_dir
+pbs_version
 PYTHON
 PYTHON_VERSION
 PYTHON_PREFIX
@@ -1198,8 +1201,7 @@ if test -n "$ac_init_help"; then
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
-
-  --with-pbsdir=PATH	directory that contains the torque libraries
+  --with-pbsdir=PATH	The torque/pbs install directory
 
 _ACEOF
 ac_status=$?
@@ -1625,18 +1627,73 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
-
+pbsdir_default=''
 
 # Check whether --with-pbsdir was given.
 if test "${with_pbsdir+set}" = set; then
-  withval=$with_pbsdir; case "${withval}" in
-	*) pbspath="${withval}" ;;
-  esac
+  withval=$with_pbsdir; pbsdir=$withval
 else
-  pbspath=""
-  pbspath=`pbs-config --libs`
-
+  pbsdir=$pbsdir_default
 fi
+
+
+
+# Verify the PBS libs are there, but let Makefile handle including them
+# on the link line.  First check for modern torque pbs-config program using
+# $pbsdir and the rest of PATH, then fall back to looking around for the
+# libraries by hand.
+# Extract the first word of "pbs-config", so it can be a program name with args.
+set dummy pbs-config; ac_word=$2
+{ echo "$as_me:$LINENO: checking for $ac_word" >&5
+echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6; }
+if test "${ac_cv_path_PBSCONFIG+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  case $PBSCONFIG in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_PBSCONFIG="$PBSCONFIG" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+as_dummy="$pbsdir:$pbsdir/bin:$pbsdir/../bin:$PATH"
+for as_dir in $as_dummy
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+  for ac_exec_ext in '' $ac_executable_extensions; do
+  if { test -f "$as_dir/$ac_word$ac_exec_ext" && $as_test_x "$as_dir/$ac_word$ac_exec_ext"; }; then
+    ac_cv_path_PBSCONFIG="$as_dir/$ac_word$ac_exec_ext"
+    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+done
+IFS=$as_save_IFS
+
+  test -z "$ac_cv_path_PBSCONFIG" && ac_cv_path_PBSCONFIG="none"
+  ;;
+esac
+fi
+PBSCONFIG=$ac_cv_path_PBSCONFIG
+if test -n "$PBSCONFIG"; then
+  { echo "$as_me:$LINENO: result: $PBSCONFIG" >&5
+echo "${ECHO_T}$PBSCONFIG" >&6; }
+else
+  { echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6; }
+fi
+
+
+if test "$PBSCONFIG" != "none"; then
+  pbs_library_dir="`$PBSCONFIG --libs`"
+  pbs_version="`$PBSCONFIG --version`"
+else
+  pbs_library_DIR=""
+  pbs_version=""
+fi
+
+
+
 
 
 
@@ -2429,7 +2486,10 @@ build_alias!$build_alias$ac_delim
 host_alias!$host_alias$ac_delim
 target_alias!$target_alias$ac_delim
 pyexecdir!$pyexecdir$ac_delim
-pbspath!$pbspath$ac_delim
+pbsdir!$pbsdir$ac_delim
+PBSCONFIG!$PBSCONFIG$ac_delim
+pbs_library_dir!$pbs_library_dir$ac_delim
+pbs_version!$pbs_version$ac_delim
 PYTHON!$PYTHON$ac_delim
 PYTHON_VERSION!$PYTHON_VERSION$ac_delim
 PYTHON_PREFIX!$PYTHON_PREFIX$ac_delim
@@ -2442,7 +2502,7 @@ LIBOBJS!$LIBOBJS$ac_delim
 LTLIBOBJS!$LTLIBOBJS$ac_delim
 _ACEOF
 
-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 49; then
+  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 52; then
     break
   elif $ac_last_try; then
     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5

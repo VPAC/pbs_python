@@ -21,7 +21,7 @@ if not PBS_LIB_DIR:
 
 # Test if we have all the libs:
 #
-LIBS = [PBS_LIB_DIR]
+LIBS = ['torque']
 
 ### Make symlinks to right torque version
 #
@@ -63,7 +63,7 @@ setup ( name = 'pbs_python',
 
 	ext_modules = [ 
 		Extension( '_pbs', ['src/pbs_wrap.c'],
-		library_dirs = [ PBS_LIB_DIR ])
-		#libraries = [PBS_LIB_DIR]) 
+		library_dirs = [ PBS_LIB_DIR ],
+		libraries = LIBS) 
 	]
 )

@@ -40,7 +40,7 @@ try:
 except OSError:
 	pass
 
-if major_version in [ '2.3', '2.4']:
+if major_version in [ '2.4' ]:
 	os.symlink('pbs_wrap_2.4.c', 'pbs_wrap.c')
 	os.symlink('pbs_2.4.py', 'pbs.py')
 else:

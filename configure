@@ -1688,6 +1688,9 @@ if test "$PBSCONFIG" != "none"; then
   pbs_library_dir="`$PBSCONFIG --libs`"
   pbs_version="`$PBSCONFIG --version`"
 else
+  { { echo "$as_me:$LINENO: error: Failed to find program pbs-config" >&5
+echo "$as_me: error: Failed to find program pbs-config" >&2;}
+   { (exit 1); exit 1; }; }
   pbs_library_DIR=""
   pbs_version=""
 fi

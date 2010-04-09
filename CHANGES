@@ -1,4 +1,4 @@
-=========== 3.8.0
+=========== 4.0.0
   * Added some new functions for 2.4 version:
     - pbs_fbserver(void);
     - pbs_get_server_list(void);
@@ -11,7 +11,12 @@
 
     Note: version 2.1.X is still supported
 
-
+  * autotools environment
+    - Added support for finding pbs-config (borrowed for mpiexec source)
+    - Detecting which version of torque is installed
+    - only support installations that have pbs-config installed. 
+    - Removed old code for installations that do not a have pbs-config
+      installed.
 
 =========== 3.6.0
   * pbs, new generated pbs_wrap.c, pbs.py fixes a bug in pbs_runjob()

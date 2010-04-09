@@ -628,7 +628,7 @@ def version():
   """
   Returns the pbs python interface version as a string. 
   """
-  return '3.8.0'
+  return '4.0.0'
 
 # A useful dict with error codes to text
 #

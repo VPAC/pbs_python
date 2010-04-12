@@ -161,25 +161,24 @@ class PBSQuery:
 					sub_dict = string.split(a.value, '=')
 
 
-					if len(sub_dict) > 1:
-						# We must creat sub dict, only for specified 
-						# key values
-						#
-						if a.name in ['status', 'Variable_List']:
+					# We must creat sub dict, only for specified 
+					# key values
+					#
+					if a.name in ['status', 'Variable_List']:
 
-							for v in values:
+						for v in values:
 
-								tmp_l = v.split('=')
+							tmp_l = v.split('=')
 
-								# Check if we already added the key
-								#
-								if new.has_key(a.name):
-									new[a.name][ tmp_l[0] ] = tmp_l[1:]
+							# Check if we already added the key
+							#
+							if new.has_key(a.name):
+								new[a.name][ tmp_l[0] ] = tmp_l[1:]
 
-								else:
-									tmp_d  = dict()
-									tmp_d[ tmp_l[0] ] = tmp_l[1:]
-									new[a.name] = class_func(tmp_d) 
+							else:
+								tmp_d  = dict()
+								tmp_d[ tmp_l[0] ] = tmp_l[1:]
+								new[a.name] = class_func(tmp_d) 
 
 					else: 
 						# Check if it is a resource type variable, eg:

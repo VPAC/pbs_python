@@ -43,9 +43,11 @@ except OSError:
 if major_version in [ '2.4' ]:
 	os.symlink('pbs_wrap_2.4.c', 'pbs_wrap.c')
 	os.symlink('pbs_2.4.py', 'pbs.py')
+	TORQUE_VERSION='TORQUE_2_4'
 else:
 	os.symlink('pbs_wrap_2.1.c', 'pbs_wrap.c')
 	os.symlink('pbs_2.1.py', 'pbs.py')
+	TORQUE_VERSION='TORQUE_OLD'
 
 os.chdir('..')
 
@@ -64,6 +66,7 @@ setup ( name = 'pbs_python',
 	ext_modules = [ 
 		Extension( '_pbs', ['src/pbs_wrap.c'],
 		library_dirs = [ PBS_LIB_DIR ],
+		define_macros =  [ (TORQUE_VERSION, None) ],
 		libraries = LIBS) 
 	]
 )

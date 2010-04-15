@@ -80,7 +80,7 @@ class PBSQuery:
 
 	# a[key] = value, key and value are data type string
 	#
-	OLD_DATA_STRUCTURE = True
+	OLD_DATA_STRUCTURE = False
 
 	def __init__(self, server=None):
 		if not server:
@@ -312,9 +312,16 @@ class PBSQuery:
 
 	def new_data_structure(self): 
 		"""
-		Use new data structure, will be standard in future release
+		Use the new data structure. Is now the default
 		"""
 		self.OLD_DATA_STRUCTURE = False
+
+	def old_data_structure(self): 
+		"""
+		Use the old data structure. This function is obselete and
+		will be removed in a future release
+		"""
+		self.OLD_DATA_STRUCTURE = True
 
 class _PBSobject(UserDict.UserDict):
 	TRUE  = 1

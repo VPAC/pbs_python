@@ -30,6 +30,10 @@
 
       Author: Bas van der Vlies
 
+   * examples/ha_server.py
+     An example how to use the High Availabilty torque functions
+     Author: Bas van der Vlies & Mark Roberts ( mark at gingergeeks dot co dot uk )
+
 =========== 3.6.0
   * pbs, new generated pbs_wrap.c, pbs.py fixes a bug in pbs_runjob()
     Reported by: Dennis Stam

@@ -18,6 +18,7 @@ AC_PATH_PROG(PBSCONFIG, pbs-config, none, $pbsdir:$pbsdir/bin:$pbsdir/../bin:$PA
 if test "$PBSCONFIG" != "none"; then
   pbs_library_dir="`$PBSCONFIG --libs`"
   pbs_version="`$PBSCONFIG --version`"
+  AC_MSG_RESULT(Found torque version: $pbs_version)
 else
   AC_MSG_ERROR([Failed to find program pbs-config])
 fi

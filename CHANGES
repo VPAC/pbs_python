@@ -1,3 +1,8 @@
+=========== 4.0.1
+  * Fixed a bug in setting the right library path  for compiling.
+    Reported by: Chad Vizino ( vizino add psc dot edu )
+    Author: Bas van der Vlies
+   
 =========== 4.0.0
   * pbs.py added some new functions for 2.4 version:
     - pbs_fbserver(void);

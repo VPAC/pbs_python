@@ -68,6 +68,8 @@ setup ( name = 'pbs_python',
 	ext_modules = [ 
 		Extension( '_pbs', ['src/pbs_wrap.c'],
 		library_dirs = [ PBS_LIB_DIR ],
-		define_macros =  [ (TORQUE_VERSION, None) ]) 
+		define_macros =  [ (TORQUE_VERSION, None) ],
+		libraries = LIBS,
+		) 
 	]
 )

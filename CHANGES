@@ -1,3 +1,9 @@
+=========== 4.0.2
+  * Quick fix so we do not get any undefined symbols. Forgot to
+    add the torque library when we compile the package.
+    Reported by: Shunjie Lau ( eijnuhs add gmail dot com)
+    Author: Bas van der Vlies
+
 =========== 4.0.1
   * Fixed a bug in setting the right library path  for compiling.
     Reported by: Chad Vizino ( vizino add psc dot edu )

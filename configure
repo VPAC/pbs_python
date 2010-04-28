@@ -617,6 +617,7 @@ target_alias
 pyexecdir
 pbsdir
 PBSCONFIG
+pbs_library_compile_line
 pbs_library_dir
 pbs_version
 PYTHON
@@ -1685,7 +1686,8 @@ fi
 
 
 if test "$PBSCONFIG" != "none"; then
-  pbs_library_dir="`$PBSCONFIG --libs`"
+  pbs_library_compile_line="`$PBSCONFIG --libs`"
+  pbs_library_dir="`$PBSCONFIG --libdir`"
   pbs_version="`$PBSCONFIG --version`"
   { echo "$as_me:$LINENO: result: Found torque version: $pbs_version" >&5
 echo "${ECHO_T}Found torque version: $pbs_version" >&6; }
@@ -1694,6 +1696,7 @@ else
 echo "$as_me: error: Failed to find program pbs-config" >&2;}
    { (exit 1); exit 1; }; }
 fi
+
 
 
 
@@ -2491,6 +2494,7 @@ target_alias!$target_alias$ac_delim
 pyexecdir!$pyexecdir$ac_delim
 pbsdir!$pbsdir$ac_delim
 PBSCONFIG!$PBSCONFIG$ac_delim
+pbs_library_compile_line!$pbs_library_compile_line$ac_delim
 pbs_library_dir!$pbs_library_dir$ac_delim
 pbs_version!$pbs_version$ac_delim
 PYTHON!$PYTHON$ac_delim
@@ -2505,7 +2509,7 @@ LIBOBJS!$LIBOBJS$ac_delim
 LTLIBOBJS!$LTLIBOBJS$ac_delim
 _ACEOF
 
-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 52; then
+  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 53; then
     break
   elif $ac_last_try; then
     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5

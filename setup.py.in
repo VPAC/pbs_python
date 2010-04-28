@@ -12,17 +12,14 @@ from distutils.core import setup, Extension
 
 # Strip off the -L it is also added by the python setup tools
 #
+PBS_LIB_COMPILE_LINE='@pbs_library_compile_line@'
 PBS_LIB_DIR='@pbs_library_dir@'
-if PBS_LIB_DIR.startswith('-L'):
-	PBS_LIB_DIR=PBS_LIB_DIR[2:]
 
 if not PBS_LIB_DIR:
 	print 'Please specify where the PBS libraries are!!'
 	print 'edit setup.py and fill in the PBS_LIB_DIR variable'
 	sys.exit(1)
 
-# Test if we have all the libs:
-#
 LIBS = ['torque']
 
 ### Make symlinks to right torque version

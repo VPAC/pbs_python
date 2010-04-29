@@ -3,7 +3,7 @@
 ### Abstract ###
 
 Name: pbs_python
-Version: 4.0.2
+Version: 4.1.0
 Release: 1%{?dist}
 License: See LICENSE
 Group: Development/Libraries

@@ -616,11 +616,8 @@ def get_mom_values(id, list = None):
      
   return d
 
-def version():
-  """
-  Returns the pbs python interface version as a string. 
-  """
-  return '4.0.0'
+version_info = ( 4, 1, 0 )
+version = 'SARA pbs_python version 4.1.0'
 
 # A useful dict with error codes to text
 #

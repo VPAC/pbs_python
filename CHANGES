@@ -1,3 +1,26 @@
+=========== 4.1.0
+ * Delete function pbs.version() replaced by
+    * pbs.version 
+        This is a string variable
+    * pbs.version_info
+        Is a tuple variable. So we can use it in scripts
+
+   This analogue with sys module, closes #20
+
+   Requested by: Dennis Stam ( Dennis dot Stam add sara dot nl )
+   Author: Bas van der Vlies
+
+ * More robust make/configure/setup.py
+   Reported by: 
+   	- Saidi, Yacine <saidi add linmpi dot mpg dot de> 
+	- Shunjie Lau <eijnuhs add gmail dot com> 
+   Author: Bas van der Vlies
+
+
+ * Only use the pbs_wrap.c and pbs.py 2.4 version for torque version 2.4.7 and higher. 
+   Reported by: Saidi, Yacine <saidi add linmpi dot mpg dot de> 
+   Author: Bas van der Vlies
+   
 =========== 4.0.2
   * Quick fix so we do not get any undefined symbols. Forgot to
     add the torque library when we compile the package.

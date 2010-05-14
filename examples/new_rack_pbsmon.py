@@ -228,9 +228,8 @@ def pbsmon_summary(server = None):
 		if not nodename.find('login'):
 			continue
 
-		state = node['state']
-		if string.find(state, ',') >= 0:			# multiple states for a node?
-			state = string.split(state, ',')[-1]
+		# A node can have multiple states
+		state = node['state'][0]
 
 		state_char = PBS_STATES[state]
 		count_states[state] += 1
@@ -243,9 +242,9 @@ def pbsmon_summary(server = None):
 				count_states[pbs.ND_free] -=  1
 				count_states[pbs_ND_single] += 1
 			else:
-				if  node['properties'].find('infiniband') >= 0:
+				if  'infiniband' in node['properties']:
 					count_states[pbs_ND_free_parallel] +=  1 
-				elif  node['properties'].find('gigabit') >= 0:
+				elif  'gigabit' in node['properties']:
 					count_states[pbs_ND_free_serial] +=  1 
 				#else:
 				#	count_states[pbs_ND_free_serial] +=  1 

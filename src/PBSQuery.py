@@ -417,13 +417,25 @@ class node(_PBSobject):
 	
 	def get_jobs(self, unique=None):
 		"""Returns a list of the currently running job-id('s) on the node"""
-		jobstring = self.get_value('jobs')
-		if jobstring:
-			joblist = re.compile('[^\\ /]\\d+[^/.]').findall( jobstring )
+
+		jobs = self.get_value('jobs')
+		if jobs:	
+			if type(jobs) == type('string') :
+				jobs = re.compile('[^\\ /]\\d+[^/.]').findall( jobs )
+			
 			if not unique:
-				return joblist
+				return jobs
 			else:
-				return self.uniq(joblist)
+				job_re = re.compile('^(?:\d+/)?(.+)')
+				l = list()
+
+				for j in jobs:
+				    jobstr = job_re.findall(j.strip())[0]
+				    if jobstr not in l: 
+				    	l.append(jobstr)           
+
+				return l
+
 		return list()
 
 

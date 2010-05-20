@@ -1,3 +1,13 @@
+=========== 4.1.2
+ * examples/new_rack_pbsmon.py now uses the new PBSQuery data 
+   structure.
+   Author: Bas van der Vlies
+
+ * PBSQuery:
+     - fixed and error in get_jobs function for nodes. Did not
+       support new data structure and uniq did not work.
+       Authors: Shunjie Lau <eijnuhs at gmail dot com> and Bas van der Vlie
+
 =========== 4.1.0
  * Delete function pbs.version() replaced by
     * pbs.version 

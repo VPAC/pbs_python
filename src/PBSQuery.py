@@ -433,7 +433,6 @@ class node(_PBSobject):
 				    jobstr = job_re.findall(j.strip())[0]
 				    if jobstr not in l: 
 				    	l.append(jobstr)           
-
 				return l
 
 		return list()

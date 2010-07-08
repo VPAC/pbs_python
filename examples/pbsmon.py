@@ -133,7 +133,7 @@ def main():
     # as other state
     #
     if state == pbs.ND_free:
-       if len(node_attr) > 1:
+       if len([x for x in node_attr if x.name == 'jobs']):
           state_list.append(translate_state[pbs_ND_free_and_job])
        else:
           state_list.append(translate_state[state])

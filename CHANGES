@@ -3,6 +3,10 @@
   (jsbronder add gentoo dot org) for the information and
   explanation.
 
+ * examples/pbsmon.py. Patched so it also works for torque 2.5
+   Author: Stijn De Weirdt stijn dot deweirdt at ugent dot be
+   Applied by: Bas van der Vlies
+
 =========== 4.1.2
  * examples/new_rack_pbsmon.py now uses the new PBSQuery data 
    structure.

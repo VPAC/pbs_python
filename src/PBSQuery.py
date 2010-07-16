@@ -350,11 +350,27 @@ class _PBSobject(UserDict.UserDict):
 		return str(self.data)
 
 	def __getattr__(self, name):
+		"""
+		override the class attribute get method. Return the value
+		from the Userdict
+		"""
 		try:
 			return self.data[name]
 		except KeyError:
 			error = 'Attribute key error: %s' %(name)
 			raise PBSError(error)
+
+	## Disabled for this moment, BvdV 16 July 2010
+	#
+	#def __setattr__(self, name, value):
+	#	"""
+	#	override the class attribute set method only when the UserDict
+	#	has set its class attribute
+	#	"""
+	#	if self.__dict__.has_key('data'):
+	#		self.data[name] = value
+	#	else:
+	#		self.__dict__[name] = value
 
 	def __iter__(self):
 		return iter(self.data.keys())

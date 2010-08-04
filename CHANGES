@@ -7,6 +7,11 @@
    Author: Stijn De Weirdt stijn dot deweirdt at ugent dot be
    Applied by: Bas van der Vlies
 
+ * setup.py.in changed determine which torque version is installed
+   so we also support snapshots.
+   Author: Mark Roberts ( mark at gingergeeks dot co dot uk)
+   Applied by: Bas van der Vlies
+
 =========== 4.1.2
  * examples/new_rack_pbsmon.py now uses the new PBSQuery data 
    structure.

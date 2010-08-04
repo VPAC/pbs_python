@@ -29,7 +29,9 @@ tmp = VERSION.split('.')
 
 major_version = int(tmp[0])
 minor_version = int(tmp[1])
-build_version = int(tmp[2])
+#build_version = int(tmp[2])
+build_version = int(tmp[2].split('-')[0])
+
 
 os.chdir('src')
 

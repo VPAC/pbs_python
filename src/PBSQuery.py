@@ -436,20 +436,27 @@ class node(_PBSobject):
 
 		jobs = self.get_value('jobs')
 		if jobs:	
-			if type(jobs) == type('string') :
-				jobs = re.compile('[^\\ /]\\d+[^/.]').findall( jobs )
+			if isinstance(jobs, str):
+				jlist = re.compile('[^\\ /]\\d+[^/.]').findall( jobs )
 			
-			if not unique:
-				return jobs
+				if not unique:
+					return jlist
+				else:
+					return self.uniq(jlist)
+
 			else:
 				job_re = re.compile('^(?:\d+/)?(.+)')
 				l = list()
 
-				for j in jobs:
-				    jobstr = job_re.findall(j.strip())[0]
-				    if jobstr not in l: 
-				    	l.append(jobstr)           
-				return l
+				if unique:
+						for j in jobs:
+							jobstr = job_re.findall(j.strip())[0]
+				    		if jobstr not in l: 
+				    			l.append(jobstr)           
+
+						return l
+				else:
+						return jobs
 
 		return list()
 

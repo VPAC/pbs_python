@@ -20,7 +20,7 @@
  * PBSQuery:
      - fixed and error in get_jobs function for nodes. Did not
        support new data structure and uniq did not work.
-       Authors: Shunjie Lau <eijnuhs at gmail dot com> and Bas van der Vlie
+       Authors: Shunjie Lau <eijnuhs at gmail dot com> and Bas van der Vlies
 
 =========== 4.1.0
  * Delete function pbs.version() replaced by

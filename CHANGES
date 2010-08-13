@@ -12,9 +12,10 @@
    Author: Mark Roberts ( mark at gingergeeks dot co dot uk)
    Applied by: Bas van der Vlies
 
- * get_nodes function for jobs now works for old and new datastructure and
-   gives correct results if unique=True
-   Author: Bas van der Vlies
+ * PBSQuery:
+   - get_nodes function for jobs now works for old and new datastructure and
+     gives correct results if unique=True
+     Author: Bas van der Vlies
 
 =========== 4.1.2
  * examples/new_rack_pbsmon.py now uses the new PBSQuery data 

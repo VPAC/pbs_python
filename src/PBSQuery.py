@@ -400,16 +400,48 @@ class job(_PBSobject):
 			return self.FALSE
 
 	def get_nodes(self, unique=None):
-		"""Returns a list of the nodes which run this job"""
+		"""
+		Returns a list of the nodes which run this job
+		format:
+		  * exec_host: gb-r10n14/5+gb-r10n14/4+gb-r10n14/3+gb-r10n14/2+gb-r10n14/1+gb-r10n14/0
+		  * split on '+' and if uniq is set split on '/'
+		"""
 		nodes = self.get_value('exec_host')
-		if nodes:
-			nodelist = string.split(nodes,'+')
-			if not unique:
-				return nodelist
-			else:
-				return self.uniq(nodelist)
-		return list()
+		
+		if isinstance(nodes, str):
+			if nodes:
+				nodelist = string.split(nodes,'+')
+				if not unique:
+					return nodelist
+				else:
+					l = list()
 
+					for n in nodelist:
+						t = string.split(n,'/')
+						if t[0] not in l:
+							l.append(t[0])
+
+					return l
+
+			else:
+				return list()
+		else:
+				l = list()
+				for n in nodes:
+
+					nlist = string.split(n,'+')
+
+					if unique:
+						for entry in nlist:
+
+							t = string.split(entry,'/')
+							if t[0] not in l:
+								l.append(t[0])
+					else:
+						l += nlist
+
+				return l
+		
 
 class node(_PBSobject):
 	"""PBS node class"""

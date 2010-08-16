@@ -17,6 +17,16 @@
      gives correct results if unique=True
      Author: Bas van der Vlies
 
+ * examples/new_rack_pbsmon.py:
+     - Better specification for node expression
+     - Added AdvanceParser module, Author: Dennis Stam
+     - added a new option -l/--list to list the state of a nodes and which job 
+       is running on it, eg:
+             new_rack_pbsmon.py - l gb-r[1-3]n[3-6] gb-r4[n1-20]
+
+   Author: Dennis Stam & Bas van der Vlies 
+   Applied by: Bas van der Vlies
+
 =========== 4.1.2
  * examples/new_rack_pbsmon.py now uses the new PBSQuery data 
    structure.

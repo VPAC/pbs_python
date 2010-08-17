@@ -1,4 +1,4 @@
-=========== 4.1.3
+=========== 4.2.0
  * Updated LICENSE file to LGPLV3. Thanks to Justin Bronder 
   (jsbronder add gentoo dot org) for the information and
   explanation.
@@ -17,15 +17,22 @@
      gives correct results if unique=True
      Author: Bas van der Vlies
 
+ * Added AdvanceParser module. new_rack_pbsmon.py and sara_nodes.py make use of
+   this module
+   Author: Dennis Stam (Dennis dot Stam at sara dot nl)
+
  * examples/new_rack_pbsmon.py:
      - Better specification for node expression
-     - Added AdvanceParser module, Author: Dennis Stam
      - added a new option -l/--list to list the state of a nodes and which job 
        is running on it, eg:
              new_rack_pbsmon.py - l gb-r[1-3]n[3-6] gb-r4[n1-20]
 
    Author: Dennis Stam & Bas van der Vlies 
    Applied by: Bas van der Vlies
+
+ * examples/sara_nodes.py:
+   An utility to set/clear notes for multiple nodes, see ..
+   Author: Dennis Stam (Dennis dot Stam at sara dot nl)
 
 =========== 4.1.2
  * examples/new_rack_pbsmon.py now uses the new PBSQuery data 

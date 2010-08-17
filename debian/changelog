@@ -1,9 +1,10 @@
-pbs-python (4.1.3-1) lenny; urgency=low
+pbs-python (4.2.0-1) lenny; urgency=low
 
   * Update LICENSE file to LGPLV3 
   * patched pbsmon.py for torque 2.5
+  * see CHANGES for complete list
 
- -- bas van der Vlies <bas@sara.nl>  Thu, 10 Jun 2010 10:27:43 +0200
+ -- Bas van der Vlies <bas@sara.nl>  Thu, 10 Jun 2010 10:27:43 +0200
 
 pbs-python (4.1.2-1) lenny; urgency=low
 

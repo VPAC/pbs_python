@@ -66,7 +66,7 @@ setup (
 
 	extra_path = 'pbs',
 		package_dir = { '' : 'src' }, 
-		py_modules = [ 'pbs', 'PBSQuery' ], 
+		py_modules = [ 'pbs', 'PBSQuery', 'AdvancedParser' ], 
 
 	ext_modules = [ 
 		Extension( '_pbs', ['src/pbs_wrap.c'],

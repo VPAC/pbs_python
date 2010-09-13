@@ -34,6 +34,12 @@
    An utility to set/clear notes for multiple nodes, see ..
    Author: Dennis Stam (Dennis dot Stam at sara dot nl)
 
+ * setup.py.in:
+   Added support for runtime-libraries when torque is installed in a non-default
+   location, closes #22
+   Author: Mattias (slabanja at chalmers dot se)
+   Applied by: Bas van der Vlies
+
 =========== 4.1.2
  * examples/new_rack_pbsmon.py now uses the new PBSQuery data 
    structure.

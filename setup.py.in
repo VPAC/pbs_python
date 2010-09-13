@@ -71,6 +71,7 @@ setup (
 	ext_modules = [ 
 		Extension( '_pbs', ['src/pbs_wrap.c'],
 		library_dirs = [ PBS_LIB_DIR ],
+		extra_link_args = [ PBS_LIB_COMPILE_LINE ],
 		define_macros =  [ (TORQUE_VERSION, None) ],
 		libraries = LIBS,
 		) 

@@ -55,6 +55,11 @@ logpbs.py	 - Shows the usage of the PBS logging routines
 new_interface.py - Example how to use PBSQuery module
 PBSQuery.py      - python <install_path>/PBSQuery.py (has builtin demo)
 
+sara_nodes.py    - We use this program to set the nodes offline/online. when 
+                   there are no command line arguments. It will list the 
+		   nodes that are down/oflline. For more info see:
+		    - https://subtrac.sara.nl/oss/pbs_python/wiki/TorqueExamples
+
 For more info about SARA see:
 	http://www.sara.nl/index_eng.html
 	

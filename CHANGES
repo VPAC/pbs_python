@@ -1,7 +1,7 @@
 =========== 4.2.0
  * Updated LICENSE file to LGPLV3. Thanks to Justin Bronder 
-  (jsbronder add gentoo dot org) for the information and
-  explanation.
+   (jsbronder add gentoo dot org) for the information and
+   explanation.
 
  * examples/pbsmon.py. Patched so it also works for torque 2.5
    Author: Stijn De Weirdt stijn dot deweirdt at ugent dot be

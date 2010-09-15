@@ -9,6 +9,9 @@ Package: pbs-python
 Section: misc
 Architecture: any
 Depends: torque, ${python:Depends}
+Provides: python-advancedparser
+Replaces: python-advancedparser
+Conflicts: python-advancedparser
 Description: python API for the Torque library
  PBS_PYTHON interface is a wrapper class for the OPENPBS/TORQUE C LIB API.
  Now you can write utilities/extensions in Python instead of C.

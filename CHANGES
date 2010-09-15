@@ -15,6 +15,7 @@
  * PBSQuery:
    - get_nodes function for jobs now works for old and new datastructure and
      gives correct results if unique=True
+     Reported by + idea for patch: Shunjie Lau (eijnuhs add gmail dot com)
      Author: Bas van der Vlies
 
  * Added AdvanceParser module. new_rack_pbsmon.py and sara_nodes.py make use of

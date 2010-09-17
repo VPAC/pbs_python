@@ -13,6 +13,9 @@ from optparse import OptionParser
 import re
 import types
 
+__author__  = "Dennis Stam"
+__version__ = ( 1, 1, 0 )
+
 class AdvancedParser(OptionParser):
         """
         This class extends from OptionParser, where the method check_values has been
@@ -35,6 +38,25 @@ class AdvancedParser(OptionParser):
         ['dr-r7n1', 'dr-r7n2', 'dr-r7n3', 'dr-r7n4', 'dr-r7n5']
         """
 
+        def parse_letters( self, chars ):
+            
+            if type( chars ) is not types.ListType and len( chars ) != 2:
+                self.error( 'Could not parse range' )
+
+            start   = ord( chars[ 0 ] )
+            end     = ord( chars[ 1 ] )
+            out     = list()
+
+            if start > 96 and start < 122 and end > 97 and end < 123:
+                lrange = range( start, end + 1 )
+
+                for ichar in lrange:
+                    out.append( chr( ichar ) )
+                
+                return out
+            else:
+                self.error( 'AdvanedParser module only handles letters from a to z ( lower cased )' )
+
         def return_range(self, string):
                 """
                 This method uses the given numbers and converts them to ranges. When
@@ -44,48 +66,37 @@ class AdvancedParser(OptionParser):
 
                 The ranges will be return as lists
                 """
-                parts = string.split( ',' )
                 numbers_chars = list()
                 equal_width_length = 0
 
-                for part in parts:
-                        part_range = part.split( '-' )
-                        if len( part_range ) == 2:
-                                try:
-                                        if part_range[0][0] == '0' or part_range[1][0] == '0':
-                                                if len( part_range[0] ) > len( part_range[1] ):
-                                                        equal_width_length = len( part_range[0] )
-                                                else:
-                                                        equal_width_length = len( part_range[1] )
+                if string.find( ',' ) >= 0 and string.find( ',' ) < 1:
+                    self.error( 'You cannot start a range with \',\'. Given range: %s' % string )
 
-                                        numbers_chars += range( int( part_range[0] ), int( part_range[1] ) + 1 )
-                                except ValueError:
-                                        begin = ord( part_range[0] )
-                                        end = ord( part_range[1] )
-                                        tmplist = list()
+                if string.find( '-' ) >= 0 and string.find( '-' ) < 1:
+                    self.error( 'You cannot start a range with \'-\'. Given range: %s' % string )
 
-                                        if begin > 96 and end < 123:
-                                                tmplist = range( begin, end + 1)
-
-                                                for letter in tmplist:
-                                                        numbers_chars.append( chr( letter ) )
-                        else:
-                                if equal_width_length != 0 and len( part ) > equal_width_length:
-                                        equal_width_length = len( part )
-
-                                numbers_chars.append( part )
-
-                if equal_width_length > 0:
-                        tmplist = list()
-
-                        for number_char in numbers_chars:
-                                try:
-                                        nnum = int( number_char )
-                                        tmplist.append( '%0*d' % (equal_width_length, nnum) )
-                                except ValueError:
-                                        tmplist.append( number_char )
+                for section in string.split( ',' ):
+                    if section.find( '-' ) > 0:
+                        if len( section.split( '-' ) ) != 2:
+                            self.error( 'A range must be consisted of two values' )
                         
-                        numbers_chars = tmplist
+                        chars = section.split( '-' )
+
+                        try:
+                            if chars[ 0 ][ 0 ] == '0' or chars[ 1 ][ 0 ]:
+                                if len( chars[ 0 ] ) > len( chars[ 1 ] ):
+                                    equal_width_length = len( chars[ 0 ] )
+                                else:
+                                    equal_width_lenght = len( chars[ 1 ] )
+
+                            numbers_chars += range( int( chars[ 0 ] ), int( chars[ 1 ] ) + 1 )
+                        except ValueError:
+                            numbers_chars += self.parse_letters( chars )
+
+                    else:
+                        if equal_width_length != 0 and len( section ) > equal_width_lenght:
+                            equal_width_lenght = len( section )
+                        numbers_chars.append( section )
 
                 return numbers_chars
 
@@ -151,5 +162,4 @@ class AdvancedParser(OptionParser):
 
 if __name__ == "__main__":
         import doctest
-        print 'Starting doctest'
         doctest.testmod()

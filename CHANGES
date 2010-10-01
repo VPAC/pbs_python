@@ -1,3 +1,8 @@
+=========== 4.X.X
+ * new_rack_pbsmon.py: For backward compatibility added -a/--all option. 
+   Has the same functionality as -s/--summary
+   Author: Bas van der Vlies
+
 =========== 4.2.0
  * Updated LICENSE file to LGPLV3. Thanks to Justin Bronder 
    (jsbronder add gentoo dot org) for the information and

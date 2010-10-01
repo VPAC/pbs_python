@@ -414,6 +414,8 @@ if __name__ == '__main__':
     parser.add_option( "-t", "--table", dest="table", action="store_true", help="Show an table" )
     parser.add_option( "-l", "--list", dest="extended", action="store_true", help="Show node rows with state and jobinfo" )
     parser.add_option( "-s", "--summary", dest="summary", action="store_true", help="Display a short summary" )
+    parser.add_option( "-a", "--all", dest="summary", action="store_true", help="Display a short summary" )
+
     parser.add_option( "-w", "--wide", dest="wide", action="store_true", help="Wide display for node status ( only when -t is used )" )
     parser.add_option( "-S", "--servername", dest="servername", help="Change the default servername" )
 

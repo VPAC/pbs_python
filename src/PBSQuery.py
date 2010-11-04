@@ -161,7 +161,7 @@ class PBSQuery:
 					sub_dict = string.split(a.value, '=')
 
 
-					# We must creat sub dict, only for specified 
+					# We must creat sub dicts, only for specified 
 					# key values
 					#
 					if a.name in ['status', 'Variable_List']:
@@ -170,7 +170,25 @@ class PBSQuery:
 
 							tmp_l = v.split('=')
 
-							# Check if we already added the key
+							## Support for multiple EVENT mesages in format [:key=value]+ 
+							#  format eg: message=EVENT:sample.time=1288864220.003:cputotals.user=0
+							#
+							if tmp_l[0] in ['message']:
+
+								tmp_d  = dict()
+								new['event'] = class_func(tmp_d)
+
+								message_list = v.split(':')
+								for event_type in message_list[1:]:
+									tmp_l = event_type.split('=')
+									new['event'][ tmp_l[0] ] = tmp_l[1:]
+
+								## continue with next status value
+								#
+								continue
+
+									
+							## Check if we already added the key
 							#
 							if new.has_key(a.name):
 								new[a.name][ tmp_l[0] ] = tmp_l[1:]
@@ -181,7 +199,7 @@ class PBSQuery:
 								new[a.name] = class_func(tmp_d) 
 
 					else: 
-						# Check if it is a resource type variable, eg:
+						## Check if it is a resource type variable, eg:
 						#  - Resource_List.(nodes, walltime, ..)
 						#
 						if a.resource:

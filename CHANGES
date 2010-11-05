@@ -16,12 +16,12 @@
 	* node['event']
 
   eg: node: n1
-       state = free
-       np = 8
-       properties = ib,switch1,highmem
-       ntype = cluster
-       jobs = 0/567403.sara.nl, 1/567403.sara.nl
-       status = ...,loadave=0.00,message=EVENT:sample.time=1288864220.003:cputotals.user=0:cputotals.nice=0:cputotals.sys=0:cputotals.wait=0:cputotals.irq=0:cputotals.soft=0:cputotals.steal=0:cputotals.idle=99:cputotals.systot=0:cputotals.usertot=0:nettotals.kbin=0:nettotals.pktin=1:nettotals.kbout=0:nettotals.pktout=0:lusclt.reads=0:lusclt.readkbs=0:lusclt.writes=0:lusclt.writekbs=0:lusclt.numfs=2:iconnect.kbin=0:iconnect.pktin=0:iconnect.kbout=0:iconnect.pktout=0,netload=3487600394,state=free,...
+    state = free
+    np = 8
+    properties = ib,switch1,highmem
+    ntype = cluster
+    jobs = 0/567403.sara.nl, 1/567403.sara.nl
+    status = ..,loadave=0.00,message=EVENT:sample.time=1288864220.003:cputotals.user=0:iconnect.pktout=0,netload=3487600394,state=free,...
 
   example code:
   	p = PBSQuery()
@@ -31,7 +31,6 @@
 
    Requested by: Roy Dragseth <roy dot dragseth add uit dotno>
    Author: Bas van der Vlies
-
 
 =========== 4.2.0
  * Updated LICENSE file to LGPLV3. Thanks to Justin Bronder 

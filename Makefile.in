@@ -16,7 +16,9 @@ pythonlib:
 #install: pythonlib sara_install
 install: pythonlib
 	python ./setup.py install --prefix $(DESTDIR)/$(exec_prefix) ;
-	install -D LICENSE.SARA $(DESTDIR)/$(DOCDIR)/LICENSE.SARA
+	install -D LICENSE.openpbs $(DESTDIR)/$(DOCDIR)/LICENSE.openpbs
+	install -D COPYING $(DESTDIR)/$(DOCDIR)/COPYING
+	install -D COPYING.LESSER $(DESTDIR)/$(DOCDIR)/COPYING.LESSER
 	(cd examples; for i in *py; do install -D $$i  $(DESTDIR)/$(EXAMPLES)/$${i}; done)
 
 sara_install:

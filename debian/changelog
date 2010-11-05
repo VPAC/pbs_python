@@ -1,3 +1,9 @@
+pbs-python (4.3.0-1) lenny; urgency=low
+
+  * See CHANGES
+
+ -- Bas van der Vlies <bas@sara.nl>  Fri, 05 Nov 2010 09:04:29 +0100
+
 pbs-python (4.2.0-2) lenny; urgency=low
 
   * Update LICENSE file to LGPLV3 

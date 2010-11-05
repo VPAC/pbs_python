@@ -170,18 +170,26 @@ class PBSQuery:
 
 							tmp_l = v.split('=')
 
-							## Support for multiple EVENT mesages in format [:key=value]+ 
+							## Support for multiple EVENT mesages in format [key=value:]+ 
 							#  format eg: message=EVENT:sample.time=1288864220.003:cputotals.user=0
+							#             message=ERROR <text>
 							#
 							if tmp_l[0] in ['message']:
 
-								tmp_d  = dict()
-								new['event'] = class_func(tmp_d)
+								if tmp_l[1].startswith('EVENT:'):
 
-								message_list = v.split(':')
-								for event_type in message_list[1:]:
-									tmp_l = event_type.split('=')
-									new['event'][ tmp_l[0] ] = tmp_l[1:]
+									tmp_d  = dict()
+									new['event'] = class_func(tmp_d)
+
+									message_list = v.split(':')
+									for event_type in message_list[1:]:
+										tmp_l = event_type.split('=')
+										new['event'][ tmp_l[0] ] = tmp_l[1:]
+
+								else:
+									## ERROR message
+									#
+									new['error'] = tmp_l [1:]
 
 								## continue with next status value
 								#

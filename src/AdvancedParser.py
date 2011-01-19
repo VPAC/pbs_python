@@ -6,15 +6,15 @@
 #         OptionParser class.
 #
 # SVN Info:
-#       $Id: AdvancedParser.py 3667 2009-04-15 12:02:04Z dennis $
-#       $URL: https://subtrac.sara.nl/hpcv/svn/beowulf/trunk/sara_python_modules/AdvancedParser.py $
+#       $Id: AdvancedParser.py 5338 2011-01-19 13:09:09Z dennis $
+#       $URL: https://subtrac.sara.nl/osd/beowulf/svn/trunk/python_modules/advancedparser/AdvancedParser.py $
 #
 from optparse import OptionParser
 import re
 import types
 
 __author__  = "Dennis Stam"
-__version__ = ( 1, 1, 0 )
+__version__ = ( 1, 1, 2 )
 
 class AdvancedParser(OptionParser):
         """
@@ -84,7 +84,7 @@ class AdvancedParser(OptionParser):
 
                         try:
                             if chars[ 0 ][ 0 ] == '0' or chars[ 1 ][ 0 ]:
-                                if len( chars[ 0 ] ) > len( chars[ 1 ] ):
+                                if len( chars[ 0 ] ) >= len( chars[ 1 ] ):
                                     equal_width_length = len( chars[ 0 ] )
                                 else:
                                     equal_width_lenght = len( chars[ 1 ] )
@@ -97,6 +97,16 @@ class AdvancedParser(OptionParser):
                         if equal_width_length != 0 and len( section ) > equal_width_lenght:
                             equal_width_lenght = len( section )
                         numbers_chars.append( section )
+
+                    tmp_list = list()
+                    if equal_width_length > 0:
+                        for number_char in numbers_chars:
+                            try:
+                                nnum = int( number_char )
+                                tmp_list.append( '%0*d' % ( equal_width_length, nnum ) )
+                            except ValueError:
+                                tmp_list.append( number_char )
+                        numbers_chars = tmp_list
 
                 return numbers_chars
 

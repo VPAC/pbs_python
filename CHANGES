@@ -1,8 +1,14 @@
 =========== 4.X.X
  * New generated files for pbs_wrap.c and pbs.py to support python 3.X versions
+   Author: Bas van der Vlies 
+
  * Fixed AdvancedParser when using 01-12 range the zero was not appended.
    Reported by: Ramon Bastiaans
    Author: Dennis Stam
+
+ * examples/sara_nodes.py: Catch the PBSQuery error if we can not make a 
+   connection with the batch server and exit the program.
+   Author: Bas van der Vlies 
 
 =========== 4.3.0
  * new_rack_pbsmon.py: For backward compatibility added -a/--all option. 
@@ -19,7 +25,7 @@
 
   Added the following syntax for node:
   	* node['error']
-	* node['event']
+    * node['event']
 
   eg: node: n1
     state = free
@@ -31,9 +37,9 @@
 
   example code:
   	p = PBSQuery()
-	node = p.getnode(n1)
-	print node.event['sample.time']
-	print node['event']['sample.time']
+    node = p.getnode(n1)
+    print node.event['sample.time']
+    print node['event']['sample.time']
 
    Requested by: Roy Dragseth <roy dot dragseth add uit dotno>
    Author: Bas van der Vlies

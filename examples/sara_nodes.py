@@ -231,9 +231,6 @@ class sara_nodesCli:
                 A method that is used for collecting all nodes with the state down, offline or unknown
                 '''
 
-                header = ' %-10s | %-19s | %s' % ( 'Nodename', 'State', 'Note' )
-		if not options.quiet:
-                	print '\n%s\n%s' % ( header, ( '-' * 80 ) )
                 
                 p = PBSQuery.PBSQuery()
                 if pbs.version_info >= ( 4,0,0 ):
@@ -241,7 +238,15 @@ class sara_nodesCli:
                                 print "Enabling new_data_structure for PBSQuery"
                         p.new_data_structure()
 
-                nodes = p.getnodes( ['state', 'note'] )
+                try:
+                    nodes = p.getnodes( ['state', 'note'] )
+                except PBSQuery.PBSError, detail:
+                    print "PBSQuery error: %s" %detail
+                    sys.exit(1)
+
+                header = ' %-10s | %-19s | %s' % ( 'Nodename', 'State', 'Note' )
+                if not options.quiet:
+                	print '\n%s\n%s' % ( header, ( '-' * 80 ) )
 
                 if args:
                         args = self.sort_nodes( args )

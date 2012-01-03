@@ -1,4 +1,4 @@
-=========== 4.X.X
+=========== 4.3.3
  * New generated files for pbs_wrap.c and pbs.py to support python 3.X versions
    Author: Bas van der Vlies 
 
@@ -10,6 +10,17 @@
    connection with the batch server and exit the program.
    Author: Bas van der Vlies 
 
+ * Remove the debian dependency on AdvancedParser. We now have
+   our own PBSAdvanceParser so it does not conflict with other SARA
+   packages.
+   Reported by: Ramon Bastiaans (SARA)
+   Fixed by: Bas van der Vlies
+
+ * Make pbs_torque only dependend on libtorque instead of torque and adjusted 
+   the maintainer of the package, closes #30
+   Reported by: Guillermo Marcus  <guillermo dot marcus add@gmail dot com>
+   Fixed by: Bas van der Vlies
+   
 =========== 4.3.0
  * new_rack_pbsmon.py: For backward compatibility added -a/--all option. 
    Has the same functionality as -s/--summary

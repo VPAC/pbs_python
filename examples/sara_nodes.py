@@ -10,14 +10,10 @@
 #       $URL: https://subtrac.sara.nl/hpcv/svn/beowulf/trunk/torque/utils/sara_nodes $
 #
 
-try:
-    # import from the sara_python_modules
-    import AdvancedParser
-except ImportError:
-    from sara import AdvancedParser
 
 # imports of the pbs_python module
 import PBSQuery
+import PBSAdvancedParser
 import pbs
 
 # python core modules
@@ -85,7 +81,7 @@ class sara_nodesCli:
 	fields: node, state, date_add, date_edit, user, ticket, remark'''
 
                 self.obj_sara_nodes = sara_nodes()
-                self.parser = AdvancedParser.AdvancedParser( 
+                self.parser = PBSAdvancedParser.AdvancedParser( 
                 option_list=self.option_list, 
 				version=pbs.version,
                 usage=self.__init__.__doc__

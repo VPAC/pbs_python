@@ -36,7 +36,7 @@ import types
 from optparse import OptionParser
 
 import pbs
-from AdvancedParser import AdvancedParser
+from PBSAdvancedParser import AdvancedParser
 from PBSQuery import PBSQuery
 from PBSQuery import PBSError
 

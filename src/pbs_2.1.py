@@ -685,44 +685,44 @@ import types
 # Default linux resources to get from the mom
 #
 default_linux_res = [   
-	"availmem",	# available memory size in KB
-	"ideal_load",	# static ideal_load value
-	"loadave",      # the current load average
-	"max_load",	# static max_load value
-	"ncpus",        # number of cpus
-	"physmem",      # physical memory size in KB
-	"resi",		# resident memory size for a pid or session in KB
-	"totmem",	# total memory size in KB
-	"walltime",	# wall clock time for a pid
+    "availmem",	    # available memory size in KB
+    "ideal_load",	# static ideal_load value
+    "loadave",      # the current load average
+    "max_load",	    # static max_load value
+    "ncpus",        # number of cpus 
+    "physmem",      # physical memory size in KB
+    "resi",		    # resident memory size for a pid or session in KB
+    "totmem",	    # total memory size in KB
+    "walltime",	    # wall clock time for a pid
 ]
 
 # Default irix6 resources to get from the mom
 #
 default_irix6_res = [   
-	"availmem",	# available memory size in KB
-	"loadave",      # the current load average
-	"ncpus",        # number of cpus
-	"physmem",      # physical memory size in KB
-	"resi",		# resident memory size for a pid or session in KB
-	"walltime",	# wall clock time for a pid
-	"quota",	# quota information (sizes in KB)
+    "availmem",	# available memory size in KB
+    "loadave",      # the current load average
+    "ncpus",        # number of cpus
+    "physmem",      # physical memory size in KB
+    "resi",		# resident memory size for a pid or session in KB
+    "walltime",	# wall clock time for a pid
+    "quota",	# quota information (sizes in KB)
 ]
 
 default_mom_res = [   
-	"arch",		# the architecture of the machine
-	"uname",	# the architecture of the machine
-        "cput",		# cpu time for a pid or session
-	"idletime",	# seconds of idle time
-	"mem",		# memory size for a pid or session in KB
-	"sessions",	# list of sessions in the system
-	"pids",         # list of pids in a session
-	"nsessions",	# number of sessions in the system
-	"nusers",	# number of users in the system
-	"size",		# size of a file or filesystem
-	"host",		# Name  of host on which job should be run 
-	"nodes",	# Number and/or type of nodes to be reserved for exclusive use by the job
-	"other",	# Allows a  user  to  specify  site  specific  information
-	"software",	# Allows a user to specify software required by the job
+    "arch",		# the architecture of the machine
+    "uname",	# the architecture of the machine
+    "cput",		# cpu time for a pid or session
+    "idletime",	# seconds of idle time
+    "mem",		# memory size for a pid or session in KB
+    "sessions",	# list of sessions in the system
+    "pids",         # list of pids in a session
+    "nsessions",	# number of sessions in the system
+    "nusers",	# number of users in the system
+    "size",		# size of a file or filesystem
+    "host",		# Name  of host on which job should be run 
+    "nodes",	# Number and/or type of nodes to be reserved for exclusive use by the job
+    "other",	# Allows a  user  to  specify  site  specific  information
+    "software",	# Allows a user to specify software required by the job
 ]
 
 def check_resp(dict, str):
@@ -740,9 +740,9 @@ def check_resp(dict, str):
   l =  string.split(str, '=')
   key = string.strip(l[0])
   if len(l) > 2:
-	val = string.strip( '='.join(l[1:]) )
+    val = string.strip( '='.join(l[1:]) )
   else:
-	val = string.strip(l[1])
+    val = string.strip(l[1])
 
   key = string.strip(key)
   val = string.strip(val)

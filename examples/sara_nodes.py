@@ -77,13 +77,13 @@ class sara_nodesCli:
   sara_nodes [ <options> <nodenames> | [nodenames] ]
 
   -f/--format needs 2 arguments, first the pattern secondly the variables
-	the pattern you specify must be the string format pattern of Python
-	fields: node, state, date_add, date_edit, user, ticket, remark'''
+        the pattern you specify must be the string format pattern of Python
+        fields: node, state, date_add, date_edit, user, ticket, remark'''
 
                 self.obj_sara_nodes = sara_nodes()
                 self.parser = PBSAdvancedParser.AdvancedParser( 
                 option_list=self.option_list, 
-				version=pbs.version,
+                version=pbs.version,
                 usage=self.__init__.__doc__
                 )
 
@@ -146,11 +146,12 @@ class sara_nodesCli:
                                         print '\n Use option --help for help'
                                 self.print_list(args, options)
 
+
                 except sara_nodesException, msg:
                         if msg.islist():
                         	for item in msg.getlist():
                                 	sys.stderr.write( 'sara_nodes: error: %s\n' % item )
-			else:
+                        else:
                         	sys.stderr.write( 'sara_nodes: error: %s\n' % str( msg ) )
 
                         sys.exit( 1 )
@@ -159,20 +160,20 @@ class sara_nodesCli:
 
                 if type(pre_parts) is types.ListType and len( pre_parts) >= 5:
                         return { 
-				'date_add': pre_parts[0].strip(), 
-				'date_edit': pre_parts[1].strip(), 
-				'user': pre_parts[2].strip(), 
-				'ticket': pre_parts[3].strip(),
-				'remark': ','.join( pre_parts[4:] )
-			}
+                                'date_add': pre_parts[0].strip(), 
+                                'date_edit': pre_parts[1].strip(), 
+                                'user': pre_parts[2].strip(), 
+                                'ticket': pre_parts[3].strip(),
+                                'remark': ','.join( pre_parts[4:] )
+                        }
                 else:
                         return { 
-				'date_add': '', 
-				'date_edit': '', 
-				'user': '', 
-				'ticket': '',
-				'remark': str( pre_parts )
-			}
+                                'date_add': '', 
+                                'date_edit': '', 
+                                'user': '', 
+                                'ticket': '',
+                                'remark': str( pre_parts ) 
+                        }
 
         def convert_format( self, format_options ):
             pattern = r'\%([-|+]){0,1}([0-9]{0,2})([a-z]{1})'
@@ -219,6 +220,7 @@ class sara_nodesCli:
 
                         
                         print line_format % fields
+
             except KeyError, e:
                 raise sara_nodesException, 'Given host does not exist'
 
@@ -354,15 +356,15 @@ class sara_nodes:
                 return oldticket
 
         def note_return_username( self, old_username ):
-		try:
-	                username = os.getlogin()
+                try:
+                        username = os.getlogin()
 
         	        if username != 'root':
                 	        return username
-	                else:
+                        else:
         	                return old_username
-		except OSError, err:
-			return 'root'
+                except OSError, err:
+                        return 'root'
 
         def note_create( self, new_note, mode = 'a', old_note = None ):
                 if mode == 'w':
@@ -386,10 +388,10 @@ class sara_nodes:
 
         def note_init( self ):
                 current_date = self.create_date()
-		try:
-	                current_username = os.getlogin()
-		except OSError, err:
-			current_username = 'root'
+                try:
+                        current_username = os.getlogin()
+                except OSError, err:
+                        current_username = 'root'
 
                 return [ current_date, current_date, current_username, '' ]
 
@@ -417,7 +419,7 @@ class sara_nodes:
                 else:
                         pre_parts = self.note_init()
 
-		if note_attr.has_key( 'ticket' ):
+                if note_attr.has_key( 'ticket' ):
                 	pre_parts[3] = self.note_check_ticket( note_attr['ticket'], pre_parts[3] )
 
                 if note_attr.has_key( 'note' ) and note_attr.has_key( 'mode' ):
@@ -507,7 +509,7 @@ class sara_nodes:
 
                         for node in nodes:
                                 if note_attributes and len( note_attributes ) == 3:
-	                                    tmp_node_note[ node ] = self.note( node, note_attributes )
+                                        tmp_node_note[ node ] = self.note( node, note_attributes )
 
                         pbs_server = pbs.pbs_default()
 
@@ -533,15 +535,16 @@ class sara_nodes:
                         pbsnodes = p.getnodes().keys()
 
                         print '%*s:' % ( 7, 'Nodes' ),
-			firstitem = True
+                        firstitem = True
 
                         for node in nodes:
+
                                 if node in pbsnodes:
-					if firstitem:
-	                                        print '%s' % node
-						firstitem = False
-					else:
-						print '%*s' % ( 17, node )
+                                        if firstitem:
+                                                print '%s' % node
+                                                firstitem = False
+                                        else:
+                                                print '%*s' % ( 17, node )
                                 else:
                                         nodeserror.append( '%s: does not exist' % node )
 

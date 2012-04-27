@@ -1,0 +1,115 @@
+#!/usr/bin/env python
+
+# topjob, gojob jobnr [nodenr]
+#               jobnr: the number of the job
+#               nodenr: the rank of the node in the job
+# depending on the name with this script is called it performs the
+# following:
+
+# called as topjob:
+#       shows the output of top -u user on the node
+#       - one cycle of top
+#       - user: the user the job belongs to
+#
+# called as gojob:
+#       logs in to the node as the user who invokes this script
+#            (os.getenv('USER'))
+#
+#  Willem Vermin, SARA, April 2012
+#
+from PBSQuery import PBSQuery
+import sys,os
+def uniq(seq, idfun=None): 
+  # http://www.peterbe.com/plog/uniqifiers-benchmark
+   # order preserving
+   if idfun is None:
+       def idfun(x): return x
+   seen = {}
+   result = []
+   for item in seq:
+       marker = idfun(item)
+       if marker in seen: continue
+       seen[marker] = 1
+       result.append(item)
+   return result
+
+def usage(a):
+  if a == 'gojob':
+    print a,'logs you in to a node where a job is running'
+  if a == 'topjob':
+    print a,'shows the system usage of a node where a job is running'
+    
+  print 'Usage:'
+  print a,'jobnumber [nodenumber]'
+  print 'where jobnumber is the number of the job'
+  print '      nodenumber is the rank number of the node allocated to the job'
+  print '      (default 0)'
+  
+me = sys.argv[0].split('/')[-1]
+print '['+me+']'
+p = PBSQuery()
+seq = list(p.get_serverinfo())[0]
+
+try:
+  j=sys.argv[1]
+except:
+  usage(me)
+  sys.exit(1)
+
+# check if numerical jobnumber. (Be aware: dependecy jobs have a '-')
+try:
+  nj = int(j.split('.')[0].split('-')[0]) 
+except:
+  usage(me)
+  sys.exit(1)
+
+if len(sys.argv) > 2:
+  try:
+    num = int(sys.argv[2])
+  except:
+    usage(me)
+    sys.exit(1)
+else:
+  num = 0
+
+job = p.getjob(j)
+
+try:
+  h = job['exec_host'][0]
+except:
+  print 'No such job:',j
+  sys.exit(1)
+
+hh = h.split('+')
+nodes=[]
+for h in hh:
+  nodes = nodes + [ h.split('/')[0]]
+
+nodes = uniq(nodes)
+print 'Job',j,'is running on',len(nodes),'nodes:'
+i=0
+for h in nodes:
+  print h,
+  i = i+1
+  if i > 7:
+    i=0
+    print
+if i != 0:
+  print
+
+if num >= len(nodes):
+  print 'No node number',num
+  sys.exit(1)
+
+if me == 'topjob':
+  user=job['Job_Owner'][0].split('@')[0]
+  print 'top for node #',num,':',nodes[num],'user:',user
+  sys.stdout.flush()
+  os.system('ssh '+nodes[num]+' top -n1 -b -u ' + user)
+
+if me == 'gojob':
+  user = os.getenv('USER')
+  print 'logging in to node #',num,':',nodes[num],'user:',user
+  sys.stdout.flush()
+  os.system('ssh -X '+nodes[num])
+

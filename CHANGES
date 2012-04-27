@@ -1,3 +1,9 @@
+=========== 4.3.4
+ * PBSQuery bugfix. getjob() can now handle short jobname, eg: 
+    * p.getjob('6073545') 
+
+   Author: Willem Vermin (SARA) & Bas van der Vlies 
+  
 =========== 4.3.3
  * New generated files for pbs_wrap.c and pbs.py to support python 3.X versions
    Reported by: Steve Traylen <steve dot traylen add cern dot ch>

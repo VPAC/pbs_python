@@ -88,6 +88,14 @@ class PBSQuery:
         else:
             self.server = server
 
+        self._connect()
+        ## this is needed for getjob a jobid is made off:
+        #    sequence_number.server (is not self.server)
+        #
+        self.job_server_id = list(self.get_serverinfo())[0] 
+        self._disconnect()
+
+
     def _connect(self):
         """Connect to the PBS/Torque server"""
         self.con = pbs.pbs_connect(self.server)
@@ -319,9 +327,11 @@ class PBSQuery:
         self._list_2_dict(jobs, job)
 
     def getjob(self, name, attrib_list=None):
-        # To make sure we use the full name of a job; Changes a name
-        # like 1234567 into 1234567.server.name 
-        name = name.split('.')[0] + "." + self.get_server_name()
+        ## To make sure we use the full name of a job; Changes a name
+        # like 1234567 into 1234567.job_server_id
+        #
+        if len(name.split('.')) == 1 :
+            name = name.split('.')[0] + "." + self.job_server_id
 
         self._statjob(name, attrib_list)
         try:

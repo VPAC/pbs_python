@@ -18,4 +18,4 @@ binary-post-install/pbs-python::
 	install -D examples/new_rack_pbsmon.py debian/pbs-python/usr/bin/pbsmon
 	install -D examples/sara_nodes.py debian/pbs-python/usr/bin/sara_nodes
 	install -D examples/pbs_jobmonitor debian/pbs-python/usr/bin/pbs_jobmonitor
-	install -D examples/pbs_jobmonitor debian/pbs-python/usr/bin/pbs_joblogin
+	( cd debian/pbs-python/usr/bin; ln -s pbs_jobmonitor pbs_joblogin )

@@ -3,6 +3,16 @@
     * p.getjob('6073545') 
 
    Author: Willem Vermin (SARA) & Bas van der Vlies 
+
+ * added an example: pbs_jobmonitor shows the output of top 
+   -u user on the node
+    - one cycle of top
+    - user: the user the job belongs to
+
+   renamed as pbs_joblogin logs in to the node as the user 
+   who invokes this script (os.getenv('USER'))
+
+   Author: Willem Vermin (SARA)
   
 =========== 4.3.3
  * New generated files for pbs_wrap.c and pbs.py to support python 3.X versions

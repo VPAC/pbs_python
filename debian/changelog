@@ -1,6 +1,7 @@
 pbs-python (4.3.4-1) lenny; urgency=low
 
   * See CHANGES 
+  * install pbs_jobmonitor and pbs_joblogin in /usr/bin
 
  -- Bas van der Vlies <basv@sara.nl>  Fri, 27 Apr 2012 09:54:54 +0200
 

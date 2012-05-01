@@ -7,18 +7,19 @@
 #   $Id#
 #   $URL$
 #
-# topjob, gojob jobnr [nodenr]
-#               jobnr: the number of the job
-#               nodenr: the rank of the node in the job
+# pbs_jobmonitor, pbs_joblogin <jobnr> [nodenr]
+#    jobnr: the number of the job
+#    nodenr: the rank of the node in the job
+#
 # depending on the name with this script is called it performs the
 # following:
 
-# called as topjob:
+# called as pbs_jobmonitor:
 #       shows the output of top -u user on the node
 #       - one cycle of top
 #       - user: the user the job belongs to
 #
-# called as gojob:
+# called as pbs_joblogin:
 #       logs in to the node as the user who invokes this script
 #            (os.getenv('USER'))
 #
@@ -39,14 +40,14 @@ def uniq(seq, idfun=None):
    return result
 
 def usage(a):
-  if a == 'gojob':
-    print a,'logs you in to a node where a job is running'
-  if a == 'topjob':
+  if a == 'pbs_jobmonitor':
     print a,'shows the system usage of a node where a job is running'
+  if a == 'pbs_joblogin':
+    print a,'logs you in to a node where a job is running'
     
   print 'Usage:'
-  print a,'jobnumber [nodenumber]'
-  print 'where jobnumber is the number of the job'
+  print a,'<jobnumber> [nodenumber]'
+  print 'where <jobnumber> is the number of the job'
   print '      nodenumber is the rank number of the node allocated to the job'
   print '      (default 0)'
   
@@ -105,13 +106,13 @@ if num >= len(nodes):
   print 'No node number',num
   sys.exit(1)
 
-if me == 'topjob':
+if me == 'pbs_jobmonitor':
   user=job['Job_Owner'][0].split('@')[0]
   print 'top for node #',num,':',nodes[num],'user:',user
   sys.stdout.flush()
   os.system('ssh '+nodes[num]+' top -n1 -b -u ' + user)
 
-if me == 'gojob':
+if me == 'pbs_joblogin':
   user = os.getenv('USER')
   print 'logging in to node #',num,':',nodes[num],'user:',user
   sys.stdout.flush()

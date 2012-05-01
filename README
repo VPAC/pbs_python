@@ -1,11 +1,11 @@
 the latest stable pbs_python interface is available from:
-	ftp://ftp.sara.nl/pub/outgoing/pbs_python.tar.gz
+    ftp://ftp.sara.nl/pub/outgoing/pbs_python.tar.gz
 
 Information, documentation and reporting bugs for the package:
-	https://subtrac.sara.nl/oss/pbs_python
+    https://subtrac.sara.nl/oss/pbs_python
 
 bug resport:
-	pbs_python add sara dot nl
+    pbs_python@sara.nl
 
 =============== Brief description =============================
 Pbs_python interface is a wrapper class for the OPENPBS/TORQUE 
@@ -57,13 +57,20 @@ PBSQuery.py      - python <install_path>/PBSQuery.py (has builtin demo)
 
 sara_nodes.py    - We use this program to set the nodes offline/online. when 
                    there are no command line arguments. It will list the 
-		   nodes that are down/oflline. For more info see:
-		    - https://subtrac.sara.nl/oss/pbs_python/wiki/TorqueExamples
+                   nodes that are down/oflline. For more info see:
+                    - https://subtrac.sara.nl/oss/pbs_python/wiki/TorqueExamples
+
+pbs_jobmonitor   - Shows the output of top -u user on the node:
+                     * one cycle of top
+                     * user: the user the job belongs to
+
+pbs_joblogin     - logs in to the node as the user who invokes this script 
+                   (os.getenv('USER'))
 
 For more info about SARA see:
-	http://www.sara.nl/index_eng.html
-	
+    http://www.sara.nl/index_eng.html
 
+--
 ********************************************************************
 *                                                                  *
 *  Bas van der Vlies                     e-mail: basv@sara.nl      *

@@ -179,7 +179,7 @@ class PBSQuery:
                             tmp_l = v.split('=')
 
                             ## Support for multiple EVENT mesages in format [key=value:]+ 
-                            #  format eg: message=EVENT:sample.time=1288864220.003:cputotals.user=0
+                            #  format eg: message=EVENT:sample.time=1288864220.003,EVENT:kernel=upgrade,cputotals.user=0
                             #             message=ERROR <text>
                             #
                             if tmp_l[0] in ['message']:
@@ -195,26 +195,33 @@ class PBSQuery:
                                         new['event'][ tmp_l[0] ] = tmp_l[1:]
 
                                 else:
+
                                     ## ERROR message
                                     #
                                     new['error'] = tmp_l [1:]
 
-                                ## continue with next status value
-                                #
-                                continue
+                            elif tmp_l[0].startswith('EVENT:'): 
 
-                                    
-                            ## Check if we already added the key
-                            #
-                            if new.has_key(a.name):
-                                new[a.name][ tmp_l[0] ] = tmp_l[1:]
+                                  message_list = v.split(':')
+                                  for event_type in message_list[1:]:
+                                      tmp_l = event_type.split('=')
+                                      new['event'][ tmp_l[0] ] = tmp_l[1:]
 
                             else:
-                                tmp_d  = dict()
-                                tmp_d[ tmp_l[0] ] = tmp_l[1:]
-                                new[a.name] = class_func(tmp_d) 
+                                  ## Check if we already added the key
+                                  #
+                                  if new.has_key(a.name):
+
+                                      new[a.name][ tmp_l[0] ] = tmp_l[1:] 
+
+                                  else:
+
+                                      tmp_d  = dict()
+                                      tmp_d[ tmp_l[0] ] = tmp_l[1:]
+                                      new[a.name] = class_func(tmp_d) 
 
                     else: 
+
                         ## Check if it is a resource type variable, eg:
                         #  - Resource_List.(nodes, walltime, ..)
                         #

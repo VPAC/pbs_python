@@ -1,3 +1,8 @@
+=========== 4.X.X
+ * PBSQuery bugfix, parsing of node status line with multiple EVENT: settings
+   was wrong
+   Author: Bas van der Vlies
+
 =========== 4.3.4
  * PBSQuery bugfix. getjob() can now handle short jobname, eg: 
     * p.getjob('6073545') 

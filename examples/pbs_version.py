@@ -4,7 +4,7 @@
 # Desc. : print version of pbs_server
 #    
 # CVS info:
-# $Id: pbs_version.py,v 1.1 2002/02/27 14:35:51 sscpbas Exp $
+# $Id$
 #
 #
 import sys

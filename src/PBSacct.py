@@ -165,12 +165,11 @@ for f in sys.argv[1:] :
     read_file(f, jobs)
 
 
-for j in jobs.keys():
+#for j in jobs.keys():
+#
+#    if jobs[j].has_key('restart'):
+#        print j, jobs[j]['restart']
 
-    if jobs[j].has_key('restart'):
-        print j, jobs[j]['restart']
-
-sys.exit(0)
 for j in jobs.keys():
 
     if jobs[j].has_key('exit'):

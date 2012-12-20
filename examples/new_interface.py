@@ -10,6 +10,7 @@
 #
 #
 
+import pbs
 from PBSQuery import PBSQuery
 from PBSQuery import PBSError
 
@@ -29,8 +30,13 @@ def main():
   #print job.Resource_List.arch 
   #print job.Variable_List.PBS_O_HOME
 
-  l = ['np', 'status', 'state' ]
-  nodes = p.getnodes(l)
+  l = ['np', 'state' ]
+  node = p.getnode("gb-r5n1", l)
+  print node.name, node['np']
+
+  sys.exit(0)
+
+  #nodes = p.getnodes(l)
   for id in nodes:
 	print id
 

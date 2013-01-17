@@ -1,3 +1,10 @@
+pbs-python (4.3.3-1.1) stable; urgency=low
+
+  * NMU
+  * Updates for squeeze.
+
+ -- Brian May <bam@debian.org>  Thu, 17 Jan 2013 13:40:26 +1100
+
 pbs-python (4.3.3-1) lenny; urgency=low
 
   * see CHANGES
